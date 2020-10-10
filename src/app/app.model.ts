@@ -18,6 +18,17 @@ export class AppModel {
       owner: 1,
       imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
       quantity: 3
+    },
+    {
+      id: 5,
+      name: 'Majica 4',
+      category: 2,
+      prize: 1000.00,
+      size: 'XL',
+      colors: 'red',
+      owner: 1,
+      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
+      quantity: 3
     }
   ];
   public items: Array<any> = [
