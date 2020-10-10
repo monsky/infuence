@@ -11,6 +11,7 @@ import {AppService} from './app.service';
 import {HttpClientModule} from '@angular/common/http';
 import {InfluencersComponent} from './components/influencers/influencers.component';
 import {InfluencerComponent} from './components/influencer/influencer.component';
+import {ShoppingBagComponent} from './components/shopping-bag/shopping-bag.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {InfluencerComponent} from './components/influencer/influencer.component'
     ItemComponent,
     LoginComponent,
     InfluencersComponent,
-    InfluencerComponent
+    InfluencerComponent,
+    ShoppingBagComponent
   ],
   imports: [
     BrowserModule,

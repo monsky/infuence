@@ -1,0 +1,43 @@
+<div class="d-flex align-items-center justify-content-center font-weight-bold cart-title">
+  SHOPPING CART
+</div>
+<div class="d-flex flex-column">
+  <div *ngFor="let itm of items"
+       class="d-flex flex-row list-item">
+    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg"
+         class="img-fluid zoom"
+         alt="smaple image">
+
+    <div class="d-flex flex-column row-cols-sm-2">
+      <div class="shopping-cart-details list-item-name">
+        Velicina: XL
+      </div>
+      <div class="d-flex flex-row row-cols-sm-2">
+        <div (click)="editOnClick(itm)">
+          <img
+            src="https://image.flaticon.com/icons/png/512/61/61456.png"
+            class="img-fluid zoom shopping-chart-button"
+            alt="smaple image">
+        </div>
+        <div (click)="deleteOnClick(itm)">
+          <img src="https://image.flaticon.com/icons/png/512/61/61848.png"
+               class="img-fluid zoom shopping-chart-button"
+               alt="smaple image">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<div>
+  <button mat-button color="primary">
+    KUPI
+  </button>
+  <button mat-button color="primary">
+    ISPRAZNI KORPU
+  </button>
+</div>
+
+
