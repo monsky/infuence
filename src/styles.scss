@@ -1,1 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
+
+body,html {
+  font-size: 12px;
+}
+
+.zoom {
+  transition: transform .2s;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.05); /* IE 9 */
+  -webkit-transform: scale(1.05); /* Safari 3-8 */
+  transform: scale(1.05);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-item-name {
+  font-size: 1.5em;
+  margin: 0.5em 1em;
+}
+
+.list-item {
+  min-width: 36em;
+  padding: 2em;
+  align-items: center;
+  cursor: pointer;
+}
+
+i {
+  cursor: pointer;
+}
+
+.prize {
+  font-size: 1.6em;
+  font-weight: bold;
+}

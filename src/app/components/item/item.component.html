@@ -1,0 +1,36 @@
+<div>
+  <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg"
+       class="img-fluid image-item"
+       alt="smaple image">
+  <div class="explanation">
+    Dostava objasnjenje
+  </div>
+</div>
+<div>
+  <div class="item-name">
+    {{ item.name }}
+  </div>
+  <div class="prize">
+    {{ item.prize}} RSD
+  </div>
+  <div class="code">
+    {{ item.description}}
+  </div>
+  <div class="size-list-item-wrapper">
+    <div *ngFor="let size of item.availableSizes"
+         class="size-list-item"
+         (click)="choseSize(size)">
+      {{ size }}
+    </div>
+  </div>
+  <div class="flex-row justify-content-between color-items">
+    <div *ngFor="let color of item.availableColors"
+         class="color-item"
+         (click)="choseColor(color)">
+      {{ color }}
+    </div>
+  </div>
+  <button>
+    ADD
+  </button>
+</div>

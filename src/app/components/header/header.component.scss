@@ -1,0 +1,61 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2em;
+  border-bottom: 1px solid lightgray;
+
+  .header-main {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid lightgray;
+    position: relative;
+    padding-bottom: 1.5em;
+  }
+
+  .search-input {
+    right: 9em;
+    position: absolute;
+    width: 16em;
+  }
+
+  .main-title {
+    font-size: 3em;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .username {
+    font-weight: bold;
+    margin: 0 0.5em;
+    font-size: 1.2em;
+  }
+
+  .navigation-item {
+    margin: 0 2em;
+    cursor: pointer;
+  }
+
+  .header-navigation {
+    padding: 2em 1.5em;
+  }
+
+  .category {
+    font-size: 1.4em;
+    margin: 0 2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+}

@@ -1,0 +1,24 @@
+<div class="flex-row influencer-title">
+  <img src="{{ influencer.imgUrl }}"
+       class="img-fluid image-item"
+       alt="smaple image">
+  <div class="explanation">
+    {{ influencer.name }}
+  </div>
+</div>
+<div class="d-flex flex-row flex-wrap">
+  <div *ngFor="let listItem of selectedItems"
+       (click)="choseListItem(listItem)"
+       class="d-flex flex-column list-item">
+    <img src="{{ listItem.imgUrl }}"
+         class="img-fluid zoom"
+         alt="smaple image">
+    <div class="list-item-name">
+      {{ listItem.name }}
+    </div>
+    <div class="prize">
+      {{ listItem.prize }}
+    </div>
+  </div>
+</div>
+
