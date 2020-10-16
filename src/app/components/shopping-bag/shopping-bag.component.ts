@@ -14,21 +14,40 @@ export class ShoppingBagComponent implements OnInit, OnDestroy {
 
   public selectedItem = null;
 
-  constructor() {
+  constructor(public appModel: AppModel) {
   }
 
   public ngOnInit(): void {
+    this.items = this.appModel.bagItems;
   }
 
   public ngOnDestroy(): void {
   }
 
-  public editOnClick(buttonId): void {
-    console.log('edit button ' + buttonId);
+  public plusOnClick(itm): void {
+    itm.quantity++;
+    if (itm.quantity > 10) {
+      itm.quantity = 10;
+    }
   }
 
-  public deleteOnClick(buttonId): void {
-    console.log('delete button ' + buttonId);
+  public minusOnClick(itm): void {
+    itm.quantity--;
+    if (itm.quantity < 1) {
+      itm.quantity = 1;
+    }
+  }
+
+  public deleteOnClick(index): void {
+    this.items.splice(index, 1);
+  }
+
+  public buyShoppingBag(): void {
+    console.log('kupovina');
+  }
+
+  public emptyShoppingBag(): void {
+    this.items.splice(0, this.items.length);
   }
 
 }

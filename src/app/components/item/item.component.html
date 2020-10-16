@@ -30,7 +30,8 @@
       {{ color }}
     </div>
   </div>
-  <button>
+  <button (click)="addToShoppingBag()"
+          [disabled]="!bagItem['size'] || !bagItem['color']">
     ADD
   </button>
 </div>

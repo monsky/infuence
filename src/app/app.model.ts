@@ -6,29 +6,28 @@ import {SignalOne} from '../libs/signal/SignalOne';
 })
 export class AppModel {
   public readonly categoryChanged: SignalOne<string> = new SignalOne<string>();
-  public bagItem: any = null;
   public bagItems: Array<any> = [
     {
       id: 4,
       name: 'Majica 4',
       category: 2,
-      prize: 1000.00,
+      price: 1000.00,
       size: 'XL',
-      colors: 'red',
+      color: 'red',
       owner: 1,
       imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
       quantity: 3
     },
     {
       id: 5,
-      name: 'Majica 4',
+      name: 'Majica 3',
       category: 2,
-      prize: 1000.00,
-      size: 'XL',
-      colors: 'red',
+      price: 1300,
+      size: 'L',
+      color: 'blue',
       owner: 1,
       imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
-      quantity: 3
+      quantity: 2
     }
   ];
   public items: Array<any> = [

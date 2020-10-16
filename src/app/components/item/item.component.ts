@@ -9,9 +9,10 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./item.component.scss']
 })
 export class ItemComponent implements OnInit, OnDestroy {
-  public colors: Array<string> = [ 'Black', 'White', 'Red'];
+  public colors: Array<string> = ['Black', 'White', 'Red'];
   public item: any;
   private subscription: Subscription;
+  public bagItem: any = {};
 
   constructor(public activatedRoute: ActivatedRoute,
               public appModel: AppModel) {
@@ -30,11 +31,23 @@ export class ItemComponent implements OnInit, OnDestroy {
   }
 
   public choseSize(size): void {
-    this.appModel.bagItem.size = size;
+    this.bagItem.size = size;
   }
 
   public choseColor(color): void {
-    this.appModel.bagItem.color = color;
+    this.bagItem.color = color;
+  }
+
+  public addToShoppingBag(): void {
+    this.bagItem.id = this.item.id;
+    this.bagItem.name = this.item.name;
+    this.bagItem.category = this.item.category;
+    this.bagItem.price = this.item.prize;
+    this.bagItem.owner = this.item.owner;
+    this.bagItem.imgUrl = this.item.imgUrl;
+    this.bagItem.quantity = 1;
+
+    this.appModel.bagItems.push(this.bagItem);
   }
 
 }
