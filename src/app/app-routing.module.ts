@@ -6,6 +6,8 @@ import {LandingPageComponent} from './components/landing-page/landing-page.compo
 import {InfluencersComponent} from './components/influencers/influencers.component';
 import {InfluencerComponent} from './components/influencer/influencer.component';
 import {ShoppingBagComponent} from './components/shopping-bag/shopping-bag.component';
+import {InfluencerProfileComponent} from './components/influencer-profile/influencer-profile.component';
+import {AdminComponent} from './components/admin/admin.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,10 @@ const routes: Routes = [
   {
     path: 'influencers/:id',
     component: InfluencerComponent
+  },
+  {
+    path: 'influencers/private/:id',
+    component: InfluencerProfileComponent
   },
   {
     path: 'item/:id',
@@ -47,6 +53,10 @@ const routes: Routes = [
   {
     path: 'shopping-bag',
     component: ShoppingBagComponent
+  },
+  {
+    path: 'admin',
+    component: AdminComponent
   }
 ];
 

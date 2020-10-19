@@ -1,7 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AppModel} from '../../app.model';
-import {ActivatedRoute, Params} from '@angular/router';
-import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-shopping-bag',

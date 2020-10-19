@@ -12,6 +12,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {InfluencersComponent} from './components/influencers/influencers.component';
 import {InfluencerComponent} from './components/influencer/influencer.component';
 import {ShoppingBagComponent} from './components/shopping-bag/shopping-bag.component';
+import {InfluencerProfileComponent} from './components/influencer-profile/influencer-profile.component';
+import {AdminComponent} from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {ShoppingBagComponent} from './components/shopping-bag/shopping-bag.compo
     LoginComponent,
     InfluencersComponent,
     InfluencerComponent,
-    ShoppingBagComponent
+    ShoppingBagComponent,
+    InfluencerProfileComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,59 @@
+<div class="flex-row">
+ADMIN PANEL
+</div>
+<div class="flex-row">
+  <div *ngFor="let tableDataItem of tableDataHeader"
+       class="flex-grow-1">
+    {{ tableDataItem }}
+  </div>
+</div>
+<div class="flex-column">
+  <div *ngFor="let data of tableData"
+       class="flex-row">
+    <div class="flex-grow-1">
+      {{ data.date }}
+    </div>
+    <div class="flex-grow-1">
+      {{ data.influencerName }}
+    </div>
+    <div class="flex-grow-1">
+      {{ data.articalName }}
+    </div>
+    <div class="flex-grow-1">
+      {{ data.articalId }}
+    </div>
+    <div class="flex-grow-1">
+      {{ data.amount }}
+    </div>
+    <div class="flex-grow-1">
+      {{ data.size }}
+    </div>
+    <div class="flex-grow-1">
+      {{ data.prize }}
+    </div>
+    <div class="flex-grow-1">
+      {{ data.color }}
+    </div>
+    <div class="flex-grow-1">
+      {{ data.dateOfShipping }}
+    </div>
+    <div class="flex-grow-1">
+      {{ data.stateOfShipping }}
+    </div>
+    <div class="flex-grow-1">
+      {{ data.isInfluencerPaid }}
+    </div>
+    <div class="flex-grow-1">
+      {{ data.percentOfInfluencer }}
+    </div>
+    <div class="flex-grow-1">
+      {{ data.percent }}
+    </div>
+    <div class="flex-grow-1">
+      {{ data.earnedOfInfluencer }}
+    </div>
+    <div class="flex-grow-1">
+      {{ data.earned }}
+    </div>
+  </div>
+</div>
