@@ -8,6 +8,7 @@ import {InfluencerComponent} from './components/influencer/influencer.component'
 import {ShoppingBagComponent} from './components/shopping-bag/shopping-bag.component';
 import {InfluencerProfileComponent} from './components/influencer-profile/influencer-profile.component';
 import {AdminComponent} from './components/admin/admin.component';
+import {ProfileComponent} from './components/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,10 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   }
 ];
 

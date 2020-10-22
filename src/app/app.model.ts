@@ -36,8 +36,8 @@ export class AppModel {
       name: 'Majica 1',
       category: 0,
       prize: 1000.00,
-      availableSizes: [ 's', 'm'],
-      availableColors: [ 'red', 'blue'],
+      availableSizes: ['s', 'm'],
+      availableColors: ['red', 'blue'],
       description: 'labalabalbalalalall',
       owner: 0,
       imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
@@ -47,8 +47,8 @@ export class AppModel {
       name: 'Majica 2',
       category: 0,
       prize: 1000.00,
-      availableSizes: [ 's'],
-      availableColors: [ 'red', 'blue'],
+      availableSizes: ['s'],
+      availableColors: ['red', 'blue'],
       description: 'labalabalbalalalall',
       owner: 0,
       imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
@@ -58,8 +58,8 @@ export class AppModel {
       name: 'Majica 3',
       category: 1,
       prize: 1000.00,
-      availableSizes: [ 's'],
-      availableColors: [ 'red', 'blue'],
+      availableSizes: ['s'],
+      availableColors: ['red', 'blue'],
       description: 'labalabalbalalalall',
       owner: 2,
       imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
@@ -69,8 +69,8 @@ export class AppModel {
       name: 'Majica 4',
       category: 1,
       prize: 1000.00,
-      availableSizes: [ 's'],
-      availableColors: [ 'red', 'blue'],
+      availableSizes: ['s'],
+      availableColors: ['red', 'blue'],
       description: 'labalabalbalalalall',
       owner: 2,
       imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
@@ -81,7 +81,7 @@ export class AppModel {
       category: 2,
       prize: 1000.00,
       availableSizes: [],
-      availableColors: [ 'red', 'blue'],
+      availableColors: ['red', 'blue'],
       description: 'labalabalbalalalall',
       owner: 1,
       imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
@@ -92,7 +92,7 @@ export class AppModel {
       category: 2,
       prize: 1000.00,
       availableSizes: [],
-      availableColors: [ 'red', 'blue'],
+      availableColors: ['red', 'blue'],
       description: 'labalabalbalalalall',
       owner: 1,
       imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
@@ -120,6 +120,19 @@ export class AppModel {
       imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
     }
   ];
+  public user: any = {
+    id: 1,
+    firstName: 'Marko',
+    lastName: 'Trajkovic',
+    eMail: 'markotrajkovic88@gmail.com',
+    phoneNumber: '0658889991',
+    city: 'Beograd',
+    street: 'Južni bulevar',
+    streetNumber: '85',
+    postalCode: '11000',
+    favorites: [],
+    shipments: [],
+  };
 
   constructor() {
   }
