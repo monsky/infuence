@@ -1,6 +1,10 @@
 <div class="d-flex align-items-center justify-content-center font-weight-bold cart-title">
   SHOPPING BAG
 </div>
+<div *ngIf="items.length===0"
+     class="shopping-bag-empty-text">
+  Vaša korpa je prazna.
+</div>
 <div class="d-flex flex-column list-items">
   <div *ngFor="let itm of items; let i=index"
        class="d-flex flex-row shopping-bag-list-item">
@@ -42,11 +46,12 @@
 </div>
 
 <div class="shopping-chart-button-wrapper flex-row">
-  <div class="shopping-chart-button zoom"
-       (click)="buyShoppingBag()">
+  <div [routerLink]="items.length===0 ? '' : '/profile'"
+       class="shopping-chart-button zoom">
     KUPI
   </div>
-  <div class="shopping-chart-button zoom"
+  <div *ngIf="items.length!=0"
+       class="shopping-chart-button zoom"
        (click)="emptyShoppingBag()">
     ISPRAZNI KORPU
   </div>

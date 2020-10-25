@@ -40,10 +40,6 @@ export class ShoppingBagComponent implements OnInit, OnDestroy {
     this.items.splice(index, 1);
   }
 
-  public buyShoppingBag(): void {
-    console.log('kupovina');
-  }
-
   public emptyShoppingBag(): void {
     this.items.splice(0, this.items.length);
   }
