@@ -4,6 +4,10 @@ body,html {
   font-size: 12px;
 }
 
+div, i {
+  outline: none;
+}
+
 .zoom {
   transition: transform .2s;
   width: 200px;
@@ -15,6 +19,19 @@ body,html {
   -ms-transform: scale(1.05); /* IE 9 */
   -webkit-transform: scale(1.05); /* Safari 3-8 */
   transform: scale(1.05);
+}
+
+input[type="text"], input[type="password"], textarea, select {
+  outline: none !important;
+}
+
+*:focus {
+  outline: none !important;
+}
+
+input:focus {
+  outline:none !important;
+  box-shadow: none;
 }
 
 html, body { height: 100%; }

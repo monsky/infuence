@@ -18,9 +18,6 @@ export class AppService {
 
   // GLOBAL GETTERS
 
-  public isUserLogged(): boolean {
-    return JSON.parse(localStorage.getItem('user')) ? true : false;
-  }
 
   public getUser(): any {
     return JSON.parse(localStorage.getItem('user'));

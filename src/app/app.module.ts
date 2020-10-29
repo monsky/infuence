@@ -14,6 +14,9 @@ import {InfluencerComponent} from './components/influencer/influencer.component'
 import {ShoppingBagComponent} from './components/shopping-bag/shopping-bag.component';
 import {InfluencerProfileComponent} from './components/influencer-profile/influencer-profile.component';
 import {AdminComponent} from './components/admin/admin.component';
+import {LocalStorageService} from './local-storage-service';
+import {FormsModule} from '@angular/forms';
+import {InfluencerGuard} from './influencer-guard.service';
 
 @NgModule({
   declarations: [
@@ -32,10 +35,13 @@ import {AdminComponent} from './components/admin/admin.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
-    AppService
+    AppService,
+    LocalStorageService,
+    InfluencerGuard
   ],
   bootstrap: [AppComponent]
 })

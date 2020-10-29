@@ -76,8 +76,30 @@ export class AppModel {
       imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
     },
     {
-      id: 4,
+      id: 3,
       name: 'Majica 4',
+      category: 1,
+      prize: 1000.00,
+      availableSizes: ['s'],
+      availableColors: ['red', 'blue'],
+      description: 'labalabalbalalalall',
+      owner: 2,
+      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
+    },
+    {
+      id: 3,
+      name: 'Majica 4',
+      category: 1,
+      prize: 1000.00,
+      availableSizes: ['s'],
+      availableColors: ['red', 'blue'],
+      description: 'labalabalbalalalall',
+      owner: 2,
+      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
+    },
+    {
+      id: 4,
+      name: 'Enaina majica',
       category: 2,
       prize: 1000.00,
       availableSizes: [],
