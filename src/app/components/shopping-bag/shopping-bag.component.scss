@@ -4,7 +4,6 @@
   align-items: flex-start;
   justify-content: space-between;
   padding: 2em 1.5em;
-  border-bottom: 1px solid lightgray;
 
   .cart-title {
     font-size: 2em;
@@ -25,26 +24,27 @@
     align-items: center;
   }
 
-  .shopping-bag-list-item-color{
+  .shopping-bag-list-item-color {
     font-size: 1.5em;
     align-items: center;
   }
 
-  .shopping-bag-list-item-price{
-    font-size: 1.5em;
-    align-items: center;
-  }
-  .shopping-bag-list-item-size{
+  .shopping-bag-list-item-price {
     font-size: 1.5em;
     align-items: center;
   }
 
-  .shopping-bag-list-item-quantity{
+  .shopping-bag-list-item-size {
+    font-size: 1.5em;
+    align-items: center;
+  }
+
+  .shopping-bag-list-item-quantity {
     font-size: 1.5em;
     align-items: flex-end;
   }
 
-  .shopping-bag-list-item-quantity-label{
+  .shopping-bag-list-item-quantity-label {
     min-width: 3em;
     text-align: center;
     border-radius: 10px;
@@ -53,19 +53,20 @@
     user-select: none;
   }
 
-  .shopping-bag-list-item-quantity-button{
-    display:flex;
+  .shopping-bag-list-item-quantity-button {
+    display: flex;
     align-items: center;
     height: auto;
     line-height: inherit;
-    width: auto!important;
+    width: auto !important;
   }
 
-  .zoom-bag{
+  .zoom-bag {
     margin: 0 50px 0 !important;
   }
 
-  .list-items{
+  .list-items {
+    width: 100%;
     border-bottom: 1px solid lightgray;
   }
 
@@ -79,6 +80,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0;
   }
 
   .shopping-chart-button-wrapper {
@@ -89,11 +91,11 @@
     align-items: center;
   }
 
-  .shopping-chart-button{
+  .shopping-chart-button {
     display: flex;
-    width:auto!important;;
-    height: auto!important;
-    margin: 0 1em 0!important;
+    width: auto !important;;
+    height: auto !important;
+    margin: 0 1em 0 !important;
     padding: 0 1em;
     justify-content: center;
     align-items: center;
@@ -105,10 +107,10 @@
     user-select: none;
   }
 
-  .shopping-bag-empty-text{
+  .shopping-bag-empty-text {
     font-size: 1.5em;
     align-items: center;
-    padding: 2em 0em 2em 3em;
+    padding: 2em 0 2em 3em;
   }
 
 }
