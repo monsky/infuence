@@ -16,7 +16,8 @@ import {InfluencerProfileComponent} from './components/influencer-profile/influe
 import {AdminComponent} from './components/admin/admin.component';
 import {LocalStorageService} from './local-storage-service';
 import {FormsModule} from '@angular/forms';
-import {InfluencerGuard} from './influencer-guard.service';
+import {InfluencerGuard} from './influencer-guard';
+import {UserGuard} from './user-guard';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {InfluencerGuard} from './influencer-guard.service';
   providers: [
     AppService,
     LocalStorageService,
-    InfluencerGuard
+    InfluencerGuard,
+    UserGuard
   ],
   bootstrap: [AppComponent]
 })

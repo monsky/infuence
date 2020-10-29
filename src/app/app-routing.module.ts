@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 import {ItemComponent} from './components/item/item.component';
 import {AppComponent} from './app.component';
 import {LandingPageComponent} from './components/landing-page/landing-page.component';
@@ -9,6 +9,8 @@ import {ShoppingBagComponent} from './components/shopping-bag/shopping-bag.compo
 import {InfluencerProfileComponent} from './components/influencer-profile/influencer-profile.component';
 import {AdminComponent} from './components/admin/admin.component';
 import {ProfileComponent} from './components/profile/profile.component';
+import {InfluencerGuard} from './influencer-guard';
+import {UserGuard} from './user-guard';
 
 const routes: Routes = [
   {
@@ -29,6 +31,7 @@ const routes: Routes = [
   },
   {
     path: 'influencers/private/:id',
+    canActivate: [InfluencerGuard],
     component: InfluencerProfileComponent
   },
   {
@@ -61,6 +64,7 @@ const routes: Routes = [
   },
   {
     path: 'profile',
+    canActivate: [UserGuard],
     component: ProfileComponent
   }
 ];
@@ -69,4 +73,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
