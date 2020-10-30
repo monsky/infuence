@@ -17,10 +17,21 @@
     padding-bottom: 1.5em;
   }
 
+  .home-icon {
+    width: 2em;
+    cursor: pointer;
+  }
+
+  .shopping-bag-icon {
+    width: 2em;
+    cursor: pointer;
+  }
+
   .search-input {
     right: 9em;
     position: absolute;
     width: 20em;
+
     input {
       border: 1px solid lightgray;
       padding: 0.5em;
@@ -68,14 +79,15 @@
     padding: 0.4em;
     cursor: pointer;
     font-size: 1.1em;
+
     :hover {
       font-weight: bold;
     }
   }
 
   .search-category-item:hover {
-      font-weight: bold;
-      font-size: 1.2em;
+    font-weight: bold;
+    font-size: 1.2em;
   }
 
   .search-category-title {
@@ -83,6 +95,7 @@
     font-weight: bold;
     cursor: pointer;
     font-size: 1.1em;
+
     :hover {
       font-weight: bold;
     }

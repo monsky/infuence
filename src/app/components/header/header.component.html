@@ -1,8 +1,9 @@
 <div class="header-main">
   <div class="flex-row align-items-center"
        style="margin-left: 1.5em">
-    <i class="fa fa-home fa-3x"
-       [routerLink]="''"></i>
+    <img [routerLink]="''"
+         src="../../../assets/homepage.png"
+         class="home-icon">
     <div [routerLink]="'/editor'"
          class="navigation-item">
       MAKE YOUR OWN SHIRT
@@ -47,13 +48,13 @@
           </div>
         </div>
         <div *ngIf="searchResultsItems.length > 0"
-          class="flex-column">
+             class="flex-column">
           <div class="search-category-title">
             Proizvodi
           </div>
           <div *ngFor="let item of searchResultsItems"
                (click)="goToPage('/item/', item.id)"
-            class="search-category-item" >
+               class="search-category-item">
             {{ item.name }}
           </div>
         </div>
@@ -64,9 +65,9 @@
          class="username">
       {{ localStorageService.isUserLogged() ? appModel.user.firstName : 'LOGIN' }}
     </div>
-    <i [routerLink]="'/shopping-bag'"
-       class="fa fa-shopping-cart fa-3x">
-    </i>
+    <img [routerLink]="'/shopping-bag'"
+         src="../../../assets/shopping_bag.png"
+         class="shopping-bag-icon">
   </div>
 </div>
 <div class="d-flex align-items-center justify-content-center header-navigation">
