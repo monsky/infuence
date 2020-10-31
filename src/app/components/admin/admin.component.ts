@@ -64,7 +64,7 @@ export class AdminComponent implements OnInit, OnDestroy {
       earned: 1000,
     }
   ];
-
+  public categorySelected: number = 0;
   private subscription: Subscription;
 
   constructor(public activatedRoute: ActivatedRoute,
@@ -83,4 +83,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  public changeCategory(category: number): void {
+    this.categorySelected = category;
+  }
 }

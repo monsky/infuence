@@ -11,6 +11,7 @@ import {AdminComponent} from './components/admin/admin.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {InfluencerGuard} from './influencer-guard';
 import {UserGuard} from './user-guard';
+import {AdminGuard} from './admin-guard';
 
 const routes: Routes = [
   {
@@ -60,7 +61,8 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component: AdminComponent
+    component: AdminComponent,
+    canActivate: [ AdminGuard ]
   },
   {
     path: 'profile',

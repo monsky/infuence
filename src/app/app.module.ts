@@ -18,6 +18,7 @@ import {LocalStorageService} from './local-storage-service';
 import {FormsModule} from '@angular/forms';
 import {InfluencerGuard} from './influencer-guard';
 import {UserGuard} from './user-guard';
+import {AdminGuard} from './admin-guard';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {UserGuard} from './user-guard';
     AppService,
     LocalStorageService,
     InfluencerGuard,
-    UserGuard
+    UserGuard,
+    AdminGuard
   ],
   bootstrap: [AppComponent]
 })

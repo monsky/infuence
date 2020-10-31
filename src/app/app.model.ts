@@ -154,6 +154,7 @@ export class AppModel {
     postalCode: '11000',
     favorites: [],
     shipments: [],
+    isAdmin: true
   };
 
   constructor() {
