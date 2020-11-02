@@ -1,53 +1,69 @@
-<div class="flex-row">
-  <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg"
+<div class="flex-row basic-info">
+  <img src="/assets/influencer-default.jpg"
        class="img-fluid image-item"
        alt="smaple image">
-  <div class="flex-column">
+  <div class="flex-column conditions-wrapper">
     <div class="item-name">
       {{ userData.name }}
     </div>
-    <div class="code">
-      Uslovi {{userData.contract}}%/{{100 - userData.contract}}%
+    <div class="condition">
+      <div>
+        Uslovi
+      </div>
+      <div class="value">
+        {{userData.contract}}%
+      </div>
     </div>
-    <div class="code">
-      Zaradjeno: {{userData.earned}}
+    <div class="condition">
+      <div>
+        Zaradjeno
+      </div>
+      <div class="value">
+        {{userData.earned}}
+      </div>
     </div>
-    <div class="code">
-      Broj prodanih artikala: {{userData.itemCount}}
+    <div class="condition">
+      <div>
+        Broj prodanih artikala
+      </div>
+      <div class="value">
+        {{userData.itemCount}}
+      </div>
     </div>
   </div>
 </div>
-<div class="flex-row">
-  <div *ngFor="let tableDataItem of tableDataHeader"
-       class="flex-grow-1">
+<div class="flex-row table-header">
+  <div *ngFor="let tableDataItem of tableDataHeader;let i = index"
+       class="item-margin-right"
+       [ngClass]="{'count': i === 0 || i === 2, 'date': i === 4, 'flex-1': i!== 0 && i !== 2 && i !== 4 && i !== 6, 'paid': i === 6, 'text-align-end': i > 2 }">
     {{ tableDataItem }}
   </div>
 </div>
 <div class="flex-column">
   <div *ngFor="let row of userData.tableData"
-       class="flex-row">
-    <div class="flex-grow-1">
+       class="flex-row table-row">
+    <div class="count item-margin-right">
       {{ row.id }}
     </div>
-    <div class="flex-grow-1">
+    <div class="flex-1 item-margin-right">
       {{ row.name }}
     </div>
-    <div class="flex-grow-1">
+    <div class="count item-margin-right">
       {{ row.amount }}
     </div>
-    <div class="flex-grow-1">
+    <div class="flex-1 item-margin-right text-align-end">
       {{ row.prize }}
     </div>
-    <div class="flex-grow-1">
+    <div class="date item-margin-right text-align-end">
       {{ row.date }}
     </div>
-    <div class="flex-grow-1">
+    <div class="flex-1 item-margin-right text-align-end">
       {{ row.state }}
     </div>
-    <div class="flex-grow-1">
+    <div class="paid item-margin-right text-align-end">
       {{ row.isInfluencerPaid }}
     </div>
-    <div class="flex-grow-1">
+    <div class="flex-1 item-margin-right text-align-end">
       {{ row.earned }}
     </div>
   </div>

@@ -3,9 +3,12 @@
   flex-direction: column;
   padding: 2em 5em;
 
+  .basic-info {
+    margin-bottom: 1em;
+  }
+
   .image-item {
-    width: 150px;
-    height: 100px;
+    width: 320px;
     margin-right: 3em;
   }
 
@@ -14,6 +17,64 @@
     font-weight: bold;
   }
 
+  .item-name {
+    font-weight: bold;
+    font-size: 2em;
+    margin-right: 3em;
+  }
+
+  .condition {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.4em;
+
+    .value {
+      font-weight: bold;
+    }
+  }
+
+  .conditions-wrapper {
+    width: 20em;
+  }
+
+  .count {
+    width: 4em;
+    padding: 0 0.5em;
+  }
+
+  .date {
+    width: 7em;
+  }
+
+  .item-margin-right {
+    margin-right: 2em;
+  }
+
+  .paid {
+    width: 6em;
+  }
+
+  .table-header {
+    font-size: 1.5em;
+    font-weight: bold;
+    border-bottom: 1px solid;
+  }
+
+  .table-row {
+    border-bottom: 1px solid lightgray;
+    padding: 0.2em 0;
+    font-size: 1.5em;
+  }
+
+  .table-row:hover {
+    background-color: aliceblue;
+    cursor: pointer;
+  }
+
+  .text-align-end {
+    text-align: end;
+  }
 
 }
 

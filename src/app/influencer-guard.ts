@@ -10,7 +10,7 @@ export class InfluencerGuard implements CanActivate {
   }
 
   public canActivate(activatedRoute: ActivatedRouteSnapshot, snapshot: RouterStateSnapshot): boolean | Promise<boolean> {
-    if (this.appModel.user.id === activatedRoute.params.id) {
+    if (this.appModel.user.id == activatedRoute.params.id) {
       return true;
     }
     this.route.navigate(['login']).catch(error => console.log(error));
