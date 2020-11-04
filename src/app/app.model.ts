@@ -156,6 +156,175 @@ export class AppModel {
     shipments: [],
     isAdmin: true
   };
+  public influencerContractColNames: Array<string> = [
+    'Datum',
+    'Ime influensera',
+    'Ime artikla',
+    'Id artikla',
+    'Količina',
+    'Veličina',
+    'Cena',
+    'Boja',
+    'Datum isporuke',
+    'Isporučeno',
+    'Plaćeno influenseru',
+    'Procenat influensera',
+    'Procenat',
+    'Zarada influensera',
+    'Zarada'
+  ];
+  public influencerContractData: Array<any> = [
+    {
+      date: '12/10/2020',
+      influencerName: 'Ena Luna',
+      influencerId: 0,
+      articalId: 0,
+      articalName: 'Majica 10',
+      amount: 2,
+      size: 'M',
+      prize: 1256,
+      color: 'red',
+      dateOfShipping: '12/10/2020',
+      stateOfShipping: 0,
+      isInfluencerPaid: 1,
+      percentOfInfluencer: 40,
+      percent: 40,
+      earnedOfInfluencer: 1000,
+      earned: 1000,
+    },
+    {
+      date: '15/10/2020',
+      influencerName: 'Ena Luna',
+      influencerId: 0,
+      articalId: 0,
+      articalName: 'Majica 20',
+      amount: 2,
+      size: 'M',
+      prize: 1256,
+      color: 'red',
+      dateOfShipping: '12/10/2020',
+      stateOfShipping: 0,
+      isInfluencerPaid: 1,
+      percentOfInfluencer: 40,
+      percent: 40,
+      earnedOfInfluencer: 1000,
+      earned: 1000,
+    },
+    {
+      date: '12/10/2020',
+      influencerName: 'Ena Luna',
+      influencerId: 0,
+      articalId: 0,
+      articalName: 'Majica 10',
+      amount: 2,
+      size: 'M',
+      prize: 1256,
+      color: 'red',
+      dateOfShipping: '12/10/2020',
+      stateOfShipping: 0,
+      isInfluencerPaid: 1,
+      percentOfInfluencer: 40,
+      percent: 40,
+      earnedOfInfluencer: 1000,
+      earned: 1000,
+    }
+  ];
+
+  public printShopContractColNames: Array<string> = [
+    'Ime poslodavca',
+    'Ime ugovora',
+    'Tip ugovora',
+    'Popust',
+    'Broj poručenih artikala'
+  ];
+  public printShopContractData: Array<any> = [
+    {
+      name: 'Copy Studio',
+      contractId: '12335',
+      contractType: 1,
+      discount: 20,
+      numberOfOrderedArticles: '52'
+    },
+    {
+      name: 'Stamparija',
+      contractId: '65198',
+      contractType: 1,
+      discount: 30,
+      numberOfOrderedArticles: '134'
+    },
+    {
+      name: 'StampaMajica',
+      contractId: '9845',
+      contractType: 2,
+      discount: 15,
+      numberOfOrderedArticles: '23'
+    },
+    {
+      name: 'BrzaStampa',
+      contractId: '98465',
+      contractType: 1,
+      discount: 20,
+      numberOfOrderedArticles: '78'
+    }
+  ];
+
+  public orderStatusColNames: Array<string> = [
+    'Slika',
+    'Ime influensera',
+    'Ime poručioca',
+    'Id porudžbine',
+    'Status'
+  ];
+  public orderStatusData: Array<any> = [
+    {
+      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
+      influencerName: 'Ena Luna',
+      clientName: 'Marko Trajkovic',
+      orderId: 30,
+      orderStatus: 'Odstampano'
+    },
+    {
+      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
+      influencerName: 'Ena Luna',
+      clientName: 'Trajko Markovic',
+      orderId: 50,
+      orderStatus: 'Ceka na stampu'
+    },
+    {
+      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
+      influencerName: 'Zorannah',
+      clientName: 'Marko Trajkovic',
+      orderId: 43,
+      orderStatus: 'Odstampano'
+    }
+  ];
+
+  public orderRequestColNames: Array<string> = [
+    'Slika',
+    'Id porudžbine',
+    'Ime poručioca',
+    'Status'
+  ];
+  public orderRequestData: Array<any> = [
+    {
+      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
+      orderId: 30,
+      clientName: 'Marko Trajkovic',
+      orderStatus: 1
+    },
+    {
+      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
+      orderId: 50,
+      clientName: 'Trajko Markovic',
+       orderStatus: 0
+    },
+    {
+      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
+      orderId: 43,
+      clientName: 'Marko Trajkovic',
+      orderStatus: 1
+    }
+  ];
 
   constructor() {
   }

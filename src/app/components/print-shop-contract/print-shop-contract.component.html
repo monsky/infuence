@@ -1,0 +1,40 @@
+<div class="flex-column flex-1">
+  <div class="flex-row table-header">
+    <div *ngFor="let columnName of columnNames, let i = index"
+         class="column-name"
+         [ngClass]="{'fixed-width-6': i===2 || i===3, 'fixed-width-12' : i===4, 'flex-1': i===0 || i===1}">
+      {{columnName}}
+  </div>
+</div>
+
+<div *ngFor="let data of columnData; let j=index"
+     [style.background-color]="(j%2) === 0 ?'#f9fcff':'white'"
+     class="flex-row column-data-row">
+  <div class="flex-1">
+    {{ data.name }}
+  </div>
+  <div class="flex-1">
+    {{ data.contractId }}
+  </div>
+  <div class="fixed-width-6">
+    {{ data.contractType }}
+  </div>
+  <div class="fixed-width-6">
+    {{ data.discount }}
+  </div>
+  <div class="fixed-width-12">
+    {{ data.numberOfOrderedArticles }}
+  </div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+

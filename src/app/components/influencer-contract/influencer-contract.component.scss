@@ -1,0 +1,40 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  .table-header {
+    font-size: 1.3em;
+    border-bottom: 1px solid darkgrey;
+  }
+
+  .column-name {
+    font-weight: bold;
+    align-self: flex-end;
+  }
+
+  .column-data-row {
+    font-size: 1.3em;
+    border-bottom: 1px solid lightgray;
+    padding: 0.2em 0;
+  }
+
+  .column-data-row:hover {
+    background-color: aliceblue !important;
+    cursor: pointer;
+  }
+
+  .fixed-width-4{
+    width: 4em;
+  }
+
+  .fixed-width-5{
+    width: 5em;
+  }
+
+  .fixed-width-6{
+    width: 6em;
+  }
+
+
+}
+

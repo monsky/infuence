@@ -1,0 +1,69 @@
+<div class="flex-column flex-1">
+  <div class="flex-row table-header">
+    <div *ngFor="let columnName of columnNames, let i = index"
+         class="column-name"
+         [ngClass]="{'fixed-width-6': i===0 || i===8 || i===9 || i===10 || i===11 || i===13, 'fixed-width-5': i===3 || i===4 || i===5 || i===6 || i===12, 'fixed-width-4': i===7 || i===14, 'flex-1': i===1 || i===2}">
+      {{columnName}}
+    </div>
+  </div>
+
+  <div *ngFor="let data of columnData; let j=index"
+       [style.background-color]="(j%2) === 0 ?'#f9fcff':'white'"
+       class="flex-row column-data-row">
+    <div class="fixed-width-6">
+      {{ data.date }}
+    </div>
+    <div class="flex-1">
+      {{ data.influencerName }}
+    </div>
+    <div class="flex-1">
+      {{ data.articalName }}
+    </div>
+    <div class="fixed-width-5">
+      {{ data.articalId }}
+    </div>
+    <div class="fixed-width-5">
+      {{ data.amount }}
+    </div>
+    <div class="fixed-width-5">
+      {{ data.size }}
+    </div>
+    <div class="fixed-width-5">
+      {{ data.prize }}
+    </div>
+    <div class="fixed-width-4">
+      {{ data.color }}
+    </div>
+    <div class="fixed-width-6">
+      {{ data.dateOfShipping }}
+    </div>
+    <div class="fixed-width-6">
+      {{ data.stateOfShipping }}
+    </div>
+    <div class="fixed-width-6">
+      {{ data.isInfluencerPaid }}
+    </div>
+    <div class="fixed-width-6">
+      {{ data.percentOfInfluencer }}
+    </div>
+    <div class="fixed-width-5">
+      {{ data.percent }}
+    </div>
+    <div class="fixed-width-6">
+      {{ data.earnedOfInfluencer }}
+    </div>
+    <div class="fixed-width-4">
+      {{ data.earned }}
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+

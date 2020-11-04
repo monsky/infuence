@@ -1,0 +1,42 @@
+<div class="flex-column flex-1">
+  <div class="flex-row table-header">
+    <div *ngFor="let columnName of columnNames, let i = index"
+         class="column-name"
+         [ngClass]="{'fixed-width-8': i===3 || i===4, 'flex-1': i===0 || i===1 || i===2}">
+      {{columnName}}
+    </div>
+  </div>
+
+  <div *ngFor="let data of columnData; let j=index"
+       [style.background-color]="(j%2) === 0 ?'#f9fcff':'white'"
+       class="flex-row column-data-row">
+    <div class="flex-1">
+      <img src="{{ data.imgUrl }}"
+           class="img-fluid zoom"
+           alt="smaple image">
+    </div>
+    <div class="flex-1">
+      {{ data.influencerName }}
+    </div>
+    <div class="flex-1">
+      {{ data.clientName }}
+    </div>
+    <div class="fixed-width-8">
+      {{ data.orderId }}
+    </div>
+    <div class="fixed-width-8">
+      {{ data.orderStatus }}
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+

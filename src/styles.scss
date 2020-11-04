@@ -83,3 +83,18 @@ i {
 .flex-1 {
   flex: 1;
 }
+
+.side-panel-item {
+  font-size: 1.2em;
+  color: grey;
+  padding: 0.5em;
+  cursor: pointer;
+  height: auto;
+  width: auto;
+  margin: 0;
+}
+
+.side-panel-item:hover {
+  font-weight: bold !important;
+  color: black !important;
+}
