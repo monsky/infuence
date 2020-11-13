@@ -9,10 +9,8 @@
 
   .tabs {
     width: 5%;
-    // border: solid 1px lightgrey;
-    background: #1c2027;
-    color: white;
     .tab {
+      border-left: 4px solid transparent;
       text-align: center;
       padding: 0.5rem;
       .typcn {
@@ -20,8 +18,7 @@
       }
     }
     .selected-tab {
-      background-color: white;
-      color: black;
+      border-left: 4px solid black;
     }
     .tab:hover {
         cursor: pointer;
@@ -31,7 +28,6 @@
   .select {
     width: 20%;
     border: solid 1px lightgrey;
-    border-left: 0;
     border-top: 0;
     align-items: center;
     .text-selection {
