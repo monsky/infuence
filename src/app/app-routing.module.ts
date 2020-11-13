@@ -7,6 +7,7 @@ import {InfluencersComponent} from './components/influencers/influencers.compone
 import {InfluencerComponent} from './components/influencer/influencer.component';
 import {ShoppingBagComponent} from './components/shopping-bag/shopping-bag.component';
 import {InfluencerProfileComponent} from './components/influencer-profile/influencer-profile.component';
+import {EditorComponent} from "./components/editor/editor.component";
 import {AdminComponent} from './components/admin/admin.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {InfluencerGuard} from './influencer-guard';
@@ -49,7 +50,7 @@ const routes: Routes = [
   },
   {
     path: 'editor',
-    component: ItemComponent
+    component: EditorComponent
   },
   {
     path: 'category/:id',
