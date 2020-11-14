@@ -1,5 +1,5 @@
 <main class="flex-row">
-  <section class="tabs">
+  <aside class="tabs">
     <div *ngFor="let tab of tabs">
       <div class="tab flex-column"
            (click)="selectTab(tab)"
@@ -9,10 +9,10 @@
         {{tab.name}}
       </div>
     </div>
-  </section>
+  </aside>
   <section class="select flex-column">
     <input type="text" 
-           *ngIf="selectedTab === 'PHOTOS' || selectedTab === 'EMOJIS'"
+           *ngIf="selectedTab === 'IMAGES' || selectedTab === 'EMOJIS'"
            id="search" 
            class="search">
     <ng-template [ngIf]="selectedTab === 'TEXT'">
@@ -20,6 +20,28 @@
       <h3 class="text-selection">Add Subheading</h3>
       <p class="text-selection">Add a paragraph</p>
     </ng-template>
+    <ng-template [ngIf]="selectedTab === 'IMAGES'">
+    </ng-template>
+    <ng-template [ngIf]="selectedTab === 'ELEMENTS'">
+    </ng-template>
+    <ng-template [ngIf]="selectedTab === 'EMOJIS'">
+    </ng-template>
+    <ng-template [ngIf]="selectedTab === 'DRAW'">
+    </ng-template>
+    <ng-template [ngIf]="selectedTab === 'UPLOAD'">
+    </ng-template>
   </section>
-  <section class="editor"></section>
+  <section class="editor flex-column">
+    <div class="toolbar">
+      <ng-template [ngIf]="selectedTab === 'TEXT'">
+      </ng-template>
+      <ng-template [ngIf]="selectedTab === 'IMAGES'">
+      </ng-template>
+
+    </div> 
+    <div class="canvas">
+      <canvas id="canvas"></canvas>
+    </div>
+    <div class="buttons"></div>
+  </section>
 </main>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { fabric } from 'fabric';
 import { Tab } from 'src/app/interfaces';
 
 @Component({
@@ -7,6 +8,7 @@ import { Tab } from 'src/app/interfaces';
   styleUrls: ['./editor.component.scss']
 })
 export class EditorComponent implements OnInit {
+  canvas: any;
 
   public tabs = [
     {
@@ -14,7 +16,7 @@ export class EditorComponent implements OnInit {
       icon: "typcn-edit"
     },
     {
-      name: "PHOTOS",
+      name: "IMAGES",
       icon: "typcn-image"
     },
     {
@@ -26,7 +28,7 @@ export class EditorComponent implements OnInit {
       icon: "typcn-heart-outline"
     },
     {
-      name: "PEN",
+      name: "DRAW",
       icon: "typcn-pencil"
     },
     {
