@@ -16,13 +16,20 @@
            id="search" 
            class="search">
     <ng-template [ngIf]="selectedTab === 'TEXT'">
-      <h1 class="text-selection">Add Heading</h1>
-      <h3 class="text-selection">Add Subheading</h3>
-      <p class="text-selection">Add a paragraph</p>
+      <h1 (click)="addText('Heading', 32)" class="text-selection">Add Heading</h1>
+      <h3 (click)="addText('Subheading', 24)" class="text-selection">Add Subheading</h3>
+      <p (click)="addText('Paragraph', 18)" class="text-selection">Add a paragraph</p>
     </ng-template>
     <ng-template [ngIf]="selectedTab === 'IMAGES'">
     </ng-template>
     <ng-template [ngIf]="selectedTab === 'ELEMENTS'">
+      <div class="elements">
+        <div *ngFor="let element of editorService.elements" class="element">
+          <div class="icon"
+               (click)="addElement(element.url)"
+               [ngStyle]="{'mask-image': element.path}"></div>
+        </div>
+      </div>
     </ng-template>
     <ng-template [ngIf]="selectedTab === 'EMOJIS'">
     </ng-template>
@@ -40,7 +47,7 @@
 
     </div> 
     <div class="canvas">
-      <canvas id="canvas"></canvas>
+      <canvas id="canvas" height="400px" width="400px"></canvas>
     </div>
     <div class="buttons"></div>
   </section>
