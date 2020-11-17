@@ -155,7 +155,30 @@ public elements = [
     path: 'url("../../assets/elements/venus.svg")',
     url: '../../assets/elements/venus.svg'
   },
-]
+];
+
+public fonts = [
+  "Lato",
+  "Roboto",
+  "Oswald",
+  "Dancing Script",
+  "Indie Flower",
+  "Fondamento",
+  "Permanent Marker",
+  "Great Vibes",
+  "Sacramento",
+  "Amatic SC",
+  "Lateef",
+  "Comic Neue",
+  "Inconsolata",
+  "Share Tech Mono",
+  "VT323",
+  "Major Mono Display",
+  "Playfair Display",
+  "Cormorant Garamond",
+  "Cinzel",
+  "Ultra",
+];
 
   constructor() { }
 }

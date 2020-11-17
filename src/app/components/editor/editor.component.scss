@@ -98,5 +98,20 @@
     }
   }
 
+  .fonts {
+    overflow-y: scroll;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid lightgray;
+    .font {
+      font-size: x-large;
+    }
+    .font:hover {
+      cursor: pointer;
+    }
+  }
+
 
 }

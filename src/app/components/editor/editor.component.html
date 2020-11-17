@@ -16,9 +16,18 @@
            id="search" 
            class="search">
     <ng-template [ngIf]="selectedTab === 'TEXT'">
-      <h1 (click)="addText('Heading', 32)" class="text-selection">Add Heading</h1>
-      <h3 (click)="addText('Subheading', 24)" class="text-selection">Add Subheading</h3>
-      <p (click)="addText('Paragraph', 18)" class="text-selection">Add a paragraph</p>
+      <h1 (click)="addText('Heading', 'Lato', 32)" class="text-selection">Add Heading</h1>
+      <h3 (click)="addText('Subheading', 'Lato', 24)" class="text-selection">Add Subheading</h3>
+      <p (click)="addText('Paragraph', 'Lato', 18)" class="text-selection">Add a paragraph</p>
+      <div class="fonts">
+        <div *ngFor="let font of editorService.fonts">
+          <span class="font"
+                [ngStyle]="{'font-family': font}"
+                (click)="addText(font, font, 24)">
+            {{font}}
+          </span>
+        </div>
+      </div>
     </ng-template>
     <ng-template [ngIf]="selectedTab === 'IMAGES'">
     </ng-template>

@@ -44,24 +44,15 @@ export class EditorComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.canvas = new fabric.Canvas('canvas');
   }
-  ngAfterViewInit() {
-       const rect = new fabric.Rect({
-          top : 100,
-          left : 100,
-          width : 60,
-          height : 70,
-          fill : 'red'
-       });
-       this.canvas.add(rect);
-}
+  ngAfterViewInit() {}
 
 
   public selectTab = (tab: Tab) => {
     this.selectedTab = tab.name;
   }
 
-  public addText = (text: string, size?: number) => {
-    let newText = new fabric.Text(text, {left: 100, top:100, fontFamily:'Lato', fontSize:size});
+  public addText = (text: string, font?: string, size?: number) => {
+    let newText = new fabric.IText(text, {left: 100, top:100, fontFamily:font, fontSize:size});
     this.canvas.add(newText);
   }
 
@@ -83,6 +74,26 @@ export class EditorComponent implements OnInit, AfterViewInit {
     function(item, object) {
       object.set('id', item.getAttribute('id'));
       group.push(object);
+    });
+  }
+
+  public addImage = (url: string) => {
+    // let el = event.target;
+    fabric.Image.fromURL(url, (image) => {
+      image.set({
+        left: 10,
+        top: 10,
+        angle: 0,
+        padding: 10,
+        height: 150,
+        width: 150,
+        // cornersize: 10,
+        hasRotatingPoint: true,
+        // peloas: 12
+      });
+      // this.extend(image, this.randomId());
+      this.canvas.add(image);
+      // this.selectItemAfterAdded(image);
     });
   }
 
