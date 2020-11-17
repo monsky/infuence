@@ -2,7 +2,6 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { fabric } from 'fabric';
 import { Tab } from 'src/app/interfaces';
 import { EditorService } from './editor.service';
-import {svg} from '../../../assets/elements/'
 
 @Component({
   selector: 'app-editor',
