@@ -11,10 +11,6 @@
     </div>
   </aside>
   <section class="select flex-column">
-    <input type="text" 
-           *ngIf="selectedTab === 'IMAGES' || selectedTab === 'EMOJIS'"
-           id="search" 
-           class="search">
     <ng-template [ngIf]="selectedTab === 'TEXT'">
       <h1 (click)="addText('Heading', 'Lato', 32)" class="text-selection">Add Heading</h1>
       <h3 (click)="addText('Subheading', 'Lato', 24)" class="text-selection">Add Subheading</h3>
@@ -30,6 +26,20 @@
       </div>
     </ng-template>
     <ng-template [ngIf]="selectedTab === 'IMAGES'">
+      <div class="image-search flex-row">
+        <input type="text" 
+              id="search" 
+              [(ngModel)]=image
+              placeholder="Search images on Pexels"
+              class="search">
+        <button class="search-button"
+                (click)="searchImage()" >SEARCH</button>
+      </div>
+      <div class="images flex-row">
+        <div *ngFor="let image of images" 
+              class="image">
+            <img [src]="image.src" alt=""></div>
+      </div>
     </ng-template>
     <ng-template [ngIf]="selectedTab === 'ELEMENTS'">
       <div class="elements">
@@ -41,6 +51,13 @@
       </div>
     </ng-template>
     <ng-template [ngIf]="selectedTab === 'EMOJIS'">
+      <div class="elements">
+        <div *ngFor="let element of editorService.emoji" class="element">
+          <img class="emoji"
+               (click)="addElement(element.url)"
+               [src]="element.url"/>
+        </div>
+      </div>
     </ng-template>
     <ng-template [ngIf]="selectedTab === 'DRAW'">
     </ng-template>

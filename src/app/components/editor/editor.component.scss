@@ -62,14 +62,6 @@
       border: solid 1px lightgrey;
       cursor: pointer;
     }
-    .search {
-      width: 80%;
-      height: 4rem;
-      padding: 0.5rem;
-      margin-top: 2rem;
-      border: 1px solid lightgray;
-      font-size: 2rem;
-    }
   }
 
   .editor {
@@ -96,6 +88,11 @@
       mask-size: cover;
       background-color: black;
     }
+
+    .emoji {
+      height: 5rem;
+      width: 5rem;
+    }
   }
 
   .fonts {
@@ -110,6 +107,28 @@
     }
     .font:hover {
       cursor: pointer;
+    }
+  }
+
+  .search {
+    width: 80%;
+    height: 4rem;
+    padding: 0.5rem;
+    border: 1px solid lightgray;
+    font-size: 1.5rem;
+  }
+
+  .image-search {
+    width: 80%;
+    height: 4rem;
+    align-items: center;
+    margin-top: 2rem;
+    .search-button {
+      height: 100%;
+      background: white;
+      box-shadow: none;
+      border: 1px solid lightgray;
+      border-left: 0;
     }
   }
 

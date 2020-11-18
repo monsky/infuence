@@ -11,7 +11,7 @@ export class PexelsService {
 
   private readonly API_URL='https://api.pexels.com/v1/search';
   private headers = new HttpHeaders({
-    'Content-Type': 'application/json',
+    // 'Content-Type': 'application/json',
     'Authorizaton': '563492ad6f917000010000013c3841b5605b4b7d8d564bd84dc96632'
   });
 
@@ -21,9 +21,9 @@ export class PexelsService {
     const params = new HttpParams()
     .set('query', query)
     .set('per_page', '15')
-    const token = localStorage.getItem('token');
-    const callHeaders = this.headers.set('Authorization', token);
-    return this.httpClient.get(`${this.API_URL}`, { headers: callHeaders, observe: 'response', params: params })
+    // const token = localStorage.getItem('token');
+    // const callHeaders = this.headers.set('Authorization', token);
+    return this.httpClient.get(`${this.API_URL}`, { headers: this.headers, observe: 'response', params: params })
       .pipe(
         catchError(this.handleError)
       );

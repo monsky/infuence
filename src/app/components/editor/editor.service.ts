@@ -157,6 +157,159 @@ public elements = [
   },
 ];
 
+public emoji = [
+  {
+    name: 'wink',
+    path: 'url("../../assets/emoji/wink.svg")',
+    url: '../../assets/emoji/wink.svg'
+  },
+  {
+    name: 'biceps',
+    path: 'url("../../assets/emoji/biceps.svg")',
+    url: '../../assets/emoji/biceps.svg'
+  },
+  {
+    name: 'birthday',
+    path: 'url("../../assets/emoji/birthday.svg")',
+    url: '../../assets/emoji/birthday.svg'
+  },
+  {
+    name: 'cherries',
+    path: 'url("../../assets/emoji/cherries.svg")',
+    url: '../../assets/emoji/cherries.svg'
+  },
+  {
+    name: 'crown',
+    path: 'url("../../assets/emoji/crown.svg")',
+    url: '../../assets/emoji/crown.svg'
+  },
+  {
+    name: 'crying',
+    path: 'url("../../assets/emoji/crying.svg")',
+    url: '../../assets/emoji/crying.svg'
+  },
+  {
+    name: 'dizzy',
+    path: 'url("../../assets/emoji/dizzy.svg")',
+    url: '../../assets/emoji/dizzy.svg'
+  },
+  {
+    name: 'eyes',
+    path: 'url("../../assets/emoji/eyes.svg")',
+    url: '../../assets/emoji/eyes.svg'
+  },
+  {
+    name: 'fire',
+    path: 'url("../../assets/emoji/fire.svg")',
+    url: '../../assets/emoji/fire.svg'
+  },
+  {
+    name: 'grimace',
+    path: 'url("../../assets/emoji/grimace.svg")',
+    url: '../../assets/emoji/grimace.svg'
+  },
+  {
+    name: 'heart-eyes',
+    path: 'url("../../assets/emoji/heart-eyes.svg")',
+    url: '../../assets/emoji/heart-eyes.svg'
+  },
+  {
+    name: 'hug',
+    path: 'url("../../assets/emoji/hug.svg")',
+    url: '../../assets/emoji/hug.svg'
+  },
+  {
+    name: 'hundred',
+    path: 'url("../../assets/emoji/hundred.svg")',
+    url: '../../assets/emoji/hundred.svg'
+  },
+  {
+    name: 'joy',
+    path: 'url("../../assets/emoji/joy.svg")',
+    url: '../../assets/emoji/joy.svg'
+  },
+  {
+    name: 'kiss',
+    path: 'url("../../assets/emoji/kiss.svg")',
+    url: '../../assets/emoji/kiss.svg'
+  },
+  {
+    name: 'kiss-blush',
+    path: 'url("../../assets/emoji/kiss-blush.svg")',
+    url: '../../assets/emoji/kiss-blush.svg'
+  },
+  {
+    name: 'party-popper',
+    path: 'url("../../assets/emoji/party-popper.svg")',
+    url: '../../assets/emoji/party-popper.svg'
+  },
+  {
+    name: 'poo',
+    path: 'url("../../assets/emoji/poo.svg")',
+    url: '../../assets/emoji/poo.svg'
+  },
+  {
+    name: 'pray',
+    path: 'url("../../assets/emoji/pray.svg")',
+    url: '../../assets/emoji/pray.svg'
+  },
+  {
+    name: 'raised-hands',
+    path: 'url("../../assets/emoji/raised-hands.svg")',
+    url: '../../assets/emoji/raised-hands.svg'
+  },
+  {
+    name: 'red-heart',
+    path: 'url("../../assets/emoji/red-heart.svg")',
+    url: '../../assets/emoji/red-heart.svg'
+  },
+  {
+    name: 'see-no-evil',
+    path: 'url("../../assets/emoji/see-no-evil.svg")',
+    url: '../../assets/emoji/see-no-evil.svg'
+  },
+  {
+    name: 'smile-blush',
+    path: 'url("../../assets/emoji/smile-blush.svg")',
+    url: '../../assets/emoji/smile-blush.svg'
+  },
+  {
+    name: 'smile-hearts',
+    path: 'url("../../assets/emoji/smile-hearts.svg")',
+    url: '../../assets/emoji/smile-hearts.svg'
+  },
+  {
+    name: 'star-struck',
+    path: 'url("../../assets/emoji/star-struck.svg")',
+    url: '../../assets/emoji/star-struck.svg'
+  },
+  {
+    name: 'sunglasses',
+    path: 'url("../../assets/emoji/sunglasses.svg")',
+    url: '../../assets/emoji/sunglasses.svg'
+  },
+  {
+    name: 'thumbs-up',
+    path: 'url("../../assets/emoji/thumbs-up.svg")',
+    url: '../../assets/emoji/thumbs-up.svg'
+  },
+  {
+    name: 'tongue',
+    path: 'url("../../assets/emoji/tongue.svg")',
+    url: '../../assets/emoji/tongue.svg'
+  },
+  {
+    name: 'trophy',
+    path: 'url("../../assets/emoji/trophy.svg")',
+    url: '../../assets/emoji/trophy.svg'
+  },
+  {
+    name: 'victory',
+    path: 'url("../../assets/emoji/victory.svg")',
+    url: '../../assets/emoji/victory.svg'
+  },
+]
+
 public fonts = [
   "Lato",
   "Roboto",

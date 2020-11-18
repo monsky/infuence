@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { fabric } from 'fabric';
 import { Tab } from 'src/app/interfaces';
 import { EditorService } from './editor.service';
+import { PexelsService } from './pexels.service';
 
 @Component({
   selector: 'app-editor',
@@ -10,6 +11,7 @@ import { EditorService } from './editor.service';
 })
 export class EditorComponent implements OnInit, AfterViewInit {
   public canvas: any;
+  public image: string;
 
   public tabs = [
     {
@@ -38,8 +40,10 @@ export class EditorComponent implements OnInit, AfterViewInit {
     },
   ];
   public selectedTab = 'TEXT';
+  public images = [];
 
-  constructor(public editorService: EditorService) { }
+  constructor(public editorService: EditorService,
+              private pexelsService: PexelsService) { }
 
   ngOnInit(): void {
     this.canvas = new fabric.Canvas('canvas');
@@ -94,6 +98,14 @@ export class EditorComponent implements OnInit, AfterViewInit {
       // this.extend(image, this.randomId());
       this.canvas.add(image);
       // this.selectItemAfterAdded(image);
+    });
+  }
+
+  public searchImage = () => {
+    console.log(this.image);
+    this.pexelsService.imageSearch(this.image)
+    .subscribe(res => {
+      console.log(res)
     });
   }
 
