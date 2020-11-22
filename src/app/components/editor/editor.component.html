@@ -45,7 +45,7 @@
       <div class="elements">
         <div *ngFor="let element of editorService.elements" class="element">
           <div class="icon"
-               (click)="addElement(element.url)"
+               (click)="addElement(element.url, element.type, element.scale)"
                [ngStyle]="{'mask-image': element.path}"></div>
         </div>
       </div>
@@ -54,7 +54,7 @@
       <div class="elements">
         <div *ngFor="let element of editorService.emoji" class="element">
           <img class="emoji"
-               (click)="addElement(element.url)"
+               (click)="addElement(element.url, element.type, element.scale)"
                [src]="element.url"/>
         </div>
       </div>

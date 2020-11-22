@@ -60,16 +60,19 @@ export class EditorComponent implements OnInit, AfterViewInit {
     this.canvas.add(newText);
   }
 
-  public addElement = (url: string) => {
+  public addElement = (url: string, type: string, scale: number) => {
     let group = [];
     fabric.loadSVGFromURL(url, (objects, options) => {
       let image = fabric.util.groupSVGElements(group);
-      image.scale(0.2);
+      if (type === 'element') {
+        image.scale(scale);
+        
+      }
       image.set({
         left: 100,
         top: 100,
-        // height: 100,
-        // width: 100,
+        // height: 50,
+        // width: 50,
       });
       
       this.canvas.add(image); 
