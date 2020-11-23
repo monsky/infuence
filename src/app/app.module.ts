@@ -24,6 +24,7 @@ import {InfluencerContractComponent} from './components/influencer-contract/infl
 import {OrderStatusComponent} from './components/order-status/order-status.component';
 import {OrderRequestComponent} from './components/order-request/order-request.component';
 import { EditorComponent } from './components/editor/editor.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { EditorComponent } from './components/editor/editor.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BsDropdownModule.forRoot()
   ],
   providers: [
     AppService,

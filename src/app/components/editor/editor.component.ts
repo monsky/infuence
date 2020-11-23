@@ -12,6 +12,8 @@ import { PexelsService } from './pexels.service';
 export class EditorComponent implements OnInit, AfterViewInit {
   public canvas: any;
   public image: string;
+  public selectedElement: any;
+  public selectedElementType: string;
 
   public tabs = [
     {
@@ -46,14 +48,40 @@ export class EditorComponent implements OnInit, AfterViewInit {
               private pexelsService: PexelsService) { }
 
   ngOnInit(): void {
-    this.canvas = new fabric.Canvas('canvas');
+    this.canvas = new fabric.Canvas('canvas', {
+      hoverCursor: 'pointer',
+      selection: true,
+      selectionBorderColor: 'blue',
+      stateful: true
+    });
   }
-  ngAfterViewInit() {}
+
+  ngAfterViewInit() {
+    this.canvas.on({
+      'selection:created': (e) => {
+        console.log(e.target);
+        this.selectedElement = e.target;
+        this.selectedElementType = e.target.type;
+      },
+      'selection:updated': (e) => {
+        console.log(e.target);
+        this.selectedElement = e.target;
+        this.selectedElementType = e.target.type;
+      },
+      'selection:cleared': (e) => {
+        this.selectedElement = null;
+        this.selectedElementType = 'none';
+      }
+    })
+  }
 
 
   public selectTab = (tab: Tab) => {
     this.selectedTab = tab.name;
   }
+
+
+  //Add to canvas
 
   public addText = (text: string, font?: string, size?: number) => {
     let newText = new fabric.IText(text, {left: 100, top:100, fontFamily:font, fontSize:size});
@@ -110,6 +138,14 @@ export class EditorComponent implements OnInit, AfterViewInit {
     .subscribe(res => {
       console.log(res)
     });
+  }
+
+  //Edit objects on canvas
+  //Edit Text
+
+  public changeFont = (font: string) => {
+    this.selectedElement.fontFamily = font;
+    this.canvas.renderAll();
   }
 
 }

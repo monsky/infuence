@@ -65,16 +65,31 @@
     </ng-template>
   </section>
   <section class="editor flex-column">
-    <div class="toolbar">
-      <ng-template [ngIf]="selectedTab === 'TEXT'">
-      </ng-template>
-      <ng-template [ngIf]="selectedTab === 'IMAGES'">
-      </ng-template>
-
-    </div> 
-    <div class="canvas">
+      <div class="toolbar flex-row">
+        <ng-template [ngIf]="selectedElementType === 'i-text'">
+          <div class="btn-group" dropdown>
+            <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle font-dropdown"
+                    aria-controls="dropdown-basic">
+              {{selectedElement?.fontFamily}} <span class="caret"></span>
+            </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="button-basic">
+              <li role="menuitem" 
+              *ngFor="let font of editorService.fonts"
+                class="dropdown-item" 
+                [ngStyle]="{'font-family': font}"
+                (click)="changeFont(font)"
+                >{{font}}</li>
+            </ul>
+          </div>
+          hello
+        </ng-template>
+        <div class="group flex-row">
+          <span>Copy</span>
+          <span>Group</span>
+          <span>Ungroup</span>
+        </div>
+      </div>
       <canvas id="canvas" height="400px" width="400px"></canvas>
-    </div>
-    <div class="buttons"></div>
   </section>
 </main>

@@ -132,5 +132,39 @@
     }
   }
 
+  .toolbar {
+    height: 3rem;
+    align-items: center;
+    padding: 0 1rem 0 1rem;
+    font-weight: bold;
+    font-family: 'Lato';
+    font-size: 16px;
+    border-bottom: 1px solid lightgray;
+    .font-dropdown {
+      color: black;
+      background: white;
+      border: none;
+      font-size: 16px;
+      font-family: Lato;
+      padding: 1px;
+      border-radius: 0;
+      min-width: 13rem;
+    }
+    .dropdown-item {
+      font-size: large;
+      cursor: pointer;
+    }
+  }
+
+  .group {
+    span {
+      font-family: 'Lato';
+      margin: 0 1rem 0 1rem;
+    }
+    span:hover {
+      cursor: pointer;
+    }
+  }
+
 
 }
