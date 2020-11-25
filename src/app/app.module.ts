@@ -25,6 +25,7 @@ import {OrderStatusComponent} from './components/order-status/order-status.compo
 import {OrderRequestComponent} from './components/order-request/order-request.component';
 import { EditorComponent } from './components/editor/editor.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    ColorPickerModule,
     BsDropdownModule.forRoot()
   ],
   providers: [

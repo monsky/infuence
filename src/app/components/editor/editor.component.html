@@ -118,9 +118,17 @@
           </div>
         </ng-template>
         <div class="group flex-row">
+          <input class="color-picker" 
+                 [(colorPicker)]="color" 
+                 [cpPosition]="'bottom-left'"
+                 [cpOKButton]="true"
+                 [cpOutputFormat]="'rgba'"
+                 (colorPickerSelect)="selectColor(color)"
+                 [style.background]="color"/>
+          <div class="color-picker-adjustment"></div>
           <span>Copy</span>
           <span>Group</span>
-          <span>Ungroup</span>
+          <!-- <span>Ungroup</span> -->
         </div>
       </div>
       <canvas id="canvas" height="400px" width="400px"></canvas>

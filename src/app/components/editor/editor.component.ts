@@ -15,6 +15,7 @@ export class EditorComponent implements OnInit, AfterViewInit {
   public selectedElement: any;
   public selectedElementType: string;
   public underline = false;
+  public color = 'rgb(0,0,0)';
 
   public tabs = [
     {
@@ -65,14 +66,15 @@ export class EditorComponent implements OnInit, AfterViewInit {
         this.selectedElementType = e.target.type;
         if (this.selectedElementType === 'i-text') {
           this.underline = e.target.styles["0"]["0"].underline;
+          this.color = this.selectedElement.fill;
         };
       },
       'selection:updated': (e) => {
-        console.log(e.target);
         this.selectedElement = e.target;
         this.selectedElementType = e.target.type;
         if (this.selectedElementType === 'i-text') {
           this.underline = e.target.styles["0"]["0"].underline;
+          this.color = this.selectedElement.fill;
         };
       },
       'selection:cleared': (e) => {
@@ -173,6 +175,12 @@ export class EditorComponent implements OnInit, AfterViewInit {
     .subscribe(res => {
       console.log(res)
     });
+  }
+
+  //Toolbar utilites
+  public selectColor = (color: string) => {
+    this.selectedElement.set('fill', color);
+    this.canvas.renderAll();
   }
 
   //Edit objects on canvas
