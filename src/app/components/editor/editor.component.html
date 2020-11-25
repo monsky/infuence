@@ -67,22 +67,55 @@
   <section class="editor flex-column">
       <div class="toolbar flex-row">
         <ng-template [ngIf]="selectedElementType === 'i-text'">
-          <div class="btn-group" dropdown>
-            <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle font-dropdown"
-                    aria-controls="dropdown-basic">
-              {{selectedElement?.fontFamily}} <span class="caret"></span>
+          <div class="text-tools">
+            <div class="btn-group" dropdown>
+              <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle font-dropdown"
+                      aria-controls="dropdown-basic">
+                {{selectedElement?.fontFamily}} <span class="caret"></span>
+              </button>
+              <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                  role="menu" aria-labelledby="button-basic">
+                <li role="menuitem" 
+                *ngFor="let font of editorService.fonts"
+                  class="dropdown-item" 
+                  [ngStyle]="{'font-family': font}"
+                  (click)="changeFont(font)"
+                  >{{font}}</li>
+              </ul>
+            </div>
+            <div class="btn-group" dropdown>
+              <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle font-dropdown"
+                      aria-controls="dropdown-basic">
+                {{selectedElement?.fontSize}} <span class="caret"></span>
+              </button>
+              <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                  role="menu" aria-labelledby="button-basic">
+                <li role="menuitem" 
+                *ngFor="let size of editorService.fontSizes"
+                  class="dropdown-item" 
+                  (click)="changeFontSize(size)"
+                  >{{size}}</li>
+              </ul>
+            </div>
+            <button class="font-style" 
+                    [ngClass]="{'font-style-active': selectedElement?.fontWeight === 'bold'}"
+                    (click)="changeFontStyle('bold')"
+                    style="font-weight: bold;">
+              B
             </button>
-            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
-                role="menu" aria-labelledby="button-basic">
-              <li role="menuitem" 
-              *ngFor="let font of editorService.fonts"
-                class="dropdown-item" 
-                [ngStyle]="{'font-family': font}"
-                (click)="changeFont(font)"
-                >{{font}}</li>
-            </ul>
+            <button class="font-style" 
+                    [ngClass]="{'font-style-active': selectedElement?.fontStyle === 'italic'}"
+                    (click)="changeFontStyle('italic')"
+                    style="font-style: italic;">
+              I
+            </button>
+            <button class="font-style" 
+                    [ngClass]="{'font-style-active': underline === true}"
+                    (click)="changeFontStyle('underline')"
+                    style="text-decoration: underline;">
+              U
+            </button>
           </div>
-          hello
         </ng-template>
         <div class="group flex-row">
           <span>Copy</span>

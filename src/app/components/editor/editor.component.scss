@@ -140,6 +140,10 @@
     font-family: 'Lato';
     font-size: 16px;
     border-bottom: 1px solid lightgray;
+    justify-content: space-between;
+    .btn-group {
+      margin-right: 1rem;
+    }
     .font-dropdown {
       color: black;
       background: white;
@@ -148,7 +152,6 @@
       font-family: Lato;
       padding: 1px;
       border-radius: 0;
-      min-width: 13rem;
     }
     .dropdown-item {
       font-size: large;
@@ -164,6 +167,22 @@
     span:hover {
       cursor: pointer;
     }
+  }
+
+  .text-tools {
+    display: flex;
+  }
+
+  .font-style {
+    font-weight: bold;
+    background: white;
+    border: 1px solid white;
+    margin-right: 0.5rem;
+    width: 30px;
+  }
+  
+  .font-style-active {
+    border: 1px solid lightgray;
   }
 
 

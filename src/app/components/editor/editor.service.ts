@@ -453,5 +453,14 @@ public fonts = [
   "Ultra",
 ];
 
+public fontSizes = [
+  12,
+  16,
+  20,
+  24,
+  36,
+  48
+]
+
   constructor() { }
 }
