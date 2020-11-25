@@ -60,16 +60,20 @@ export class EditorComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.canvas.on({
       'selection:created': (e) => {
-        console.log(e.target.styles);
+        console.log(e.target.type);
         this.selectedElement = e.target;
         this.selectedElementType = e.target.type;
-        this.underline = e.target.styles["0"]["0"].underline;
+        if (this.selectedElementType === 'i-text') {
+          this.underline = e.target.styles["0"]["0"].underline;
+        };
       },
       'selection:updated': (e) => {
         console.log(e.target);
         this.selectedElement = e.target;
         this.selectedElementType = e.target.type;
-        this.underline = e.target.styles["0"]["0"].underline;
+        if (this.selectedElementType === 'i-text') {
+          this.underline = e.target.styles["0"]["0"].underline;
+        };
       },
       'selection:cleared': (e) => {
         this.selectedElement = null;
@@ -81,7 +85,7 @@ export class EditorComponent implements OnInit, AfterViewInit {
         }
       },
       'object:scaled': (e) => {
-        if (this.selectedElementType = 'i-text') {
+        if (this.selectedElementType === 'i-text') {
           e.target.fontSize *= e.target.scaleX;
           e.target.fontSize = e.target.fontSize.toFixed(0);
           e.target.scaleX = 1;
