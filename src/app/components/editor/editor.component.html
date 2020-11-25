@@ -66,6 +66,9 @@
   </section>
   <section class="editor flex-column">
       <div class="toolbar flex-row">
+        <ng-template [ngIf]="['none', 'path', 'group', 'rect', 'circle', 'triangle', 'activeSelection'].includes(selectedElementType)">
+          <div class="placeholder"></div>
+        </ng-template>
         <ng-template [ngIf]="selectedElementType === 'i-text'">
           <div class="text-tools">
             <div class="btn-group" dropdown>
@@ -119,6 +122,7 @@
         </ng-template>
         <div class="group flex-row">
           <input class="color-picker" 
+                 *ngIf="['i-text', 'path', 'rect', 'circle', 'triangle', 'activeSelection'].includes(selectedElementType)"
                  [(colorPicker)]="color" 
                  [cpPosition]="'bottom-left'"
                  [cpOKButton]="true"
@@ -126,8 +130,10 @@
                  (colorPickerSelect)="selectColor(color)"
                  [style.background]="color"/>
           <div class="color-picker-adjustment"></div>
-          <span>Copy</span>
+          <span (click)="util.copy(canvas)">Copy</span>
+          <span (click)="util.paste(canvas)">Paste</span>
           <span>Group</span>
+          <span>Delete</span>
           <!-- <span>Ungroup</span> -->
         </div>
       </div>

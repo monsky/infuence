@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { fabric } from 'fabric';
 import { Tab } from 'src/app/interfaces';
+import { Util } from 'src/app/components/editor/classes/util';
 import { EditorService } from './editor.service';
 import { PexelsService } from './pexels.service';
 
@@ -12,10 +13,11 @@ import { PexelsService } from './pexels.service';
 export class EditorComponent implements OnInit, AfterViewInit {
   public canvas: any;
   public image: string;
-  public selectedElement: any;
-  public selectedElementType: string;
+  public selectedElement = null;
+  public selectedElementType = 'none';
   public underline = false;
   public color = 'rgb(0,0,0)';
+  public util: Util;
 
   public tabs = [
     {
@@ -47,7 +49,9 @@ export class EditorComponent implements OnInit, AfterViewInit {
   public images = [];
 
   constructor(public editorService: EditorService,
-              private pexelsService: PexelsService) { }
+              private pexelsService: PexelsService) { 
+                this.util = new Util();
+              }
 
   ngOnInit(): void {
     this.canvas = new fabric.Canvas('canvas', {
@@ -61,21 +65,10 @@ export class EditorComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.canvas.on({
       'selection:created': (e) => {
-        console.log(e.target.type);
-        this.selectedElement = e.target;
-        this.selectedElementType = e.target.type;
-        if (this.selectedElementType === 'i-text') {
-          this.underline = e.target.styles["0"]["0"].underline;
-          this.color = this.selectedElement.fill;
-        };
+        this.newSelection(e);
       },
       'selection:updated': (e) => {
-        this.selectedElement = e.target;
-        this.selectedElementType = e.target.type;
-        if (this.selectedElementType === 'i-text') {
-          this.underline = e.target.styles["0"]["0"].underline;
-          this.color = this.selectedElement.fill;
-        };
+        this.newSelection(e); 
       },
       'selection:cleared': (e) => {
         this.selectedElement = null;
@@ -101,6 +94,38 @@ export class EditorComponent implements OnInit, AfterViewInit {
 
   public selectTab = (tab: Tab) => {
     this.selectedTab = tab.name;
+  }
+
+  //Canvas selection
+
+  public newSelection = (e: any) => {
+    console.log(e.target.type);
+    this.selectedElement = e.target;
+    this.selectedElementType = e.target.type;
+    switch (this.selectedElementType) {
+      case 'i-text':
+        this.underline = this.selectedElement.styles["0"]["0"].underline;
+        this.color = this.selectedElement.fill;
+        break;
+      case 'path':
+        this.color = this.selectedElement.fill;
+        break;
+      case 'circle':
+        this.color = this.selectedElement.fill;
+        break;
+      case 'rect':
+        this.color = this.selectedElement.fill;
+        break;
+      case 'triangle':
+        this.color = this.selectedElement.fill;
+        break;
+      case 'group':
+        break;
+    
+      default:
+        break;
+    }
+
   }
 
 
