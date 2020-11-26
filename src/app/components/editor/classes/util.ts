@@ -3,16 +3,26 @@ import { fabric } from 'fabric';
 
 export class Util {
 
-  public clipboard: fabric.Object;
+  public clipboard: any;
 
   constructor() {}
 
   public copy = (canvas: fabric.Canvas): fabric.Object => {
-    canvas.getActiveObject().clone((cloned) => {
+    let obj: any = canvas.getActiveObject();
+    if (obj.emoji) {
+    obj.clone((cloned) => {
+      // cloned.emoji = true;
       this.clipboard = cloned;
-    });
+    },['emoji']);
+ 
+    } else {
+      obj.clone((cloned) => {
+        this.clipboard = cloned;
+      });
+    }
     return this.clipboard;
   }
+
   public paste = (canvas: fabric.Canvas) => {
 	// clone again, so you can do multiple copies.
     this.clipboard.clone((clonedObj) => {
@@ -22,6 +32,7 @@ export class Util {
         top: clonedObj.top + 10,
         evented: true,
       });
+      if(this.clipboard.emoji) {clonedObj.set({emoji: true})};
       if (clonedObj.type === 'activeSelection') {
         // active selection needs a reference to the canvas.
         clonedObj.canvas = canvas;
@@ -39,4 +50,20 @@ export class Util {
       canvas.requestRenderAll();
     });
   }
+
+  public delete = (canvas: fabric.Canvas) => {
+    let selection: any;
+    selection = canvas.getActiveObject();
+    if (selection.type === 'activeSelection') {
+        selection.forEachObject((element) => {
+            canvas.remove(element);
+        });
+    }
+    else{
+        canvas.remove(selection);
+    }
+    canvas.discardActiveObject();
+    canvas.requestRenderAll();
+  }
+
 }

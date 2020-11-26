@@ -99,6 +99,7 @@ export class EditorComponent implements OnInit, AfterViewInit {
   //Canvas selection
 
   public newSelection = (e: any) => {
+    console.log(e.target);
     console.log(e.target.type);
     this.selectedElement = e.target;
     this.selectedElementType = e.target.type;
@@ -155,16 +156,22 @@ export class EditorComponent implements OnInit, AfterViewInit {
   public addElement = (url: string, type: string, scale: number) => {
     let group = [];
     fabric.loadSVGFromURL(url, (objects, options) => {
-      let image = fabric.util.groupSVGElements(group);
+      let image: any = fabric.util.groupSVGElements(group);
       if (type === 'element') {
         image.scale(scale);
-        
+      } else if (type === 'emoji') {
+        image.toObject = (function(toObject) {
+      return function() {
+        return fabric.util.object.extend(toObject.call(this), {
+          emoji: this.emoji
+        });
+          };
+        })(image.toObject);
+        image.emoji = true;
       }
       image.set({
         left: 100,
         top: 100,
-        // height: 50,
-        // width: 50,
       });
       
       this.canvas.add(image); 
@@ -200,6 +207,16 @@ export class EditorComponent implements OnInit, AfterViewInit {
     .subscribe(res => {
       console.log(res)
     });
+  }
+
+  extend(obj, type) {
+    obj.toObject = (function(toObject) {
+      return function() {
+        return fabric.util.object.extend(toObject.call(this), {
+          emoji: type
+        });
+      };
+    })(obj.toObject);
   }
 
   //Toolbar utilites
@@ -248,7 +265,7 @@ export class EditorComponent implements OnInit, AfterViewInit {
         }
         break;
     }
-    this.canvas.renderAll();
+    this.canvas.requestRenderAll();
   }
 
 }
