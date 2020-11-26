@@ -101,6 +101,7 @@ export class EditorComponent implements OnInit, AfterViewInit {
   public newSelection = (e: any) => {
     console.log(e.target);
     console.log(e.target.type);
+    console.log(this.canvas.getActiveObjects());
     this.selectedElement = e.target;
     this.selectedElementType = e.target.type;
     switch (this.selectedElementType) {

@@ -32,6 +32,7 @@ export class Util {
         top: clonedObj.top + 10,
         evented: true,
       });
+      //To not lose emoji property on clone
       if(this.clipboard.emoji) {clonedObj.set({emoji: true})};
       if (clonedObj.type === 'activeSelection') {
         // active selection needs a reference to the canvas.
@@ -65,5 +66,26 @@ export class Util {
     canvas.discardActiveObject();
     canvas.requestRenderAll();
   }
+
+  public group = (canvas: fabric.Canvas) => {
+    let activeObj: any = canvas.getActiveObject();
+    let activeGroup = activeObj.toGroup();
+
+    activeGroup.clone((newgroup) => {
+      canvas.remove(activeGroup);
+      canvas.add(newgroup);
+      canvas.setActiveObject(newgroup);
+
+    });
+    canvas.requestRenderAll();
+  }
+
+
+  public ungroup = (canvas: any) => {
+    let activeObject:fabric.Group = canvas.getActiveObject();
+    activeObject.toActiveSelection();
+    canvas.requestRenderAll();
+  }
+
 
 }

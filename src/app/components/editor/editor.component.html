@@ -132,8 +132,12 @@
           <div class="color-picker-adjustment"></div>
           <span title="CTRL+C" (click)="util.copy(canvas)">Copy</span>
           <span title="CTRL+V" (click)="util.paste(canvas)">Paste</span>
-          <span *ngIf="selectedElement?.type !== 'group'" title="CTRL+G">Group</span>
-          <span *ngIf="selectedElement?.type === 'group' && !selectedElement.emoji" title="CTRL+G">Ungroup</span>
+          <span *ngIf="selectedElement?.type !== 'group'" 
+                (click)="util.group(canvas)"
+                title="CTRL+G">Group</span>
+          <span *ngIf="selectedElement?.type === 'group' && !selectedElement.emoji" 
+                (click)="util.ungroup(canvas)"
+                title="CTRL+G">Ungroup</span>
           <span title="DELETE" (click)="util.delete(canvas)">Delete</span>
           <!-- <span>Ungroup</span> -->
         </div>
