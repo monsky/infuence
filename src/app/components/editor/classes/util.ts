@@ -87,5 +87,16 @@ export class Util {
     canvas.requestRenderAll();
   }
 
+  public bringToFront = (canvas: fabric.Canvas) => {
+    let activeObj = canvas.getActiveObject();
+    activeObj.bringToFront();
+    canvas.requestRenderAll();
+  }
+  public sendToBack = (canvas: fabric.Canvas) => {
+    let activeObj = canvas.getActiveObject();
+    activeObj.sendToBack();
+    canvas.requestRenderAll();
+  }
+
 
 }
