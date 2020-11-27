@@ -32,18 +32,40 @@
   .tabs {
     width: 5%;
     .tab {
-      border-left: 4px solid transparent;
+      position: relative;
+      // border-left: 4px solid transparent;
+      display: flex;
+      width: 100%;
+      border: 0;
+      background: white;
       text-align: center;
       padding: 0.5rem;
       .typcn {
         font-size: x-large;
       }
     }
-    .selected-tab {
-      border-left: 4px solid black;
-    }
+    // .selected-tab {
+    //   border-left: 4px solid black;
+    // }
     .tab:hover {
         cursor: pointer;
+    }
+    .tab::before{
+      content: '';
+      display: block;
+      z-index: 3;
+      position: absolute;
+      height: 0;
+      left: 0;
+      top: 50%;
+      bottom: 0;
+      border-left: 4px solid black;
+      transition: all ease 0.5s;
+    }
+    .tab:focus::before {
+      height: 100%;
+      top: 0;
+      transition: all ease 0.5s;
     }
   }
 

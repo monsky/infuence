@@ -1,13 +1,13 @@
 <main class="flex-row">
   <aside class="tabs">
-    <div *ngFor="let tab of tabs">
-      <div class="tab flex-column"
+    <div *ngFor="let tab of tabs;let i = index">
+      <button class="tab flex-column"
            (click)="selectTab(tab)"
            [ngClass]="{'selected-tab': tab.name === selectedTab}">
         <span class="typcn" 
               [class]="tab.icon"></span>
         {{tab.name}}
-      </div>
+      </button>
     </div>
   </aside>
   <section class="select flex-column">
