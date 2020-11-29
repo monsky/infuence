@@ -1,0 +1,19 @@
+<div class="modal-background"></div>
+<div class="flex-column modal-confirm-delete-wrapper">
+  <div class="modal-confirm-delete-close">
+    <i class="fa fa-times"
+       (click)="closeModalConfirmDelete()">
+    </i>
+  </div>
+  <div class="modal-confirm-delete-text">Da li ste sigurni da želite da obrišete sve proizvode iz korpe?</div>
+  <div class="flex-row modal-confirm-delete-button-wrapper">
+    <div class="modal-confirm-delete-button"
+         (click)="emptyShoppingBag()">
+      Obriši
+    </div>
+    <div class="modal-confirm-delete-button"
+         (click)="closeModalConfirmDelete()">
+      Zatvori
+    </div>
+  </div>
+</div>

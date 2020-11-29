@@ -37,9 +37,25 @@
     <div class="fixed-width-6">
       {{ data.dateOfShipping }}
     </div>
-    <div class="fixed-width-6">
-      {{ data.stateOfShipping }}
+
+    <div class="flex-column fixed-width-6">
+      <div class="state-of-shippnig-button-shipped"
+           [ngClass]="{'zoom' : data.stateOfShipping === 0}"
+           [style.border-color]="data.stateOfShipping === 1 ? 'grey' : 'black'"
+           [style.color]="data.stateOfShipping === 1 ? 'grey' : 'black'"
+           (click)="!data.stateOfShipping && changeStatusToShipped(data)">
+        Isporučeno
+      </div>
+      <div class="state-of-shippnig-button-not-shipped"
+           [ngClass]="{'zoom' : data.stateOfShipping === 1}"
+           [style.border-color]="data.stateOfShipping === 0 ? 'grey' : 'black'"
+           [style.color]="data.stateOfShipping === 0 ? 'grey' : 'black'"
+           (click)="data.stateOfShipping && chagneStatusToNotShipped(data)">
+        Nije isporučeno
+      </div>
+
     </div>
+
     <div class="fixed-width-6">
       {{ data.isInfluencerPaid }}
     </div>

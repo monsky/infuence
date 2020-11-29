@@ -24,6 +24,7 @@ import {InfluencerContractComponent} from './components/influencer-contract/infl
 import {OrderStatusComponent} from './components/order-status/order-status.component';
 import {OrderRequestComponent} from './components/order-request/order-request.component';
 import { EditorComponent } from './components/editor/editor.component';
+import { ModalConfirmDeleteComponent } from './components/modal/modal-confirm-delete/modal-confirm-delete.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ColorPickerModule } from 'ngx-color-picker';
 
@@ -43,7 +44,8 @@ import { ColorPickerModule } from 'ngx-color-picker';
     InfluencerContractComponent,
     OrderStatusComponent,
     OrderRequestComponent,
-    EditorComponent
+    EditorComponent,
+    ModalConfirmDeleteComponent
   ],
   imports: [
     BrowserModule,
