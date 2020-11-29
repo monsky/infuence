@@ -3,6 +3,7 @@
     <div *ngFor="let tab of tabs;let i = index">
       <button class="tab flex-column"
            (click)="selectTab(tab)"
+           autofocus
            [ngClass]="{'selected-tab': tab.name === selectedTab}">
         <span class="typcn" 
               [class]="tab.icon"></span>
@@ -121,14 +122,24 @@
           </div>
         </ng-template>
         <div class="group flex-row">
-          <input class="color-picker" 
-                 *ngIf="['i-text', 'path', 'rect', 'circle', 'triangle'].includes(selectedElementType)"
-                 [(colorPicker)]="color" 
-                 [cpPosition]="'bottom-left'"
-                 [cpOKButton]="true"
-                 [cpOutputFormat]="'rgba'"
-                 (colorPickerSelect)="selectColor(color)"
-                 [style.background]="color"/>
+          <span class="typcn typcn-arrow-back-outline"
+                *ngIf="stateService.undoStack.length !== 0"
+                (click)="undo()"
+                ></span>
+          <span class="typcn typcn-arrow-forward-outline"
+                *ngIf="stateService.redoStack.length !== 0"
+                (click)="redo()"
+                ></span>
+          <div class="cp-wrapper">
+            <input class="color-picker" 
+                *ngIf="['i-text', 'path', 'rect', 'circle', 'triangle'].includes(selectedElementType)"
+                [(colorPicker)]="color" 
+                [cpPosition]="'bottom-left'"
+                [cpOKButton]="true"
+                [cpOutputFormat]="'rgba'"
+                (colorPickerSelect)="selectColor(color)"
+                [style.background]="color"/>
+          </div>
           <div class="color-picker-adjustment"></div>
           <span title="CTRL+C" (click)="util.copy(canvas)">Copy</span>
           <span title="CTRL+V" (click)="util.paste(canvas)">Paste</span>
@@ -143,6 +154,8 @@
           <span title="CTRL+D" (click)="util.sendToBack(canvas)">Push to back</span>
         </div>
       </div>
-      <canvas id="canvas" height="400px" width="400px"></canvas>
+      <div class="canvas-wrapper">
+        <canvas id="canvas" height="600px" width="400px"></canvas>
+      </div>
   </section>
 </main>

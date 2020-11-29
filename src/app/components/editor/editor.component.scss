@@ -38,6 +38,7 @@
       width: 100%;
       border: 0;
       background: white;
+      align-items: center;
       text-align: center;
       padding: 0.5rem;
       .typcn {
@@ -62,7 +63,7 @@
       border-left: 4px solid black;
       transition: all ease 0.5s;
     }
-    .tab:focus::before {
+    .selected-tab::before {
       height: 100%;
       top: 0;
       transition: all ease 0.5s;
@@ -221,6 +222,14 @@
   }
   .group {
     float: right;
+  }
+
+  .canvas-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+    height: 100%;
   }
 
 

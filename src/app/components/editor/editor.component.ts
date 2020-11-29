@@ -2,8 +2,9 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { fabric } from 'fabric';
 import { Tab } from 'src/app/interfaces';
 import { Util } from 'src/app/components/editor/classes/util';
-import { EditorService } from './editor.service';
-import { PexelsService } from './pexels.service';
+import { EditorService } from './services/editor.service';
+import { PexelsService } from './services/pexels.service';
+import { StateService } from './services/state.service';
 
 @Component({
   selector: 'app-editor',
@@ -49,6 +50,7 @@ export class EditorComponent implements OnInit, AfterViewInit {
   public images = [];
 
   constructor(public editorService: EditorService,
+              public stateService: StateService,
               private pexelsService: PexelsService) { 
                 this.util = new Util();
               }
@@ -58,9 +60,24 @@ export class EditorComponent implements OnInit, AfterViewInit {
       hoverCursor: 'pointer',
       selection: true,
       selectionBorderColor: 'blue',
-      preserveObjectStacking: true
+      preserveObjectStacking: true,
+      backgroundColor: '#fff',
       // stateful: true
     });
+    fabric.Image.fromURL('../../../assets/back-black.svg', (img) => {
+      this.canvas.setBackgroundImage(img, this.canvas.renderAll.bind(this.canvas), {
+        scaleX: this.canvas.width / img.width,
+        scaleY: this.canvas.height / img.height
+      });
+      this.stateService.state = this.canvas.toDatalessJSON();
+      this.stateService.currentState$
+      .subscribe(res => {
+        if (!this.stateService.saved) {
+          this.canvas.loadFromJSON(res);
+        }
+      });
+    });
+
   }
 
   ngAfterViewInit() {
@@ -88,8 +105,12 @@ export class EditorComponent implements OnInit, AfterViewInit {
           e.target.scaleY = 1;
           e.target._clearCache();
         };
+        this.saveState();
+      },
+      'object:modified': (e) => {
+        this.saveState();
       }
-    })
+    });
   }
 
 
@@ -151,7 +172,8 @@ export class EditorComponent implements OnInit, AfterViewInit {
     });
     newText.setSelectionStyles({underline: false}, 0, text.length);
     this.canvas.add(newText);
-    this.canvas.renderAll();
+    this.canvas.requestRenderAll();
+    this.saveState();
   }
 
   public addElement = (url: string, type: string, scale: number) => {
@@ -176,7 +198,8 @@ export class EditorComponent implements OnInit, AfterViewInit {
       });
       
       this.canvas.add(image); 
-      this.canvas.renderAll(); 
+      this.canvas.requestRenderAll(); 
+      this.saveState();
     },
     function(item, object) {
       object.set('id', item.getAttribute('id'));
@@ -200,6 +223,7 @@ export class EditorComponent implements OnInit, AfterViewInit {
       this.canvas.add(image);
       // this.selectItemAfterAdded(image);
     });
+    this.saveState();
   }
 
   public searchImage = () => {
@@ -223,7 +247,8 @@ export class EditorComponent implements OnInit, AfterViewInit {
   //Toolbar utilites
   public selectColor = (color: string) => {
     this.selectedElement.set('fill', color);
-    this.canvas.renderAll();
+    this.canvas.requestRenderAll();
+    this.saveState();
   }
 
   //Edit objects on canvas
@@ -231,12 +256,14 @@ export class EditorComponent implements OnInit, AfterViewInit {
 
   public changeFont = (font: string) => {
     this.selectedElement.fontFamily = font;
-    this.canvas.renderAll();
+    this.canvas.requestRenderAll();
+    this.saveState();
   }
 
   public changeFontSize = (size: number) => {
     this.selectedElement.fontSize = size;
-    this.canvas.renderAll();
+    this.canvas.requestRenderAll();
+    this.saveState();
   }
 
   public changeFontStyle = (style: string) => {
@@ -267,6 +294,25 @@ export class EditorComponent implements OnInit, AfterViewInit {
         break;
     }
     this.canvas.requestRenderAll();
+    this.saveState();
+  }
+
+  public saveState = () => {
+    console.log('saved');
+    let newState = this.canvas.toDatalessJSON();
+    this.stateService.saveState(newState);
+    if (this.selectedElement) {
+      this.canvas.setActiveObject(this.selectedElement);
+    }
+    console.log(this.stateService.undoStack.length);
+  }
+
+  public undo = () => {
+    this.stateService.undo();
+  }
+
+  public redo = () => {
+    this.stateService.redo();
   }
 
 }
