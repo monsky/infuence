@@ -1,27 +1,27 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=block');
+@import url('https://fonts.googleapis.com/css?family=Lato&display=block');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=block');
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=block');
 //handwriting
-@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Fondamento&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Great+Vibes&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Sacramento&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Amatic+SC&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Lateef&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Comic+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=block');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=block');
+@import url('https://fonts.googleapis.com/css?family=Fondamento&display=block');
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker&display=block');
+@import url('https://fonts.googleapis.com/css?family=Great+Vibes&display=block');
+@import url('https://fonts.googleapis.com/css?family=Sacramento&display=block');
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC&display=block');
+@import url('https://fonts.googleapis.com/css?family=Lateef&display=block');
+@import url('https://fonts.googleapis.com/css?family=Comic+Neue&display=block');
 //monospace
-@import url('https://fonts.googleapis.com/css?family=Inconsolata&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css?family=VT323&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata&display=block');
+@import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=block');
+@import url('https://fonts.googleapis.com/css?family=VT323&display=block');
+@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display&display=block');
 //serif
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Cinzel&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Ultra&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=block');
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond&display=block');
+@import url('https://fonts.googleapis.com/css?family=Cinzel&display=block');
+@import url('https://fonts.googleapis.com/css?family=Ultra&display=block');
 :host {
   display: flex;
   flex-direction: column;
@@ -32,18 +32,41 @@
   .tabs {
     width: 5%;
     .tab {
-      border-left: 4px solid transparent;
+      position: relative;
+      // border-left: 4px solid transparent;
+      display: flex;
+      width: 100%;
+      border: 0;
+      background: white;
+      align-items: center;
       text-align: center;
       padding: 0.5rem;
       .typcn {
         font-size: x-large;
       }
     }
-    .selected-tab {
-      border-left: 4px solid black;
-    }
+    // .selected-tab {
+    //   border-left: 4px solid black;
+    // }
     .tab:hover {
         cursor: pointer;
+    }
+    .tab::before{
+      content: '';
+      display: block;
+      z-index: 3;
+      position: absolute;
+      height: 0;
+      left: 0;
+      top: 50%;
+      bottom: 0;
+      border-left: 4px solid black;
+      transition: all ease 0.5s;
+    }
+    .selected-tab::before {
+      height: 100%;
+      top: 0;
+      transition: all ease 0.5s;
     }
   }
 
@@ -130,6 +153,83 @@
       border: 1px solid lightgray;
       border-left: 0;
     }
+  }
+
+  .toolbar {
+    height: 3rem;
+    align-items: center;
+    padding: 0 1rem 0 1rem;
+    font-weight: bold;
+    font-family: 'Lato';
+    font-size: 16px;
+    border-bottom: 1px solid lightgray;
+    justify-content: space-between;
+    .btn-group {
+      margin-right: 1rem;
+    }
+    .font-dropdown {
+      color: black;
+      background: white;
+      border: none;
+      font-size: 16px;
+      font-family: Lato;
+      padding: 1px;
+      border-radius: 0;
+    }
+    .dropdown-item {
+      font-size: large;
+      cursor: pointer;
+    }
+  }
+
+  .group {
+    span {
+      font-family: 'Lato';
+      margin: 0 1rem 0 1rem;
+    }
+    span:hover {
+      cursor: pointer;
+    }
+  }
+
+  .text-tools {
+    display: flex;
+  }
+
+  .font-style {
+    font-weight: bold;
+    background: white;
+    border: 1px solid white;
+    margin-right: 0.5rem;
+    width: 30px;
+  }
+  
+  .font-style-active {
+    border: 1px solid lightgray;
+  }
+
+  .color-picker {
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+  }
+
+  .color-picker-adjustment {
+    width: 2rem;
+  }
+  color-picker {
+    margin-right: 2rem !important;
+  }
+  .group {
+    float: right;
+  }
+
+  .canvas-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+    height: 100%;
   }
 
 

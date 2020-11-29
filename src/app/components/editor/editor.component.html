@@ -1,13 +1,14 @@
 <main class="flex-row">
   <aside class="tabs">
-    <div *ngFor="let tab of tabs">
-      <div class="tab flex-column"
+    <div *ngFor="let tab of tabs;let i = index">
+      <button class="tab flex-column"
            (click)="selectTab(tab)"
+           autofocus
            [ngClass]="{'selected-tab': tab.name === selectedTab}">
         <span class="typcn" 
               [class]="tab.icon"></span>
         {{tab.name}}
-      </div>
+      </button>
     </div>
   </aside>
   <section class="select flex-column">
@@ -45,7 +46,7 @@
       <div class="elements">
         <div *ngFor="let element of editorService.elements" class="element">
           <div class="icon"
-               (click)="addElement(element.url)"
+               (click)="addElement(element.url, element.type, element.scale)"
                [ngStyle]="{'mask-image': element.path}"></div>
         </div>
       </div>
@@ -54,7 +55,7 @@
       <div class="elements">
         <div *ngFor="let element of editorService.emoji" class="element">
           <img class="emoji"
-               (click)="addElement(element.url)"
+               (click)="addElement(element.url, element.type, element.scale)"
                [src]="element.url"/>
         </div>
       </div>
@@ -65,16 +66,96 @@
     </ng-template>
   </section>
   <section class="editor flex-column">
-    <div class="toolbar">
-      <ng-template [ngIf]="selectedTab === 'TEXT'">
-      </ng-template>
-      <ng-template [ngIf]="selectedTab === 'IMAGES'">
-      </ng-template>
-
-    </div> 
-    <div class="canvas">
-      <canvas id="canvas" height="400px" width="400px"></canvas>
-    </div>
-    <div class="buttons"></div>
+      <div class="toolbar flex-row">
+        <ng-template [ngIf]="['none', 'path', 'group', 'rect', 'circle', 'triangle', 'activeSelection'].includes(selectedElementType)">
+          <div class="placeholder"></div>
+        </ng-template>
+        <ng-template [ngIf]="selectedElementType === 'i-text'">
+          <div class="text-tools">
+            <div class="btn-group" dropdown>
+              <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle font-dropdown"
+                      aria-controls="dropdown-basic">
+                {{selectedElement?.fontFamily}} <span class="caret"></span>
+              </button>
+              <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                  role="menu" aria-labelledby="button-basic">
+                <li role="menuitem" 
+                *ngFor="let font of editorService.fonts"
+                  class="dropdown-item" 
+                  [ngStyle]="{'font-family': font}"
+                  (click)="changeFont(font)"
+                  >{{font}}</li>
+              </ul>
+            </div>
+            <div class="btn-group" dropdown>
+              <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle font-dropdown"
+                      aria-controls="dropdown-basic">
+                {{selectedElement?.fontSize}} <span class="caret"></span>
+              </button>
+              <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                  role="menu" aria-labelledby="button-basic">
+                <li role="menuitem" 
+                *ngFor="let size of editorService.fontSizes"
+                  class="dropdown-item" 
+                  (click)="changeFontSize(size)"
+                  >{{size}}</li>
+              </ul>
+            </div>
+            <button class="font-style" 
+                    [ngClass]="{'font-style-active': selectedElement?.fontWeight === 'bold'}"
+                    (click)="changeFontStyle('bold')"
+                    style="font-weight: bold;">
+              B
+            </button>
+            <button class="font-style" 
+                    [ngClass]="{'font-style-active': selectedElement?.fontStyle === 'italic'}"
+                    (click)="changeFontStyle('italic')"
+                    style="font-style: italic;">
+              I
+            </button>
+            <button class="font-style" 
+                    [ngClass]="{'font-style-active': underline === true}"
+                    (click)="changeFontStyle('underline')"
+                    style="text-decoration: underline;">
+              U
+            </button>
+          </div>
+        </ng-template>
+        <div class="group flex-row">
+          <span class="typcn typcn-arrow-back-outline"
+                *ngIf="stateService.undoStack.length !== 0"
+                (click)="undo()"
+                ></span>
+          <span class="typcn typcn-arrow-forward-outline"
+                *ngIf="stateService.redoStack.length !== 0"
+                (click)="redo()"
+                ></span>
+          <div class="cp-wrapper">
+            <input class="color-picker" 
+                *ngIf="['i-text', 'path', 'rect', 'circle', 'triangle'].includes(selectedElementType)"
+                [(colorPicker)]="color" 
+                [cpPosition]="'bottom-left'"
+                [cpOKButton]="true"
+                [cpOutputFormat]="'rgba'"
+                (colorPickerSelect)="selectColor(color)"
+                [style.background]="color"/>
+          </div>
+          <div class="color-picker-adjustment"></div>
+          <span title="CTRL+C" (click)="util.copy(canvas)">Copy</span>
+          <span title="CTRL+V" (click)="util.paste(canvas)">Paste</span>
+          <span title="DELETE" (click)="util.delete(canvas)">Delete</span>
+          <span *ngIf="selectedElement?.type !== 'group'" 
+                (click)="util.group(canvas)"
+                title="CTRL+G">Group</span>
+          <span *ngIf="selectedElement?.type === 'group' && !selectedElement.emoji" 
+                (click)="util.ungroup(canvas)"
+                title="CTRL+G">Ungroup</span>
+          <span title="CTRL+U" (click)="util.bringToFront(canvas)">Push to front</span>
+          <span title="CTRL+D" (click)="util.sendToBack(canvas)">Push to back</span>
+        </div>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="canvas" height="600px" width="400px"></canvas>
+      </div>
   </section>
 </main>
