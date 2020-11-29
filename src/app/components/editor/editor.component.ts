@@ -19,6 +19,14 @@ export class EditorComponent implements OnInit, AfterViewInit {
   public underline = false;
   public color = 'rgb(0,0,0)';
   public util: Util;
+  public drawingTool = 'pencil';
+  public drawing = {
+    lineColor: '#000000',
+    shadowColor: '#000000',
+    lineWidth: 3,
+    shadowWidth: 0,
+    shadowOffset: 0,
+  };
 
   public tabs = [
     {
@@ -313,6 +321,10 @@ export class EditorComponent implements OnInit, AfterViewInit {
 
   public redo = () => {
     this.stateService.redo();
+  }
+
+  public selectDrawingTool = (tool: string) => {
+    this.drawingTool = tool;
   }
 
 }
