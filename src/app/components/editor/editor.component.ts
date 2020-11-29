@@ -1,8 +1,8 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { fabric } from 'fabric';
-import { Tab } from 'src/app/interfaces';
-import { EditorService } from './editor.service';
-import { PexelsService } from './pexels.service';
+import {Component, OnInit, AfterViewInit} from '@angular/core';
+import {fabric} from 'fabric';
+import {Tab} from 'src/app/interfaces';
+import {EditorService} from './editor.service';
+import {PexelsService} from './pexels.service';
 
 @Component({
   selector: 'app-editor',
@@ -15,71 +15,74 @@ export class EditorComponent implements OnInit, AfterViewInit {
 
   public tabs = [
     {
-      name: "TEXT",
-      icon: "typcn-edit"
+      name: 'TEXT',
+      icon: 'typcn-edit'
     },
     {
-      name: "IMAGES",
-      icon: "typcn-image"
+      name: 'IMAGES',
+      icon: 'typcn-image'
     },
     {
-      name: "ELEMENTS",
-      icon: "typcn-star-outline"
+      name: 'ELEMENTS',
+      icon: 'typcn-star-outline'
     },
     {
-      name: "EMOJIS",
-      icon: "typcn-heart-outline"
+      name: 'EMOJIS',
+      icon: 'typcn-heart-outline'
     },
     {
-      name: "DRAW",
-      icon: "typcn-pencil"
+      name: 'DRAW',
+      icon: 'typcn-pencil'
     },
     {
-      name: "UPLOAD",
-      icon: "typcn-upload-outline"
+      name: 'UPLOAD',
+      icon: 'typcn-upload-outline'
     },
   ];
   public selectedTab = 'TEXT';
   public images = [];
 
   constructor(public editorService: EditorService,
-              private pexelsService: PexelsService) { }
+              private pexelsService: PexelsService) {
+  }
 
   ngOnInit(): void {
     this.canvas = new fabric.Canvas('canvas');
   }
-  ngAfterViewInit() {}
+
+  ngAfterViewInit() {
+  }
 
 
   public selectTab = (tab: Tab) => {
     this.selectedTab = tab.name;
-  }
+  };
 
   public addText = (text: string, font?: string, size?: number) => {
-    let newText = new fabric.IText(text, {left: 100, top:100, fontFamily:font, fontSize:size});
+    let newText = new fabric.IText(text, {left: 100, top: 100, fontFamily: font, fontSize: size});
     this.canvas.add(newText);
-  }
+  };
 
   public addElement = (url: string) => {
     let group = [];
     fabric.loadSVGFromURL(url, (objects, options) => {
-      let image = fabric.util.groupSVGElements(group);
-      image.scale(0.2);
-      image.set({
-        left: 100,
-        top: 100,
-        // height: 100,
-        // width: 100,
+        let image = fabric.util.groupSVGElements(group);
+        image.scale(0.2);
+        image.set({
+          left: 100,
+          top: 100,
+          // height: 100,
+          // width: 100,
+        });
+
+        this.canvas.add(image);
+        this.canvas.renderAll();
+      },
+      function(item, object) {
+        object.set('id', item.getAttribute('id'));
+        group.push(object);
       });
-      
-      this.canvas.add(image); 
-      this.canvas.renderAll(); 
-    },
-    function(item, object) {
-      object.set('id', item.getAttribute('id'));
-      group.push(object);
-    });
-  }
+  };
 
   public addImage = (url: string) => {
     // let el = event.target;
@@ -99,14 +102,14 @@ export class EditorComponent implements OnInit, AfterViewInit {
       this.canvas.add(image);
       // this.selectItemAfterAdded(image);
     });
-  }
+  };
 
   public searchImage = () => {
     console.log(this.image);
     this.pexelsService.imageSearch(this.image)
-    .subscribe(res => {
-      console.log(res)
-    });
-  }
+      .subscribe(res => {
+        console.log(res);
+      });
+  };
 
 }

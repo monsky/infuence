@@ -25,4 +25,12 @@ export class InfluencerContractComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
   }
 
+  public changeStatusToShipped(request): void {
+    request.stateOfShipping = 1;
+  }
+
+  public chagneStatusToNotShipped(request): void {
+    request.stateOfShipping = 0;
+  }
+
 }

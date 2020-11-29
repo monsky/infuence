@@ -23,24 +23,38 @@
     cursor: pointer;
   }
 
-  .fixed-width-8{
+  .fixed-width-8 {
     width: 8em;
   }
 
-  .order-request-button {
+  @mixin order-request-button( $approve: false) {
     display: flex;
     width: auto !important;;
     height: auto !important;
-    margin: 1em 0 0 0 !important;
     padding: 0 1em;
     justify-content: center;
     align-items: center;
     min-width: 3em;
     text-align: center;
-    border-radius: 15px;
     border: 2px solid;
     cursor: pointer;
     user-select: none;
+    @if $approve {
+      background-color: darkslateblue;
+      margin: 0 !important;
+    }
+    @else {
+      background-color: tomato;
+      margin: 1em 0 0 0 !important;
+    }
+  }
+
+  .order-request-button-approved {
+    @include order-request-button($approve: true);
+  }
+
+  .order-request-button-rejected {
+    @include order-request-button($approve: false)
   }
 
 }
