@@ -76,11 +76,13 @@
           <input type="color" [(ngModel)]="drawing.shadowColor" id="shadowColor" class="line-color">
         </div>
         <label for="lineWidth">Line width: {{drawing.lineWidth}} </label>
-        <input type="range" [(ngModel)]="drawing.lineWidth" class="custom-range" min="0" max="40" id="lineWidth">
+        <input type="range" [(ngModel)]="drawing.lineWidth" (change)="draw.changeWidth(brush, drawing.lineWidth)" class="custom-range" min="0" max="40" id="lineWidth">
         <label for="shadowWidth">Shadow width: {{drawing.shadowWidth}}</label>
         <input type="range" [(ngModel)]="drawing.shadowWidth" class="custom-range" min="0" max="40" id="shadowWidth">
         <label for="shadowOffset">Shadow offset: {{drawing.shadowOffset}}</label>
         <input type="range" [(ngModel)]="drawing.shadowOffset" class="custom-range" min="0" max="5" id="shadowOffset">
+        <button *ngIf="!canvas.isDrawingMode" class="draw-button" (click)="freeDraw()">Start Drawing</button>
+        <button *ngIf="canvas.isDrawingMode" class="draw-button" (click)="freeDraw()">Stop Drawing</button>
         
       </div>
     </ng-template>

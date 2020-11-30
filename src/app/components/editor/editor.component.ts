@@ -5,6 +5,7 @@ import { Util } from 'src/app/components/editor/classes/util';
 import { EditorService } from './services/editor.service';
 import { PexelsService } from './services/pexels.service';
 import { StateService } from './services/state.service';
+import { Draw } from './classes/draw';
 
 @Component({
   selector: 'app-editor',
@@ -19,6 +20,7 @@ export class EditorComponent implements OnInit, AfterViewInit {
   public underline = false;
   public color = 'rgb(0,0,0)';
   public util: Util;
+  public draw: Draw;
   public drawingTool = 'pencil';
   public drawing = {
     lineColor: '#000000',
@@ -27,6 +29,8 @@ export class EditorComponent implements OnInit, AfterViewInit {
     shadowWidth: 0,
     shadowOffset: 0,
   };
+  public drawingMode = false;
+  public brush: fabric.FreeDrawingBrush;
 
   public tabs = [
     {
@@ -61,17 +65,19 @@ export class EditorComponent implements OnInit, AfterViewInit {
               public stateService: StateService,
               private pexelsService: PexelsService) { 
                 this.util = new Util();
+                this.draw = new Draw();
               }
 
   ngOnInit(): void {
+    //start canvas
     this.canvas = new fabric.Canvas('canvas', {
       hoverCursor: 'pointer',
       selection: true,
       selectionBorderColor: 'blue',
       preserveObjectStacking: true,
       backgroundColor: '#fff',
-      // stateful: true
     });
+    //load background
     fabric.Image.fromURL('../../../assets/back-black.svg', (img) => {
       this.canvas.setBackgroundImage(img, this.canvas.renderAll.bind(this.canvas), {
         scaleX: this.canvas.width / img.width,
@@ -85,6 +91,8 @@ export class EditorComponent implements OnInit, AfterViewInit {
         }
       });
     });
+    //load brush
+    this.brush = this.canvas.freeDrawingBrush;
 
   }
 
@@ -305,6 +313,8 @@ export class EditorComponent implements OnInit, AfterViewInit {
     this.saveState();
   }
 
+  //State
+
   public saveState = () => {
     console.log('saved');
     let newState = this.canvas.toDatalessJSON();
@@ -323,8 +333,13 @@ export class EditorComponent implements OnInit, AfterViewInit {
     this.stateService.redo();
   }
 
+  //Draw
+
   public selectDrawingTool = (tool: string) => {
     this.drawingTool = tool;
   }
 
+  public freeDraw = () => {
+    this.canvas.isDrawingMode = !this.canvas.isDrawingMode;
+  }
 }

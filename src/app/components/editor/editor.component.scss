@@ -258,6 +258,14 @@
     }
   }
 
+  .draw-button {
+    height: 4rem;
+    margin-top: 3rem;
+    font-size: large;
+    background: white;
+    border: 1px solid lightgray;
+  }
+
   input[type='range']::-webkit-slider-thumb {
     -webkit-appearance: none;
     background: #333;
