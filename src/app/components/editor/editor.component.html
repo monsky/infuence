@@ -71,16 +71,39 @@
 
         <div class="colors">
           <label for="lineColor">Line color:</label>
-          <input type="color" [(ngModel)]="drawing.lineColor" id="lineColor" class="line-color">
+          <input type="color" 
+                 [(ngModel)]="drawing.lineColor" 
+                 (change)="draw.changeColor(brush, drawing.lineColor)" 
+                 id="lineColor" 
+                 class="line-color">
           <label for="shadowColor">Shadow color:</label>
-          <input type="color" [(ngModel)]="drawing.shadowColor" id="shadowColor" class="line-color">
+          <input type="color" 
+                 [(ngModel)]="drawing.shadowColor" 
+                 (change)="draw.changeShadowColor(brush, drawing.shadowColor)" 
+                 id="shadowColor" 
+                 class="line-color">
         </div>
         <label for="lineWidth">Line width: {{drawing.lineWidth}} </label>
-        <input type="range" [(ngModel)]="drawing.lineWidth" (change)="draw.changeWidth(brush, drawing.lineWidth)" class="custom-range" min="0" max="40" id="lineWidth">
+        <input type="range" 
+               [(ngModel)]="drawing.lineWidth" 
+               (change)="draw.changeWidth(brush, drawing.lineWidth)" 
+               class="custom-range" 
+               min="0" max="40" 
+               id="lineWidth">
         <label for="shadowWidth">Shadow width: {{drawing.shadowWidth}}</label>
-        <input type="range" [(ngModel)]="drawing.shadowWidth" class="custom-range" min="0" max="40" id="shadowWidth">
+        <input type="range" 
+               [(ngModel)]="drawing.shadowWidth" 
+               (change)="draw.changeShadowWidth(brush, drawing.shadowWidth)" 
+               class="custom-range" 
+               min="0" max="40" 
+               id="shadowWidth">
         <label for="shadowOffset">Shadow offset: {{drawing.shadowOffset}}</label>
-        <input type="range" [(ngModel)]="drawing.shadowOffset" class="custom-range" min="0" max="5" id="shadowOffset">
+        <input type="range" 
+               [(ngModel)]="drawing.shadowOffset" 
+               (change)="draw.changeShadowOffset(brush, drawing.shadowOffset)" 
+               class="custom-range" 
+               min="0" max="30" 
+               id="shadowOffset">
         <button *ngIf="!canvas.isDrawingMode" class="draw-button" (click)="freeDraw()">Start Drawing</button>
         <button *ngIf="canvas.isDrawingMode" class="draw-button" (click)="freeDraw()">Stop Drawing</button>
         

@@ -30,7 +30,7 @@ export class EditorComponent implements OnInit, AfterViewInit {
     shadowOffset: 0,
   };
   public drawingMode = false;
-  public brush: fabric.FreeDrawingBrush;
+  public brush: fabric.BaseBrush;
 
   public tabs = [
     {
@@ -93,6 +93,13 @@ export class EditorComponent implements OnInit, AfterViewInit {
     });
     //load brush
     this.brush = this.canvas.freeDrawingBrush;
+    this.brush.shadow = new fabric.Shadow({
+      color: this.drawing.shadowColor,
+      blur: this.drawing.shadowWidth,
+      offsetX: 0,
+      offsetY: 0,
+      affectStroke: true
+    }) 
 
   }
 
@@ -337,6 +344,11 @@ export class EditorComponent implements OnInit, AfterViewInit {
 
   public selectDrawingTool = (tool: string) => {
     this.drawingTool = tool;
+    // if (tool === 'pencil') {
+    //   this.canvas.freeDrawingBrush = new fabric['PencilBrush']();
+    // } else {
+    //   this.canvas.freeDrawingBrush = new fabric['SprayBrush']();
+    // }
   }
 
   public freeDraw = () => {
