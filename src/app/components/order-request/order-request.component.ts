@@ -26,15 +26,11 @@ export class OrderRequestComponent implements OnInit, OnDestroy {
   }
 
   public approveRequest(request): void {
-    console.log(request.orderStatus);
     request.orderStatus = 1;
-    console.log(request.orderStatus);
   }
 
   public rejectRequest(request): void {
-    console.log(request.orderStatus);
     request.orderStatus = 0;
-    console.log(request.orderStatus);
   }
 
 }

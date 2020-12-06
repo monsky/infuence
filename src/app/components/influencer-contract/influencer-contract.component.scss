@@ -23,18 +23,46 @@
     cursor: pointer;
   }
 
-  .fixed-width-4{
+  .fixed-width-4 {
     width: 4em;
   }
 
-  .fixed-width-5{
+  .fixed-width-5 {
     width: 5em;
   }
 
-  .fixed-width-6{
+  .fixed-width-6 {
     width: 6em;
+    text-align: center;
   }
 
+  @mixin state-of-shippnig-button( $shipped: false) {
+    display: flex;
+    width: auto !important;;
+    height: auto !important;
+    font-size: 0.9em;
+    justify-content: center;
+    align-items: center;
+    min-width: 3em;
+    text-align: center;
+    border: 2px solid;
+    cursor: pointer;
+    user-select: none;
+    @if $shipped {
+      background-color: darkslateblue;
+      margin: 0 !important;
+    } @else {
+      background-color: tomato;
+      margin: 0.5em 0 0 0 !important;
+    }
+  }
 
+  .state-of-shippnig-button-shipped {
+    @include state-of-shippnig-button($shipped: true);
+  }
+
+  .state-of-shippnig-button-not-shipped {
+    @include state-of-shippnig-button($shipped: false)
+  }
 }
 

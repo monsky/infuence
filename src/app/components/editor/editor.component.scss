@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=block');
+@import url('https://fonts.googleapis.com/css?family=Lato&display=block');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=block');
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=block');
+//handwriting
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=block');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=block');
+@import url('https://fonts.googleapis.com/css?family=Fondamento&display=block');
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker&display=block');
+@import url('https://fonts.googleapis.com/css?family=Great+Vibes&display=block');
+@import url('https://fonts.googleapis.com/css?family=Sacramento&display=block');
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC&display=block');
+@import url('https://fonts.googleapis.com/css?family=Lateef&display=block');
+@import url('https://fonts.googleapis.com/css?family=Comic+Neue&display=block');
+//monospace
+@import url('https://fonts.googleapis.com/css?family=Inconsolata&display=block');
+@import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=block');
+@import url('https://fonts.googleapis.com/css?family=VT323&display=block');
+@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display&display=block');
+//serif
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=block');
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond&display=block');
+@import url('https://fonts.googleapis.com/css?family=Cinzel&display=block');
+@import url('https://fonts.googleapis.com/css?family=Ultra&display=block');
+:host {
+  display: flex;
+  flex-direction: column;
+  main {
+    background-color: white;
+    color: black;
+    height: calc(100vh - 145px); } 
+  .tabs {
+    width: 5%;
+    .tab {
+      position: relative;
+      // border-left: 4px solid transparent;
+      display: flex;
+      width: 100%;
+      border: 0;
+      background: white;
+      align-items: center;
+      text-align: center;
+      padding: 0.5rem;
+      .typcn {
+        font-size: x-large;
+      }
+    }
+    // .selected-tab {
+    //   border-left: 4px solid black;
+    // }
+    .tab:hover {
+        cursor: pointer;
+    }
+    .tab::before{
+      content: '';
+      display: block;
+      z-index: 3;
+      position: absolute;
+      height: 0;
+      left: 0;
+      top: 50%;
+      bottom: 0;
+      border-left: 4px solid black;
+      transition: all ease 0.5s;
+    }
+    .selected-tab::before {
+      height: 100%;
+      top: 0;
+      transition: all ease 0.5s;
+    }
+  }
+
+  .select {
+    width: 20%;
+    border: solid 1px lightgrey;
+    border-top: 0;
+    align-items: center;
+    .text-selection {
+      border: solid 1px transparent;
+      margin: 1rem 0;
+      padding: 1rem;
+      font-family: 'Lato';
+    }
+    .text-selection:hover {
+      border: solid 1px lightgrey;
+      cursor: pointer;
+    }
+  }
+
+  .editor {
+    width: 75%;
+    // border: solid 1px lightgrey;
+  }
+  
+  .elements {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: scroll;
+    .element {
+      margin: 2rem;
+    }
+    .element:hover {
+      cursor: pointer;
+    }
+    .icon {
+      height: 5rem;
+      width: 5rem;
+      // mask-image: url("../../assets/phone.svg");
+      mask-size: cover;
+      background-color: black;
+    }
+
+    .emoji {
+      height: 5rem;
+      width: 5rem;
+    }
+  }
+
+  .fonts {
+    overflow-y: scroll;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid lightgray;
+    .font {
+      font-size: x-large;
+    }
+    .font:hover {
+      cursor: pointer;
+    }
+  }
+
+  .search {
+    width: 80%;
+    height: 4rem;
+    padding: 0.5rem;
+    border: 1px solid lightgray;
+    font-size: 1.5rem;
+  }
+
+  .image-search {
+    width: 80%;
+    height: 4rem;
+    align-items: center;
+    margin-top: 2rem;
+    .search-button {
+      height: 100%;
+      background: white;
+      box-shadow: none;
+      border: 1px solid lightgray;
+      border-left: 0;
+    }
+  }
+
+  .toolbar {
+    height: 3rem;
+    align-items: center;
+    padding: 0 1rem 0 1rem;
+    font-weight: bold;
+    font-family: 'Lato';
+    font-size: 16px;
+    border-bottom: 1px solid lightgray;
+    justify-content: space-between;
+    .btn-group {
+      margin-right: 1rem;
+    }
+    .font-dropdown {
+      color: black;
+      background: white;
+      border: none;
+      font-size: 16px;
+      font-family: Lato;
+      padding: 1px;
+      border-radius: 0;
+    }
+    .dropdown-item {
+      font-size: large;
+      cursor: pointer;
+    }
+  }
+
+  .group {
+    span {
+      font-family: 'Lato';
+      margin: 0 1rem 0 1rem;
+    }
+    span:hover {
+      cursor: pointer;
+    }
+  }
+
+  .text-tools {
+    display: flex;
+  }
+
+  .font-style {
+    font-weight: bold;
+    background: white;
+    border: 1px solid white;
+    margin-right: 0.5rem;
+    width: 30px;
+  }
+  
+  .font-style-active {
+    border: 1px solid lightgray;
+  }
+
+  .color-picker {
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+  }
+
+  .color-picker-adjustment {
+    width: 2rem;
+  }
+  color-picker {
+    margin-right: 2rem !important;
+  }
+  .group {
+    float: right;
+  }
+
+  .canvas-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+    height: 100%;
+  }
+
+  .tool-selection {
+      border: solid 1px transparent;
+      margin: 1rem 0;
+      padding: 1rem;
+      font-family: 'Lato';
+      text-align: center;
+      cursor: pointer;
+  }
+
+  .tool-selected {
+    border: solid 1px lightgrey;
+  }
+
+  .colors {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    .line-color {
+      background: white;
+      padding: 0.5rem 1.5rem;
+      width: 5rem;
+      border: 1px solid lightgray;
+      height: 3rem;
+    }
+  }
+
+  .draw-button {
+    height: 4rem;
+    margin-top: 3rem;
+    font-size: large;
+    background: white;
+    border: 1px solid lightgray;
+  }
+
+  input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: #333;
+  }
+
+  input[type='range']::-moz-range-thumb {
+    background: #333;
+  }
+
+
+}

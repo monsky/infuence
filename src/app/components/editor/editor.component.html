@@ -1,0 +1,208 @@
+<main class="flex-row">
+  <aside class="tabs">
+    <div *ngFor="let tab of tabs;let i = index">
+      <button class="tab flex-column"
+           (click)="selectTab(tab)"
+           autofocus
+           [ngClass]="{'selected-tab': tab.name === selectedTab}">
+        <span class="typcn" 
+              [class]="tab.icon"></span>
+        {{tab.name}}
+      </button>
+    </div>
+  </aside>
+  <section class="select flex-column">
+    <ng-template [ngIf]="selectedTab === 'TEXT'">
+      <h1 (click)="addText('Heading', 'Lato', 32)" class="text-selection">Add Heading</h1>
+      <h3 (click)="addText('Subheading', 'Lato', 24)" class="text-selection">Add Subheading</h3>
+      <p (click)="addText('Paragraph', 'Lato', 18)" class="text-selection">Add a paragraph</p>
+      <div class="fonts">
+        <div *ngFor="let font of editorService.fonts">
+          <span class="font"
+                [ngStyle]="{'font-family': font}"
+                (click)="addText(font, font, 24)">
+            {{font}}
+          </span>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template [ngIf]="selectedTab === 'IMAGES'">
+      <div class="image-search flex-row">
+        <input type="text" 
+              id="search" 
+              [(ngModel)]=image
+              placeholder="Search images on Pexels"
+              class="search">
+        <button class="search-button"
+                (click)="searchImage()" >SEARCH</button>
+      </div>
+      <div class="images flex-row">
+        <div *ngFor="let image of images" 
+              class="image">
+            <img [src]="image.src" alt=""></div>
+      </div>
+    </ng-template>
+    <ng-template [ngIf]="selectedTab === 'ELEMENTS'">
+      <div class="elements">
+        <div *ngFor="let element of editorService.elements" class="element">
+          <div class="icon"
+               (click)="addElement(element.url, element.type, element.scale)"
+               [ngStyle]="{'mask-image': element.path}"></div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template [ngIf]="selectedTab === 'EMOJIS'">
+      <div class="elements">
+        <div *ngFor="let element of editorService.emoji" class="element">
+          <img class="emoji"
+               (click)="addElement(element.url, element.type, element.scale)"
+               [src]="element.url"/>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template [ngIf]="selectedTab === 'DRAW'">
+      <div class="drawing flex-column">
+        <h3 (click)="selectDrawingTool('pencil')" 
+            class="tool-selection"
+            [ngClass]="{'tool-selected': drawingTool === 'pencil'}">Pencil</h3>
+        <h3 (click)="selectDrawingTool('spray')" 
+            class="tool-selection"
+            [ngClass]="{'tool-selected': drawingTool === 'spray'}">Spray</h3>
+
+        <div class="colors">
+          <label for="lineColor">Line color:</label>
+          <input type="color" 
+                 [(ngModel)]="drawing.lineColor" 
+                 (change)="draw.changeColor(brush, drawing.lineColor)" 
+                 id="lineColor" 
+                 class="line-color">
+          <label for="shadowColor">Shadow color:</label>
+          <input type="color" 
+                 [(ngModel)]="drawing.shadowColor" 
+                 (change)="draw.changeShadowColor(brush, drawing.shadowColor)" 
+                 id="shadowColor" 
+                 class="line-color">
+        </div>
+        <label for="lineWidth">Line width: {{drawing.lineWidth}} </label>
+        <input type="range" 
+               [(ngModel)]="drawing.lineWidth" 
+               (change)="draw.changeWidth(brush, drawing.lineWidth)" 
+               class="custom-range" 
+               min="0" max="40" 
+               id="lineWidth">
+        <label for="shadowWidth">Shadow width: {{drawing.shadowWidth}}</label>
+        <input type="range" 
+               [(ngModel)]="drawing.shadowWidth" 
+               (change)="draw.changeShadowWidth(brush, drawing.shadowWidth)" 
+               class="custom-range" 
+               min="0" max="40" 
+               id="shadowWidth">
+        <label for="shadowOffset">Shadow offset: {{drawing.shadowOffset}}</label>
+        <input type="range" 
+               [(ngModel)]="drawing.shadowOffset" 
+               (change)="draw.changeShadowOffset(brush, drawing.shadowOffset)" 
+               class="custom-range" 
+               min="0" max="30" 
+               id="shadowOffset">
+        <button *ngIf="!canvas.isDrawingMode" class="draw-button" (click)="freeDraw()">Start Drawing</button>
+        <button *ngIf="canvas.isDrawingMode" class="draw-button" (click)="freeDraw()">Stop Drawing</button>
+        
+      </div>
+    </ng-template>
+    <ng-template [ngIf]="selectedTab === 'UPLOAD'">
+    </ng-template>
+  </section>
+  <section class="editor flex-column">
+      <div class="toolbar flex-row">
+        <ng-template [ngIf]="['none', 'path', 'group', 'rect', 'circle', 'triangle', 'activeSelection'].includes(selectedElementType)">
+          <div class="placeholder"></div>
+        </ng-template>
+        <ng-template [ngIf]="selectedElementType === 'i-text'">
+          <div class="text-tools">
+            <div class="btn-group" dropdown>
+              <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle font-dropdown"
+                      aria-controls="dropdown-basic">
+                {{selectedElement?.fontFamily}} <span class="caret"></span>
+              </button>
+              <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                  role="menu" aria-labelledby="button-basic">
+                <li role="menuitem" 
+                *ngFor="let font of editorService.fonts"
+                  class="dropdown-item" 
+                  [ngStyle]="{'font-family': font}"
+                  (click)="changeFont(font)"
+                  >{{font}}</li>
+              </ul>
+            </div>
+            <div class="btn-group" dropdown>
+              <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle font-dropdown"
+                      aria-controls="dropdown-basic">
+                {{selectedElement?.fontSize}} <span class="caret"></span>
+              </button>
+              <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                  role="menu" aria-labelledby="button-basic">
+                <li role="menuitem" 
+                *ngFor="let size of editorService.fontSizes"
+                  class="dropdown-item" 
+                  (click)="changeFontSize(size)"
+                  >{{size}}</li>
+              </ul>
+            </div>
+            <button class="font-style" 
+                    [ngClass]="{'font-style-active': selectedElement?.fontWeight === 'bold'}"
+                    (click)="changeFontStyle('bold')"
+                    style="font-weight: bold;">
+              B
+            </button>
+            <button class="font-style" 
+                    [ngClass]="{'font-style-active': selectedElement?.fontStyle === 'italic'}"
+                    (click)="changeFontStyle('italic')"
+                    style="font-style: italic;">
+              I
+            </button>
+            <button class="font-style" 
+                    [ngClass]="{'font-style-active': underline === true}"
+                    (click)="changeFontStyle('underline')"
+                    style="text-decoration: underline;">
+              U
+            </button>
+          </div>
+        </ng-template>
+        <div class="group flex-row">
+          <span class="typcn typcn-arrow-back-outline"
+                [ngStyle]="{'color':stateService.undoStack.length === 0 ? 'lightgray' : 'black' }"
+                (click)="undo()"
+                ></span>
+          <span class="typcn typcn-arrow-forward-outline"
+                [ngStyle]="{'color':stateService.redoStack.length === 0 ? 'lightgray' : 'black' }"
+                (click)="redo()"
+                ></span>
+          <div class="cp-wrapper">
+            <input class="color-picker" 
+                *ngIf="['i-text', 'path', 'rect', 'circle', 'triangle'].includes(selectedElementType)"
+                [(colorPicker)]="color" 
+                [cpPosition]="'bottom-left'"
+                [cpOKButton]="true"
+                [cpOutputFormat]="'rgba'"
+                (colorPickerSelect)="selectColor(color)"
+                [style.background]="color"/>
+          </div>
+          <div class="color-picker-adjustment"></div>
+          <span title="CTRL+C" (click)="util.copy(canvas)">Copy</span>
+          <span title="CTRL+V" (click)="util.paste(canvas)">Paste</span>
+          <span title="DELETE" (click)="util.delete(canvas)">Delete</span>
+          <span *ngIf="selectedElement?.type !== 'group'" 
+                (click)="util.group(canvas)"
+                title="CTRL+G">Group</span>
+          <span *ngIf="selectedElement?.type === 'group' && !selectedElement.emoji" 
+                (click)="util.ungroup(canvas)"
+                title="CTRL+G">Ungroup</span>
+          <span title="CTRL+U" (click)="util.bringToFront(canvas)">Push to front</span>
+          <span title="CTRL+D" (click)="util.sendToBack(canvas)">Push to back</span>
+        </div>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="canvas" height="600px" width="400px"></canvas>
+      </div>
+  </section>
+</main>

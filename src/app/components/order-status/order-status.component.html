@@ -2,7 +2,7 @@
   <div class="flex-row table-header">
     <div *ngFor="let columnName of columnNames, let i = index"
          class="column-name"
-         [ngClass]="{'fixed-width-8': i===3 || i===4, 'flex-1': i===0 || i===1 || i===2}">
+         [ngClass]="{'fixed-width-8': i===3, 'fixed-width-9': i===4, 'flex-1': i===0 || i===1 || i===2}">
       {{columnName}}
     </div>
   </div>
@@ -24,9 +24,25 @@
     <div class="fixed-width-8">
       {{ data.orderId }}
     </div>
-    <div class="fixed-width-8">
-      {{ data.orderStatus }}
+    <div class="flex-column fixed-width-9">
+      <div class="order-status-button-printed"
+           [ngClass]="{'zoom' : data.orderStatus === 0}"
+           [style.border-color]="data.orderStatus === 1 ? 'grey' : 'black'"
+           [style.color]="data.orderStatus === 1 ? 'grey' : 'black'"
+           (click)="!data.orderStatus && changeStatusToPrinted(data)">
+        Odštampano
+      </div>
+      <div class="order-status-button-waiting"
+           [ngClass]="{'zoom' : data.orderStatus === 1}"
+           [style.border-color]="data.orderStatus === 0 ? 'grey' : 'black'"
+           [style.color]="data.orderStatus === 0 ? 'grey' : 'black'"
+           (click)="data.orderStatus && chagneStatusToWaiting(data)">
+        Čeka na štampu
+      </div>
+
     </div>
+
+
   </div>
 
 </div>

@@ -27,6 +27,41 @@
     width: 8em;
   }
 
+  .fixed-width-9{
+    width: 9em;
+  }
+
+  @mixin order-status-button( $printed: false) {
+    display: flex;
+    width: auto !important;;
+    height: auto !important;
+    padding: 0 1em;
+    justify-content: center;
+    align-items: center;
+    min-width: 3em;
+    text-align: center;
+    border: 2px solid;
+    cursor: pointer;
+    user-select: none;
+    //background-color: tomato;
+    @if $printed {
+      background-color: darkslateblue;
+      margin: 0 !important;
+    }
+    @else {
+      background-color: tomato;
+      margin: 1em 0 0 0 !important;
+    }
+  }
+
+  .order-status-button-printed {
+     @include order-status-button($printed: true);
+   }
+
+  .order-status-button-waiting {
+    @include order-status-button($printed: false)
+  }
+
 
 }
 

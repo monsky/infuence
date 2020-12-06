@@ -25,4 +25,12 @@ export class OrderStatusComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
   }
 
+  public changeStatusToPrinted(request): void {
+    request.orderStatus = 1;
+  }
+
+  public chagneStatusToWaiting(request): void {
+    request.orderStatus = 0;
+  }
+
 }

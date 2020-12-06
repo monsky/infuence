@@ -40,8 +40,8 @@ export class ShoppingBagComponent implements OnInit, OnDestroy {
     this.items.splice(index, 1);
   }
 
-  public emptyShoppingBag(): void {
-    this.items.splice(0, this.items.length);
+  public openModalConfirmDelete(){
+    this.appModel.isModalConfirmDeleteOpened = true;
   }
 
 }

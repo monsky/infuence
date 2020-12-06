@@ -156,6 +156,7 @@ export class AppModel {
     shipments: [],
     isAdmin: true
   };
+
   public influencerContractColNames: Array<string> = [
     'Datum',
     'Ime influensera',
@@ -203,7 +204,7 @@ export class AppModel {
       prize: 1256,
       color: 'red',
       dateOfShipping: '12/10/2020',
-      stateOfShipping: 0,
+      stateOfShipping: 1,
       isInfluencerPaid: 1,
       percentOfInfluencer: 40,
       percent: 40,
@@ -281,21 +282,21 @@ export class AppModel {
       influencerName: 'Ena Luna',
       clientName: 'Marko Trajkovic',
       orderId: 30,
-      orderStatus: 'Odstampano'
+      orderStatus: 1
     },
     {
       imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
       influencerName: 'Ena Luna',
       clientName: 'Trajko Markovic',
       orderId: 50,
-      orderStatus: 'Ceka na stampu'
+      orderStatus: 0
     },
     {
       imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
       influencerName: 'Zorannah',
       clientName: 'Marko Trajkovic',
       orderId: 43,
-      orderStatus: 'Odstampano'
+      orderStatus: 1
     }
   ];
 
@@ -316,7 +317,7 @@ export class AppModel {
       imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
       orderId: 50,
       clientName: 'Trajko Markovic',
-       orderStatus: 0
+      orderStatus: 0
     },
     {
       imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
@@ -325,6 +326,8 @@ export class AppModel {
       orderStatus: 1
     }
   ];
+
+  public isModalConfirmDeleteOpened: boolean = false;
 
   constructor() {
   }
