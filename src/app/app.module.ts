@@ -23,6 +23,7 @@ import {PrintShopContractComponent} from './components/print-shop-contract/print
 import {InfluencerContractComponent} from './components/influencer-contract/influencer-contract.component';
 import {OrderStatusComponent} from './components/order-status/order-status.component';
 import {OrderRequestComponent} from './components/order-request/order-request.component';
+import {ClickOutsideDirective} from './directives/ClickOutsideDirective';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {OrderRequestComponent} from './components/order-request/order-request.co
     PrintShopContractComponent,
     InfluencerContractComponent,
     OrderStatusComponent,
-    OrderRequestComponent
+    OrderRequestComponent,
+    ClickOutsideDirective
   ],
   imports: [
     BrowserModule,
