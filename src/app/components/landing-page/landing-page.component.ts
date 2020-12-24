@@ -25,7 +25,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
       .subscribe((params: Params) => {
         this.selectedItems = [];
         const id = params.id ? Number(params.id) : 0;
-        this.appModel.items.map(item => (item.category === id) ? this.selectedItems.push(item) : '');
+        this.appModel.articles.map(item => (item.categoryId === id) ? this.selectedItems.push(item) : '');
         this.cdr.detectChanges();
       });
   }
