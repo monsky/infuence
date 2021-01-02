@@ -1,6 +1,3 @@
-import { fabric } from 'fabric';
-
-
 export class Util {
 
   public clipboard: any;

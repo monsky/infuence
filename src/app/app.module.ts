@@ -27,6 +27,7 @@ import {EditorComponent} from './components/editor/editor.component';
 import {ModalConfirmDeleteComponent} from './components/modal/modal-confirm-delete/modal-confirm-delete.component';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {ColorPickerModule} from 'ngx-color-picker';
+import {ClickOutsideDirective} from './directives/ClickOutsideDirective';
 import {ShoppingBagItemComponent} from './components/shopping-bag-item/shopping-bag-item.component';
 
 @NgModule({
@@ -44,6 +45,8 @@ import {ShoppingBagItemComponent} from './components/shopping-bag-item/shopping-
     PrintShopContractComponent,
     InfluencerContractComponent,
     OrderStatusComponent,
+    OrderRequestComponent,
+    ClickOutsideDirective,
     OrderRequestComponent,
     EditorComponent,
     ModalConfirmDeleteComponent,

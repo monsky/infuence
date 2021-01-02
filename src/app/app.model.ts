@@ -1,5 +1,8 @@
 import {Injectable} from '@angular/core';
 import {SignalOne} from '../libs/signal/SignalOne';
+import {AppService} from './app.service';
+import {Observable} from 'rxjs';
+import {catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -158,76 +161,183 @@ export class AppModel {
   };
 
   public influencerContractColNames: Array<string> = [
+    'ID',
+    'Ime',
+    'Ugovor(%)',
+    'Zaradjeno',
+    'Zaradjeno prethodnog meseca',
+    'Broj prodatih',
+    'Porudzbine'
+  ];
+  public ordersInsideInfluenser: Array<string> = [
+    'ID',
     'Datum',
-    'Ime influensera',
-    'Ime artikla',
-    'Id artikla',
-    'Količina',
-    'Veličina',
+    'Ime',
+    'ID Artikla',
+    'Kolicina',
     'Cena',
-    'Boja',
-    'Datum isporuke',
-    'Isporučeno',
-    'Plaćeno influenseru',
-    'Procenat influensera',
-    'Procenat',
-    'Zarada influensera',
-    'Zarada'
+    'Dostavljeno',
+    'Placeno',
+    'Velicina',
+    'Influenser zaradio',
+    'Kompanije zaradila'
   ];
   public influencerContractData: Array<any> = [
     {
-      date: '12/10/2020',
-      influencerName: 'Ena Luna',
-      influencerId: 0,
-      articalId: 0,
-      articalName: 'Majica 10',
-      amount: 2,
-      size: 'M',
-      prize: 1256,
-      color: 'red',
-      dateOfShipping: '12/10/2020',
-      stateOfShipping: 0,
-      isInfluencerPaid: 1,
-      percentOfInfluencer: 40,
-      percent: 40,
-      earnedOfInfluencer: 1000,
-      earned: 1000,
+      id: 0,
+      email: 'irmasumska@yahoo.com',
+      firstName: 'Iki',
+      lastName: 'Siki',
+      address: 'V 157',
+      city: 'Belgrade',
+      postCode: 11000,
+      country: 'Serbia',
+      ordersNumber: 20,
+      role: 'influencer',
+      terms: 50,
+      influencerEarned: 3000,
+      last_paid: '30/10/2020',
+      totalEarned: 2000,
+      earnedThisMonth: 100,
+      paidThisMonth: true,
+      orders: [
+        {
+          id: 0,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: false
+        },
+        {
+          id: 1,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: false
+        },
+        {
+          id: 2,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: false
+        }
+      ],
+      articles: [],
+      favourites: []
     },
     {
-      date: '15/10/2020',
-      influencerName: 'Ena Luna',
-      influencerId: 0,
-      articalId: 0,
-      articalName: 'Majica 20',
-      amount: 2,
-      size: 'M',
-      prize: 1256,
-      color: 'red',
-      dateOfShipping: '12/10/2020',
-      stateOfShipping: 1,
-      isInfluencerPaid: 1,
-      percentOfInfluencer: 40,
-      percent: 40,
-      earnedOfInfluencer: 1000,
-      earned: 1000,
+      id: 1,
+      email: 'irmasumska@yahoo.com',
+      firstName: 'Iki',
+      lastName: 'Siki',
+      address: 'V 157',
+      city: 'Belgrade',
+      postCode: 11000,
+      country: 'Serbia',
+      ordersNumber: 20,
+      role: 'influencer',
+      terms: 50,
+      influencerEarned: 3000,
+      last_paid: '30/10/2020',
+      totalEarned: 2000,
+      earnedThisMonth: 100,
+      paidThisMonth: true,
+      orders: [
+        {
+          id: 0,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: false
+        },
+        {
+          id: 1,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: false
+        },
+        {
+          id: 2,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: false
+        }
+      ],
+      articles: [],
+      favourites: []
     },
     {
-      date: '12/10/2020',
-      influencerName: 'Ena Luna',
-      influencerId: 0,
-      articalId: 0,
-      articalName: 'Majica 10',
-      amount: 2,
-      size: 'M',
-      prize: 1256,
-      color: 'red',
-      dateOfShipping: '12/10/2020',
-      stateOfShipping: 0,
-      isInfluencerPaid: 1,
-      percentOfInfluencer: 40,
-      percent: 40,
-      earnedOfInfluencer: 1000,
-      earned: 1000,
+      id: 2,
+      email: 'irmasumska@yahoo.com',
+      firstName: 'Iki',
+      lastName: 'Siki',
+      address: 'V 157',
+      city: 'Belgrade',
+      postCode: 11000,
+      country: 'Serbia',
+      ordersNumber: 20,
+      role: 'influencer',
+      terms: 50,
+      influencerEarned: 3000,
+      last_paid: '30/10/2020',
+      totalEarned: 2000,
+      earnedThisMonth: 100,
+      paidThisMonth: true,
+      orders: [
+        {
+          id: 0,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: false
+        },
+        {
+          id: 1,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: false
+        },
+        {
+          id: 2,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: false
+        }
+      ],
+      articles: [],
+      favourites: []
     }
   ];
 
@@ -329,7 +439,274 @@ export class AppModel {
 
   public isModalConfirmDeleteOpened: boolean = false;
 
-  constructor() {
+  public articles: Array<any> = [
+    {
+      id: 0,
+      name: 'Majica 10',
+      idSeller: 2,
+      prize: 1256,
+      colors: [
+        'red', 'blue', 'yellow'
+      ],
+      sizes: [
+        'S', 'M', 'L'
+      ],
+      img: 'https://pixabay.com/photos/beach-ocean-sunset-sunrise-sea-5795560/',
+      categoryId: 0,
+      categoryName: 'Majice',
+      itemsSold: 30
+    },
+    {
+      id: 1,
+      name: 'Majica 10',
+      idSeller: 2,
+      prize: 1256,
+      colors: [
+        'red', 'blue', 'yellow'
+      ],
+      sizes: [
+        'S', 'M', 'L'
+      ],
+      img: 'https://pixabay.com/photos/sorcerer-magician-illusionist-4586454/',
+      categoryId: 1,
+      categoryName: 'Majice',
+      itemsSold: 30
+    },
+    {
+      id: 2,
+      name: 'Majica 10',
+      idSeller: 2,
+      prize: 1256,
+      colors: [
+        'red', 'blue', 'yellow'
+      ],
+      sizes: [
+        'S', 'M', 'L'
+      ],
+      img: 'https://pixabay.com/photos/angry-man-hoodie-old-bart-2766265/',
+      categoryId: 1,
+      categoryName: 'Majice',
+      itemsSold: 30
+    },
+    {
+      id: 3,
+      name: 'Majica 10',
+      idSeller: 2,
+      prize: 1256,
+      colors: [
+        'red', 'blue', 'yellow'
+      ],
+      sizes: [
+        'S', 'M', 'L'
+      ],
+      img: 'https://pixabay.com/photos/people-statement-jacket-hoodie-sand-2592164/',
+      categoryId: 2,
+      categoryName: 'Majice',
+      itemsSold: 30
+    },
+    {
+      id: 4,
+      name: 'Majica 10',
+      idSeller: 2,
+      prize: 1256,
+      colors: [
+        'red', 'blue', 'yellow'
+      ],
+      sizes: [
+        'S', 'M', 'L'
+      ],
+      img: 'https://pixabay.com/photos/snow-winter-cold-weather-outdoor-2593354/',
+      categoryId: 0,
+      categoryName: 'Majice',
+      itemsSold: 30
+    }
+  ];
+
+  public users: Array<any> = [
+    {
+      id: 0,
+      email: 'irmasumska@yahoo.com',
+      firstName: 'Iki',
+      lastName: 'Siki',
+      address: 'V 157',
+      city: 'Belgrade',
+      postCode: 11000,
+      country: 'Serbia',
+      ordersNumber: 20,
+      role: 'influencer',
+      terms: 50,
+      influencerEarned: 3000,
+      last_paid: '30/10/2020',
+      totalEarned: 2000,
+      earnedThisMonth: 100,
+      paidThisMonth: true,
+      orders: [
+        {
+          id: 0,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: false
+        },
+        {
+          id: 1,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: false
+        },
+        {
+          id: 2,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: false
+        }
+      ],
+      articles: [],
+      favourites: []
+    },
+    {
+      id: 1,
+      email: 'irmasumska@yahoo.com',
+      firstName: 'Iki',
+      lastName: 'Siki',
+      address: 'V 157',
+      city: 'Belgrade',
+      postCode: 11000,
+      country: 'Serbia',
+      ordersNumber: 20,
+      role: 'influencer',
+      terms: 50,
+      influencerEarned: 3000,
+      last_paid: '30/10/2020',
+      totalEarned: 2000,
+      earnedThisMonth: 100,
+      paidThisMonth: true,
+      orders: [
+        {
+          id: 0,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: false
+        },
+        {
+          id: 1,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: false
+        },
+        {
+          id: 2,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: false
+        }
+      ],
+      articles: [],
+      favourites: []
+    },
+    {
+      id: 2,
+      email: 'irmasumska@yahoo.com',
+      firstName: 'Iki',
+      lastName: 'Siki',
+      address: 'V 157',
+      city: 'Belgrade',
+      postCode: 11000,
+      country: 'Serbia',
+      ordersNumber: 20,
+      role: 'influencer',
+      terms: 50,
+      influencerEarned: 3000,
+      last_paid: '30/10/2020',
+      totalEarned: 2000,
+      earnedThisMonth: 100,
+      paidThisMonth: true,
+      orders: [
+        {
+          id: 0,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: false
+        },
+        {
+          id: 1,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: false
+        },
+        {
+          id: 2,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: false
+        }
+      ],
+      articles: [],
+      favourites: []
+    }
+  ];
+
+  constructor(private appService: AppService) {
   }
+
+  public getAllProducts(): void {
+    this.appService.getAllProducts().subscribe((articles) => {
+      this.articles = articles;
+    });
+  }
+
+  public getProductById(productId: number): Observable<any> {
+    return this.appService.getProductById(productId);
+  }
+
+  public getAllUsers(): void {
+    this.appService.getAllUsers().subscribe((users) => {
+    this.users = users;
+      });
+  }
+
+  public getUserById = (userId: number): Observable<any> => {
+    return this.appService.getUserById(userId);
+  }
+
+  public getOrdersByUserId = (userId: number): Observable<any> => {
+    return this.appService.getOrdersByUserId(userId);
+  }
+
 
 }
