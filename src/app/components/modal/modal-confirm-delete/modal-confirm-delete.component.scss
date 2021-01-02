@@ -21,22 +21,6 @@
     padding-left: 2em;
   }
 
-  .shopping-bag-list-item {
-    min-width: 36em;
-    padding: 2em;
-    align-items: center;
-    cursor: pointer;
-    border-top: 1px solid lightgray;
-  }
-
-  .shopping-bag-list-item-quantity-button {
-    display: flex;
-    align-items: center;
-    height: auto;
-    line-height: inherit;
-    width: auto !important;
-  }
-
   .modal-confirm-button {
     font-size: 3em;
     display: flex;
@@ -44,7 +28,6 @@
     align-items: center;
     margin: 0;
   }
-
 
   .modal-confirm-delete-button {
     display: flex;
@@ -76,10 +59,6 @@
     align-items: center;
   }
 
-  .modal {
-
-  }
-
   .modal-confirm-delete-wrapper{
     background-color: white;
     border-radius: 15px;
@@ -91,15 +70,6 @@
     z-index: 2;
     max-width: 100%;
     max-height: 100%;
-  }
-
-  /* Modal Content/Box */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
   }
 
   .modal-confirm-delete-close {

@@ -6,42 +6,11 @@
   Vaša korpa je prazna.
 </div>
 <div class="d-flex flex-column list-items">
-  <div *ngFor="let itm of items; let i=index"
-       class="d-flex flex-row shopping-bag-list-item">
-    <img src={{itm.imgUrl}}
-         class="img-fluid zoom zoom-bag"
-         alt="smaple image">
-
-    <div class="d-flex flex-column">
-      <div class="shopping-bag-list-item-name">
-        {{itm['name']}}
-      </div>
-      <div class="shopping-bag-list-item-color">
-        {{itm['color']}}
-      </div>
-      <div class="shopping-bag-list-item-price">
-        {{itm['price']}} RSD
-      </div>
-      <div class="shopping-bag-list-item-size">
-        {{itm['size']}}
-      </div>
-      <div class="d-flex flex-row shopping-bag-list-item-quantity">
-        <i class="fa fa-minus zoom shopping-bag-list-item-quantity-button"
-           (click)="minusOnClick(itm)"
-        ></i>
-        <div class="shopping-bag-list-item-quantity-label">
-          {{itm['quantity']}}
-        </div>
-        <i class="fa fa-plus zoom shopping-bag-list-item-quantity-button"
-           (click)="plusOnClick(itm)"
-        ></i>
-      </div>
-
-
-    </div>
-    <i class="fa fa-trash zoom shopping-chart-delete-button"
-       (click)="deleteOnClick(i)">
-    </i>
+  <div *ngFor="let itm of items; let i=index">
+      <app-shopping-bag-item
+        [itemData]=itm
+        (deleteItemEvent)="deteleItem($event)"
+      ></app-shopping-bag-item>
   </div>
 </div>
 

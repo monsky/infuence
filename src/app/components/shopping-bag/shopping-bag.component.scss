@@ -10,61 +10,6 @@
     padding-left: 2em;
   }
 
-  .shopping-bag-list-item {
-    min-width: 36em;
-    padding: 2em;
-    align-items: center;
-    cursor: pointer;
-    border-top: 1px solid lightgray;
-  }
-
-  .shopping-bag-list-item-name {
-    font-size: 2em;
-    font-weight: bold;
-    align-items: center;
-  }
-
-  .shopping-bag-list-item-color {
-    font-size: 1.5em;
-    align-items: center;
-  }
-
-  .shopping-bag-list-item-price {
-    font-size: 1.5em;
-    align-items: center;
-  }
-
-  .shopping-bag-list-item-size {
-    font-size: 1.5em;
-    align-items: center;
-  }
-
-  .shopping-bag-list-item-quantity {
-    font-size: 1.5em;
-    align-items: flex-end;
-  }
-
-  .shopping-bag-list-item-quantity-label {
-    min-width: 3em;
-    text-align: center;
-    border-radius: 10px;
-    border: 2px solid black;
-    margin: 0 1em 0;
-    user-select: none;
-  }
-
-  .shopping-bag-list-item-quantity-button {
-    display: flex;
-    align-items: center;
-    height: auto;
-    line-height: inherit;
-    width: auto !important;
-  }
-
-  .zoom-bag {
-    margin: 0 50px 0 !important;
-  }
-
   .list-items {
     width: 100%;
     border-bottom: 1px solid lightgray;
@@ -73,14 +18,6 @@
   .shopping-cart-details {
     min-width: 10em;
     padding-bottom: 2em;
-  }
-
-  .shopping-chart-delete-button {
-    font-size: 3em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
   }
 
   .shopping-chart-button-wrapper {
