@@ -10,8 +10,6 @@ export class ShoppingBagComponent implements OnInit, OnDestroy {
 
   public items: Array<number> = [];
 
-  public selectedItem = null;
-
   constructor(public appModel: AppModel) {
   }
 
@@ -22,25 +20,14 @@ export class ShoppingBagComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
   }
 
-  public plusOnClick(itm): void {
-    itm.quantity++;
-    if (itm.quantity > 10) {
-      itm.quantity = 10;
+  public deteleItem(item): void {
+    const i = this.items.indexOf(item);
+    if (i >= 0) {
+      this.items.splice(i, 1);
     }
   }
 
-  public minusOnClick(itm): void {
-    itm.quantity--;
-    if (itm.quantity < 1) {
-      itm.quantity = 1;
-    }
-  }
-
-  public deleteOnClick(index): void {
-    this.items.splice(index, 1);
-  }
-
-  public openModalConfirmDelete(){
+  public openModalConfirmDelete() {
     this.appModel.isModalConfirmDeleteOpened = true;
   }
 

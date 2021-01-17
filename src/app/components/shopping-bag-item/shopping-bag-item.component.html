@@ -1,0 +1,34 @@
+<div class="d-flex flex-row shopping-bag-item">
+  <img src={{itemData.imgUrl}}
+       class="img-fluid zoom zoom-bag"
+       alt="smaple image">
+
+  <div class="d-flex flex-column">
+    <div class="shopping-bag-item-name">
+      {{itemData['name']}}
+    </div>
+    <div class="shopping-bag-item-color">
+      {{itemData['color']}}
+    </div>
+    <div class="shopping-bag-item-price">
+      {{itemData['price']}} RSD
+    </div>
+    <div class="shopping-bag-item-size">
+      {{itemData['size']}}
+    </div>
+    <div class="d-flex flex-row shopping-bag-item-quantity">
+      <i class="fa fa-minus zoom shopping-bag-item-quantity-button"
+         (click)="minusOnClick()"
+      ></i>
+      <div class="shopping-bag-item-quantity-label">
+        {{itemData['quantity']}}
+      </div>
+      <i class="fa fa-plus zoom shopping-bag-item-quantity-button"
+         (click)="plusOnClick()"
+      ></i>
+    </div>
+  </div>
+  <i class="fa fa-trash zoom shopping-chart-delete-button"
+     (click)="deleteOnClick()">
+  </i>
+</div>

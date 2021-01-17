@@ -23,11 +23,12 @@ import {PrintShopContractComponent} from './components/print-shop-contract/print
 import {InfluencerContractComponent} from './components/influencer-contract/influencer-contract.component';
 import {OrderStatusComponent} from './components/order-status/order-status.component';
 import {OrderRequestComponent} from './components/order-request/order-request.component';
-import { EditorComponent } from './components/editor/editor.component';
-import { ModalConfirmDeleteComponent } from './components/modal/modal-confirm-delete/modal-confirm-delete.component';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { ColorPickerModule } from 'ngx-color-picker';
+import {EditorComponent} from './components/editor/editor.component';
+import {ModalConfirmDeleteComponent} from './components/modal/modal-confirm-delete/modal-confirm-delete.component';
+import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+import {ColorPickerModule} from 'ngx-color-picker';
 import {ClickOutsideDirective} from './directives/ClickOutsideDirective';
+import {ShoppingBagItemComponent} from './components/shopping-bag-item/shopping-bag-item.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {ClickOutsideDirective} from './directives/ClickOutsideDirective';
     ClickOutsideDirective,
     OrderRequestComponent,
     EditorComponent,
-    ModalConfirmDeleteComponent
+    ModalConfirmDeleteComponent,
+    ShoppingBagItemComponent
   ],
   imports: [
     BrowserModule,
