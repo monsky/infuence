@@ -64,5 +64,12 @@
   .state-of-shippnig-button-not-shipped {
     @include state-of-shippnig-button($shipped: false)
   }
+
+  .orders {
+    margin: 1.2em;
+    background-color: white;
+    padding: 1em;
+    border: 1px solid lightblue;
+  }
 }
 

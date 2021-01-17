@@ -9,13 +9,13 @@
 
   .column-name {
     font-weight: bold;
-    align-self: flex-end;
+    width: 90px;
   }
 
   .column-data-row {
     font-size: 1.3em;
     border-bottom: 1px solid lightgray;
-    padding: 0.2em 0;
+    padding: 1em 0;
   }
 
   .column-data-row:hover {
@@ -60,6 +60,10 @@
 
   .order-status-button-waiting {
     @include order-status-button($printed: false)
+  }
+
+  .more-button {
+    cursor: pointer;
   }
 
 

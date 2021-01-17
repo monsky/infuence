@@ -21,11 +21,12 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
+    let id = 0;
     this.subscription = this.activatedRoute.params
       .subscribe((params: Params) => {
         this.selectedItems = [];
-        const id = params.id ? Number(params.id) : 0;
-        this.appModel.articles.map(item => (item.categoryId === id) ? this.selectedItems.push(item) : '');
+        id = params.id ? Number(params.id) : 0;
+        this.appModel.products.map(item => (item.categoryId === id) ? this.selectedItems.push(item) : '');
         this.cdr.detectChanges();
       });
   }

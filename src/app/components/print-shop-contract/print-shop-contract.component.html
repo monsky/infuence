@@ -1,8 +1,7 @@
 <div class="flex-column flex-1">
   <div class="flex-row table-header">
     <div *ngFor="let columnName of columnNames, let i = index"
-         class="column-name"
-         [ngClass]="{'fixed-width-6': i===2 || i===3, 'fixed-width-12' : i===4, 'flex-1': i===0 || i===1}">
+         class="column-name flex-1">
       {{columnName}}
   </div>
 </div>
@@ -14,21 +13,12 @@
     {{ data.name }}
   </div>
   <div class="flex-1">
-    {{ data.contractId }}
+    {{ data.id }}
   </div>
-  <div class="fixed-width-6">
-    {{ data.contractType }}
-  </div>
-  <div class="fixed-width-6">
-    {{ data.discount }}
-  </div>
-  <div class="fixed-width-12">
-    {{ data.numberOfOrderedArticles }}
+  <div class="flex-1">
+    {{ data.articlesOrdered }}
   </div>
 </div>
-
-</div>
-
 
 
 

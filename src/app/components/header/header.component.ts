@@ -38,10 +38,10 @@ export class HeaderComponent {
     this.searchResultsItems = [];
     if (searchWord.length > 2) {
       this.appModel.influencers.filter((influencer) => {
-        influencer.name.substring(0, searchWord.length).toLowerCase() == searchWord.toLowerCase() ?
+        influencer.firstName.substring(0, searchWord.length).toLowerCase() == searchWord.toLowerCase() ?
           this.searchResultsInfluencers.push(influencer) : '';
       });
-      this.appModel.items.filter((item) => {
+      this.appModel.products.filter((item) => {
         item.name.substring(0, searchWord.length).toLowerCase() == searchWord.toLowerCase() ?
           this.searchResultsItems.push(item) : '';
       });

@@ -2,84 +2,103 @@
   <div class="flex-row table-header">
     <div *ngFor="let columnName of columnNames, let i = index"
          class="column-name"
-         [ngClass]="{'fixed-width-6': i===0 || i===8 || i===9 || i===10 || i===11 || i===13, 'fixed-width-5': i===3 || i===4 || i===5 || i===6 || i===12, 'fixed-width-4': i===7 || i===14, 'flex-1': i===1 || i===2}">
+         [ngClass]="{'fixed-width-6': i===0 || i===8 || i===9 || i===10 || i===11 || i===13, 'fixed-width-5': i===6 || i===12, 'fixed-width-4': i===7 || i===14, 'flex-1': i===1 || i===2 ||  i===3 || i===4 || i===5 }">
       {{columnName}}
     </div>
   </div>
 
   <div *ngFor="let data of columnData; let j=index"
        [style.background-color]="(j%2) === 0 ?'#f9fcff':'white'"
-       class="flex-row column-data-row">
-    <div class="fixed-width-6">
-      {{ data.date }}
-    </div>
-    <div class="flex-1">
-      {{ data.influencerName }}
-    </div>
-    <div class="flex-1">
-      {{ data.articalName }}
-    </div>
-    <div class="fixed-width-5">
-      {{ data.articalId }}
-    </div>
-    <div class="fixed-width-5">
-      {{ data.amount }}
-    </div>
-    <div class="fixed-width-5">
-      {{ data.size }}
-    </div>
-    <div class="fixed-width-5">
-      {{ data.prize }}
-    </div>
-    <div class="fixed-width-4">
-      {{ data.color }}
-    </div>
-    <div class="fixed-width-6">
-      {{ data.dateOfShipping }}
-    </div>
-
-    <div class="flex-column fixed-width-6">
-      <div class="state-of-shippnig-button-shipped"
-           [ngClass]="{'zoom' : data.stateOfShipping === 0}"
-           [style.border-color]="data.stateOfShipping === 1 ? 'grey' : 'black'"
-           [style.color]="data.stateOfShipping === 1 ? 'grey' : 'black'"
-           (click)="!data.stateOfShipping && changeStatusToShipped(data)">
-        Isporučeno
+       class="flex-row column-data-row flex-1">
+    <div class="flex-column flex-1">
+      <div class="flex-row">
+        <div class="fixed-width-6">
+          {{ data.id }}
+        </div>
+        <div class="flex-1">
+          {{ data.firstName }}
+        </div>
+        <div class="flex-1">
+          {{ data.terms }}
+        </div>
+        <div class="flex-1">
+          {{ data.totalEarned }}
+        </div>
+        <div class="flex-1">
+          {{ data.earnedThisMonth }}
+        </div>
+        <div class="flex-1">
+          {{ data.ordersNumber }}
+        </div>
+        <div class="fixed-width-5 flex-row justify-content-end align-items-end">
+          <i (click)="ordersOpenedChange(j)" class="fa fa-arrow-down"></i>
+        </div>
       </div>
-      <div class="state-of-shippnig-button-not-shipped"
-           [ngClass]="{'zoom' : data.stateOfShipping === 1}"
-           [style.border-color]="data.stateOfShipping === 0 ? 'grey' : 'black'"
-           [style.color]="data.stateOfShipping === 0 ? 'grey' : 'black'"
-           (click)="data.stateOfShipping && chagneStatusToNotShipped(data)">
-        Nije isporučeno
+      <div *ngIf="ordersOpened[j] === true"
+           class="flex-column flex-1 orders">
+        <div class="flex-row"
+             style="border-bottom: 1px solid lightblue;">
+          <div *ngFor="let columnName of columnsInsideInfluenserNames, let i = index"
+               class="column-name flex-1 flex-row"
+               [ngClass]="{'fixed-width-6': i===6 || i===7}">
+            {{columnName}}
+          </div>
+        </div>
+        <div class="flex-column">
+          <div *ngFor="let order of data.orders"
+               class="flex-row">
+            <div class="flex-1">
+              {{ order.id }}
+            </div>
+            <div class="flex-1">
+              {{ order.date }}
+            </div>
+            <div class="flex-1">
+              {{ order.name }}
+            </div>
+            <div class="flex-1">
+              {{ order.amount }}
+            </div>
+            <div class="flex-1">
+              {{ order.prize }}
+            </div>
+            <div class="flex-1">
+              {{ order.size }}
+            </div>
+            <div class="flex-1">
+              {{ order.amount * order.prize * data.terms / 100}}
+            </div>
+            <div class="flex-1">
+              {{ order.amount * order.prize * (100 - data.terms) / 100}}
+            </div>
+            <div class="flex-column flex-1">
+              <div *ngIf="order.delivered === true"
+                    [style.color]="'black'">
+                Isporučeno
+              </div>
+              <div *ngIf="order.delivered === false"
+                   [style.color]="'red'"
+                   (click)="changeStatusToShipped(order)">
+                Isporuci
+              </div>
+
+            </div>
+            <div class="flex-column flex-1">
+              <div *ngIf="order.paid === true"
+                   [style.color]="'black'">
+                Placeno
+              </div>
+              <div *ngIf="order.paid === false"
+                   [style.color]="'red'"
+                   (click)="changeStatusToPaid(order)">
+                Plati
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
-
-    </div>
-
-    <div class="fixed-width-6">
-      {{ data.isInfluencerPaid }}
-    </div>
-    <div class="fixed-width-6">
-      {{ data.percentOfInfluencer }}
-    </div>
-    <div class="fixed-width-5">
-      {{ data.percent }}
-    </div>
-    <div class="fixed-width-6">
-      {{ data.earnedOfInfluencer }}
-    </div>
-    <div class="fixed-width-4">
-      {{ data.earned }}
     </div>
   </div>
 
 </div>
-
-
-
-
-
-
-
-
-

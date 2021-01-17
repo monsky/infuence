@@ -23,8 +23,8 @@ export class InfluencerComponent implements OnInit, OnDestroy {
     this.subscription = this.activatedRoute.params
       .subscribe((params: Params) => {
         const id = Number(params.id);
-        this.selectedItems = this.appModel.items.filter(item => item.owner === id);
-        this.influencer = this.appModel.influencers.filter(item => item.id === id)[0];
+        this.selectedItems = this.appModel.products.filter(item => item.idSeller === id);
+        this.influencer = this.appModel.influencers.filter(influencer => influencer.id === id)[0];
       });
   }
 

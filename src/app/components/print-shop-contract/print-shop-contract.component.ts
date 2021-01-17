@@ -19,7 +19,7 @@ export class PrintShopContractComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.columnNames = this.appModel.printShopContractColNames;
-    this.columnData = this.appModel.printShopContractData;
+    this.columnData = this.appModel.contracts;
   }
 
   public ngOnDestroy(): void {

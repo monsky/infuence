@@ -33,131 +33,125 @@ export class AppModel {
       quantity: 2
     }
   ];
-  public items: Array<any> = [
-    {
-      id: 0,
-      name: 'Majica 1',
-      category: 0,
-      prize: 1000.00,
-      availableSizes: ['s', 'm'],
-      availableColors: ['red', 'blue'],
-      description: 'labalabalbalalalall',
-      owner: 0,
-      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
-    },
-    {
-      id: 1,
-      name: 'Majica 2',
-      category: 0,
-      prize: 1000.00,
-      availableSizes: ['s'],
-      availableColors: ['red', 'blue'],
-      description: 'labalabalbalalalall',
-      owner: 0,
-      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
-    },
-    {
-      id: 2,
-      name: 'Majica 3',
-      category: 1,
-      prize: 1000.00,
-      availableSizes: ['s'],
-      availableColors: ['red', 'blue'],
-      description: 'labalabalbalalalall',
-      owner: 2,
-      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
-    },
-    {
-      id: 3,
-      name: 'Majica 4',
-      category: 1,
-      prize: 1000.00,
-      availableSizes: ['s'],
-      availableColors: ['red', 'blue'],
-      description: 'labalabalbalalalall',
-      owner: 2,
-      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
-    },
-    {
-      id: 3,
-      name: 'Majica 4',
-      category: 1,
-      prize: 1000.00,
-      availableSizes: ['s'],
-      availableColors: ['red', 'blue'],
-      description: 'labalabalbalalalall',
-      owner: 2,
-      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
-    },
-    {
-      id: 3,
-      name: 'Majica 4',
-      category: 1,
-      prize: 1000.00,
-      availableSizes: ['s'],
-      availableColors: ['red', 'blue'],
-      description: 'labalabalbalalalall',
-      owner: 2,
-      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
-    },
-    {
-      id: 4,
-      name: 'Enaina majica',
-      category: 2,
-      prize: 1000.00,
-      availableSizes: [],
-      availableColors: ['red', 'blue'],
-      description: 'labalabalbalalalall',
-      owner: 1,
-      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
-    },
-    {
-      id: 5,
-      name: 'Majica 5',
-      category: 2,
-      prize: 1000.00,
-      availableSizes: [],
-      availableColors: ['red', 'blue'],
-      description: 'labalabalbalalalall',
-      owner: 1,
-      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
-    }
-  ];
   public influencers: Array<any> = [
     {
       id: 0,
-      name: 'Ena Luna',
-      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
+      email: 'irmasumska@yahoo.com',
+      firstName: 'Iki',
+      lastName: 'Siki',
+      imgUrl: 'https://images.unsplash.com/photo-1563992891888-3a441b92e7c7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
     },
     {
       id: 1,
-      name: 'Dunja Jovanic',
-      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
+      email: 'dunja@yahoo.com',
+      firstName: 'Dunja',
+      lastName: 'Jovanic',
+      imgUrl: 'https://images.unsplash.com/photo-1598137203988-80de6392fc1a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
     },
     {
       id: 2,
-      name: 'Zoranah',
-      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
+      email: 'zoranah@yahoo.com',
+      firstName: 'Zoranah',
+      lastName: 'zo',
+      imgUrl: 'https://images.unsplash.com/photo-1602751184834-947bd06e8710?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
     },
     {
       id: 3,
-      name: 'Sara Jo',
-      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg'
+      email: 'sarajo@yahoo.com',
+      firstName: 'Sara',
+      lastName: 'Jo',
+      imgUrl: 'https://images.unsplash.com/photo-1603771628324-c90909126ccd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
     }
   ];
   public user: any = {
     id: 1,
-    firstName: 'Marko',
-    lastName: 'Trajkovic',
-    eMail: 'markotrajkovic88@gmail.com',
-    phoneNumber: '0658889991',
-    city: 'Beograd',
-    street: 'Južni bulevar',
-    streetNumber: '85',
-    postalCode: '11000',
-    favorites: [],
-    shipments: [],
-    isAdmin: true
+    isAdmin: true,
+    email: 'irmasumska@yahoo.com',
+    firstName: 'Iki',
+    lastName: 'Siki',
+    address: 'V 157',
+    city: 'Belgrade',
+    postCode: 11000,
+    country: 'Serbia',
+    ordersNumber: 20,
+    role: 'influencer',
+    terms: 50,
+    influencerEarned: 3000,
+    last_paid: '30/10/2020',
+    totalEarned: 2000,
+    earnedThisMonth: 100,
+    paidThisMonth: true,
+    orders: [
+      {
+        id: 0,
+        name: 'Majica 10',
+        amount: 2,
+        prize: 1256,
+        size: 'S',
+        date: '20/10/2020',
+        delivered: false,
+        paid: false,
+        approved: 'waiting'
+      },
+      {
+        id: 1,
+        name: 'Majica 10',
+        amount: 2,
+        prize: 1256,
+        size: 'M',
+        date: '20/10/2020',
+        delivered: false,
+        paid: false,
+        approved: 'notApproved'
+      },
+      {
+        id: 2,
+        name: 'Majica 10',
+        amount: 2,
+        prize: 1256,
+        size: 'L',
+        date: '20/10/2020',
+        delivered: false,
+        paid: false,
+        approved: 'approved'
+      }
+    ],
+    products: [
+      {
+        id: 2,
+        name: 'Majica Kat 1',
+        idSeller: 2,
+        prize: 1256,
+        colors: [
+          'red', 'blue', 'yellow'
+        ],
+        sizes: [
+          'S', 'M', 'L'
+        ],
+        img: 'https://images.unsplash.com/photo-1530475329205-1c5333ae40fb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80',
+        categoryId: 1,
+        categoryName: 'Majice',
+        itemsSold: 30
+      },
+      {
+        id: 3,
+        name: 'Majica kat 2',
+        idSeller: 2,
+        prize: 1256,
+        colors: [
+          'red', 'blue', 'yellow'
+        ],
+        sizes: [
+          'S', 'M', 'L'
+        ],
+        img: 'https://images.unsplash.com/photo-1528938102132-4a9276b8e320?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+        categoryId: 2,
+        categoryName: 'Majice',
+        itemsSold: 30
+      }
+    ],
+    favourites: [],
+    imgUrl: 'https://images.unsplash.com/photo-1598137203988-80de6392fc1a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
   };
 
   public influencerContractColNames: Array<string> = [
@@ -173,14 +167,20 @@ export class AppModel {
     'ID',
     'Datum',
     'Ime',
-    'ID Artikla',
+    // 'ID Artikla',
     'Kolicina',
     'Cena',
-    'Dostavljeno',
-    'Placeno',
     'Velicina',
     'Influenser zaradio',
-    'Kompanije zaradila'
+    'Kompanije zaradila',
+    'Dostavljeno',
+    'Placeno',
+  ];
+  public columnsInsideOrders: Array<string> = [
+    'Dostavljeno',
+    'Placeno',
+    'Status',
+    'Odobreno'
   ];
   public influencerContractData: Array<any> = [
     {
@@ -206,30 +206,33 @@ export class AppModel {
           name: 'Majica 10',
           amount: 2,
           prize: 1256,
+          size: 'L',
           date: '20/10/2020',
           delivered: false,
           paid: false,
-          approved: false
+          approved: 'notApproved'
         },
         {
           id: 1,
           name: 'Majica 10',
           amount: 2,
           prize: 1256,
+          size: 'S',
           date: '20/10/2020',
           delivered: false,
           paid: false,
-          approved: false
+          approved: 'waiting'
         },
         {
           id: 2,
           name: 'Majica 10',
           amount: 2,
           prize: 1256,
+          size: 'XL',
           date: '20/10/2020',
           delivered: false,
           paid: false,
-          approved: false
+          approved: 'waiting'
         }
       ],
       articles: [],
@@ -261,7 +264,7 @@ export class AppModel {
           date: '20/10/2020',
           delivered: false,
           paid: false,
-          approved: false
+          approved: 'notApproved'
         },
         {
           id: 1,
@@ -271,7 +274,7 @@ export class AppModel {
           date: '20/10/2020',
           delivered: false,
           paid: false,
-          approved: false
+          approved: 'approved'
         },
         {
           id: 2,
@@ -281,7 +284,7 @@ export class AppModel {
           date: '20/10/2020',
           delivered: false,
           paid: false,
-          approved: false
+          approved: 'approved'
         }
       ],
       articles: [],
@@ -313,7 +316,7 @@ export class AppModel {
           date: '20/10/2020',
           delivered: false,
           paid: false,
-          approved: false
+          approved: 'approved'
         },
         {
           id: 1,
@@ -323,7 +326,7 @@ export class AppModel {
           date: '20/10/2020',
           delivered: false,
           paid: false,
-          approved: false
+          approved: 'approved'
         },
         {
           id: 2,
@@ -333,7 +336,7 @@ export class AppModel {
           date: '20/10/2020',
           delivered: false,
           paid: false,
-          approved: false
+          approved: 'approved'
         }
       ],
       articles: [],
@@ -344,8 +347,6 @@ export class AppModel {
   public printShopContractColNames: Array<string> = [
     'Ime poslodavca',
     'Ime ugovora',
-    'Tip ugovora',
-    'Popust',
     'Broj poručenih artikala'
   ];
   public printShopContractData: Array<any> = [
@@ -381,10 +382,18 @@ export class AppModel {
 
   public orderStatusColNames: Array<string> = [
     'Slika',
+    'Id',
+    'Ime artikla',
+    'Id artikla',
+    'Kolicina',
+    'Cena',
+    'Velicina',
+    'Datum',
+    'Id influensera',
     'Ime influensera',
-    'Ime poručioca',
-    'Id porudžbine',
-    'Status'
+    'Id narucioca',
+    'Ime narucioca',
+    'More...'
   ];
   public orderStatusData: Array<any> = [
     {
@@ -414,7 +423,8 @@ export class AppModel {
     'Slika',
     'Id porudžbine',
     'Ime poručioca',
-    'Status'
+    'Ime influensera',
+    'Zahtev za odobrenje'
   ];
   public orderRequestData: Array<any> = [
     {
@@ -439,11 +449,11 @@ export class AppModel {
 
   public isModalConfirmDeleteOpened: boolean = false;
 
-  public articles: Array<any> = [
+  public products: Array<any> = [
     {
       id: 0,
-      name: 'Majica 10',
-      idSeller: 2,
+      name: 'Majica Kat 0',
+      idSeller: 0,
       prize: 1256,
       colors: [
         'red', 'blue', 'yellow'
@@ -451,15 +461,15 @@ export class AppModel {
       sizes: [
         'S', 'M', 'L'
       ],
-      img: 'https://pixabay.com/photos/beach-ocean-sunset-sunrise-sea-5795560/',
+      imgUrl: 'https://images.unsplash.com/photo-1600328759671-85927887458d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
       categoryId: 0,
       categoryName: 'Majice',
       itemsSold: 30
     },
     {
       id: 1,
-      name: 'Majica 10',
-      idSeller: 2,
+      name: 'Majica 2 Kat 1',
+      idSeller: 1,
       prize: 1256,
       colors: [
         'red', 'blue', 'yellow'
@@ -467,14 +477,14 @@ export class AppModel {
       sizes: [
         'S', 'M', 'L'
       ],
-      img: 'https://pixabay.com/photos/sorcerer-magician-illusionist-4586454/',
+      imgUrl: 'https://images.unsplash.com/photo-1484663548870-2aa675ba38fb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
       categoryId: 1,
       categoryName: 'Majice',
       itemsSold: 30
     },
     {
       id: 2,
-      name: 'Majica 10',
+      name: 'Majica Kat 1',
       idSeller: 2,
       prize: 1256,
       colors: [
@@ -483,15 +493,15 @@ export class AppModel {
       sizes: [
         'S', 'M', 'L'
       ],
-      img: 'https://pixabay.com/photos/angry-man-hoodie-old-bart-2766265/',
+      imgUrl: 'https://images.unsplash.com/photo-1530475329205-1c5333ae40fb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80',
       categoryId: 1,
       categoryName: 'Majice',
       itemsSold: 30
     },
     {
       id: 3,
-      name: 'Majica 10',
-      idSeller: 2,
+      name: 'Majica kat 2',
+      idSeller: 3,
       prize: 1256,
       colors: [
         'red', 'blue', 'yellow'
@@ -499,15 +509,15 @@ export class AppModel {
       sizes: [
         'S', 'M', 'L'
       ],
-      img: 'https://pixabay.com/photos/people-statement-jacket-hoodie-sand-2592164/',
+      imgUrl: 'https://images.unsplash.com/photo-1528938102132-4a9276b8e320?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
       categoryId: 2,
       categoryName: 'Majice',
       itemsSold: 30
     },
     {
       id: 4,
-      name: 'Majica 10',
-      idSeller: 2,
+      name: 'Majica kat 0',
+      idSeller: 0,
       prize: 1256,
       colors: [
         'red', 'blue', 'yellow'
@@ -515,16 +525,17 @@ export class AppModel {
       sizes: [
         'S', 'M', 'L'
       ],
-      img: 'https://pixabay.com/photos/snow-winter-cold-weather-outdoor-2593354/',
+      imgUrl: 'https://images.unsplash.com/photo-1595136895914-da8f886a7ed8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80',
       categoryId: 0,
       categoryName: 'Majice',
       itemsSold: 30
     }
   ];
 
-  public users: Array<any> = [
+  public influencersAdmin: Array<any> = [
     {
       id: 0,
+      isAdmin: false,
       email: 'irmasumska@yahoo.com',
       firstName: 'Iki',
       lastName: 'Siki',
@@ -546,37 +557,75 @@ export class AppModel {
           name: 'Majica 10',
           amount: 2,
           prize: 1256,
+          size: 'S',
           date: '20/10/2020',
           delivered: false,
           paid: false,
-          approved: false
+          approved: 'notApproved'
         },
         {
           id: 1,
           name: 'Majica 10',
           amount: 2,
           prize: 1256,
+          size: 'M',
           date: '20/10/2020',
           delivered: false,
           paid: false,
-          approved: false
+          approved: 'notApproved'
         },
         {
           id: 2,
           name: 'Majica 10',
           amount: 2,
           prize: 1256,
+          size: 'L',
           date: '20/10/2020',
           delivered: false,
           paid: false,
-          approved: false
+          approved: 'notApproved'
         }
       ],
-      articles: [],
-      favourites: []
+      products: [
+        {
+          id: 0,
+          name: 'Majica Kat 0',
+          idSeller: 2,
+          prize: 1256,
+          colors: [
+            'red', 'blue', 'yellow'
+          ],
+          sizes: [
+            'S', 'M', 'L'
+          ],
+          img: 'https://images.unsplash.com/photo-1600328759671-85927887458d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          categoryId: 0,
+          categoryName: 'Majice',
+          itemsSold: 30
+        },
+        {
+          id: 1,
+          name: 'Majica 2 Kat 1',
+          idSeller: 2,
+          prize: 1256,
+          colors: [
+            'red', 'blue', 'yellow'
+          ],
+          sizes: [
+            'S', 'M', 'L'
+          ],
+          img: 'https://images.unsplash.com/photo-1484663548870-2aa675ba38fb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+          categoryId: 1,
+          categoryName: 'Majice',
+          itemsSold: 30
+        },
+      ],
+      favourites: [],
+      imgUrl: 'https://images.unsplash.com/photo-1563992891888-3a441b92e7c7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
     },
     {
       id: 1,
+      isAdmin: false,
       email: 'irmasumska@yahoo.com',
       firstName: 'Iki',
       lastName: 'Siki',
@@ -598,37 +647,75 @@ export class AppModel {
           name: 'Majica 10',
           amount: 2,
           prize: 1256,
+          size: 'L',
           date: '20/10/2020',
           delivered: false,
           paid: false,
-          approved: false
+          approved: 'waiting'
         },
         {
           id: 1,
           name: 'Majica 10',
           amount: 2,
           prize: 1256,
+          size: 'L',
           date: '20/10/2020',
           delivered: false,
           paid: false,
-          approved: false
+          approved: 'notApproved'
         },
         {
           id: 2,
           name: 'Majica 10',
           amount: 2,
           prize: 1256,
+          size: 'L',
           date: '20/10/2020',
           delivered: false,
           paid: false,
-          approved: false
+          approved: 'approved'
         }
       ],
-      articles: [],
-      favourites: []
+      products: [
+        {
+          id: 2,
+          name: 'Majica Kat 1',
+          idSeller: 2,
+          prize: 1256,
+          colors: [
+            'red', 'blue', 'yellow'
+          ],
+          sizes: [
+            'S', 'M', 'L'
+          ],
+          img: 'https://images.unsplash.com/photo-1530475329205-1c5333ae40fb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80',
+          categoryId: 1,
+          categoryName: 'Majice',
+          itemsSold: 30
+        },
+        {
+          id: 3,
+          name: 'Majica kat 2',
+          idSeller: 2,
+          prize: 1256,
+          colors: [
+            'red', 'blue', 'yellow'
+          ],
+          sizes: [
+            'S', 'M', 'L'
+          ],
+          img: 'https://images.unsplash.com/photo-1528938102132-4a9276b8e320?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+          categoryId: 2,
+          categoryName: 'Majice',
+          itemsSold: 30
+        }
+        ],
+      favourites: [],
+      imgUrl: 'https://images.unsplash.com/photo-1598137203988-80de6392fc1a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
     },
     {
       id: 2,
+      isAdmin: false,
       email: 'irmasumska@yahoo.com',
       firstName: 'Iki',
       lastName: 'Siki',
@@ -650,54 +737,255 @@ export class AppModel {
           name: 'Majica 10',
           amount: 2,
           prize: 1256,
+          size: 'L',
           date: '20/10/2020',
           delivered: false,
           paid: false,
-          approved: false
+          approved: 'approved'
         },
         {
           id: 1,
           name: 'Majica 10',
           amount: 2,
           prize: 1256,
+          size: 'M',
           date: '20/10/2020',
           delivered: false,
           paid: false,
-          approved: false
+          approved: 'approved'
         },
         {
           id: 2,
           name: 'Majica 10',
           amount: 2,
           prize: 1256,
+          size: 'XL',
           date: '20/10/2020',
           delivered: false,
           paid: false,
-          approved: false
+          approved: 'approved'
         }
       ],
-      articles: [],
-      favourites: []
+      products: [
+        {
+          id: 2,
+          name: 'Majica Kat 1',
+          idSeller: 2,
+          prize: 1256,
+          colors: [
+            'red', 'blue', 'yellow'
+          ],
+          sizes: [
+            'S', 'M', 'L'
+          ],
+          img: 'https://images.unsplash.com/photo-1530475329205-1c5333ae40fb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80',
+          categoryId: 1,
+          categoryName: 'Majice',
+          itemsSold: 30
+        },
+        {
+          id: 3,
+          name: 'Majica kat 2',
+          idSeller: 2,
+          prize: 1256,
+          colors: [
+            'red', 'blue', 'yellow'
+          ],
+          sizes: [
+            'S', 'M', 'L'
+          ],
+          img: 'https://images.unsplash.com/photo-1528938102132-4a9276b8e320?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+          categoryId: 2,
+          categoryName: 'Majice',
+          itemsSold: 30
+        }
+        ],
+      favourites: [],
+      imgUrl: 'https://images.unsplash.com/photo-1602751184834-947bd06e8710?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
+    },
+    {
+      id: 3,
+      isAdmin: false,
+      email: 'irmasumska@yahoo.com',
+      firstName: 'Iki',
+      lastName: 'Siki',
+      address: 'V 157',
+      city: 'Belgrade',
+      postCode: 11000,
+      country: 'Serbia',
+      ordersNumber: 20,
+      role: 'influencer',
+      terms: 50,
+      influencerEarned: 3000,
+      last_paid: '30/10/2020',
+      totalEarned: 2000,
+      earnedThisMonth: 100,
+      paidThisMonth: true,
+      orders: [
+        {
+          id: 0,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          size: 'S',
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: 'notApproved'
+        },
+        {
+          id: 1,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          size: 'M',
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: 'notApproved'
+        },
+        {
+          id: 2,
+          name: 'Majica 10',
+          amount: 2,
+          prize: 1256,
+          size: 'XL',
+          date: '20/10/2020',
+          delivered: false,
+          paid: false,
+          approved: 'notApproved'
+        }
+      ],
+      products: [
+        {
+          id: 2,
+          name: 'Majica Kat 1',
+          idSeller: 2,
+          prize: 1256,
+          colors: [
+            'red', 'blue', 'yellow'
+          ],
+          sizes: [
+            'S', 'M', 'L'
+          ],
+          img: 'https://images.unsplash.com/photo-1530475329205-1c5333ae40fb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80',
+          categoryId: 1,
+          categoryName: 'Majice',
+          itemsSold: 30
+        },
+        {
+          id: 3,
+          name: 'Majica kat 2',
+          idSeller: 2,
+          prize: 1256,
+          colors: [
+            'red', 'blue', 'yellow'
+          ],
+          sizes: [
+            'S', 'M', 'L'
+          ],
+          img: 'https://images.unsplash.com/photo-1528938102132-4a9276b8e320?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+          categoryId: 2,
+          categoryName: 'Majice',
+          itemsSold: 30
+        }
+      ],
+      favourites: [],
+      imgUrl: 'https://images.unsplash.com/photo-1603771628324-c90909126ccd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
     }
   ];
+
+  public orders: Array<any> = [
+    {
+      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
+      id: 0,
+      name: 'Majica 10',
+      idArticle: 0,
+      amount: 2,
+      prize: 1256,
+      size: 'S',
+      date: '20/10/2020',
+      delivered: false,
+      paid: false,
+      idInfluenser: 0,
+      nameInfluenser: 'Ena',
+      idOrderer: 1,
+      nameOrderer: 'Irma',
+      status: 'printed',
+      approved: 'waiting'
+    },
+    {
+      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
+      id: 1,
+      name: 'Majica 10',
+      idArticle: 0,
+      amount: 2,
+      prize: 1256,
+      size: 'S',
+      date: '20/10/2020',
+      delivered: false,
+      paid: false,
+      idInfluenser: 0,
+      nameInfluenser: 'Ena',
+      idOrderer: 1,
+      nameOrderer: 'Irma',
+      status: 'printed',
+      approved: 'notApproved'
+    },
+    {
+      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
+      id: 2,
+      name: 'Majica 10',
+      idArticle: 0,
+      amount: 2,
+      prize: 1256,
+      size: 'S',
+      date: '20/10/2020',
+      delivered: false,
+      paid: false,
+      idInfluenser: 0,
+      nameInfluenser: 'Ena',
+      idOrderer: 1,
+      nameOrderer: 'Irma',
+      status: 'printed',
+      approved: 'approved'
+    }
+  ]
+
+  public contracts: Array<any> = [
+    {
+      name: 'Gold Jeans',
+      id: 0,
+      articlesOrdered: 30
+    },
+    {
+      name: 'Gold Star',
+      id: 1,
+      articlesOrdered: 50
+    }
+  ]
 
   constructor(private appService: AppService) {
   }
 
-  public getAllProducts(): void {
-    this.appService.getAllProducts().subscribe((articles) => {
-      this.articles = articles;
-    });
+  public getAllProducts(): Observable<any> {
+   return this.appService.getAllProducts();
+  }
+
+  public getAllInfluencers(): Observable<any> {
+    return this.appService.getAllInfluencers();
+  }
+
+  public getAllInfluencersAdmin(): Observable<any> {
+    return this.appService.getAllInfluencersAdmin();
   }
 
   public getProductById(productId: number): Observable<any> {
     return this.appService.getProductById(productId);
   }
 
-  public getAllUsers(): void {
-    this.appService.getAllUsers().subscribe((users) => {
-    this.users = users;
-      });
+  public getAllUsers(): Observable<any> {
+    return this.appService.getAllUsers();
   }
 
   public getUserById = (userId: number): Observable<any> => {
@@ -708,5 +996,16 @@ export class AppModel {
     return this.appService.getOrdersByUserId(userId);
   }
 
+  public getAllOrders = (): Observable<any> => {
+    return this.appService.getAllOrders();
+  }
+
+  public getAllOrderRequests = (): Observable<any> => {
+    return this.appService.getAllOrderRequests();
+  }
+
+  public getContracts = (): Observable<any> => {
+    return this.appService.getContracts();
+  }
 
 }

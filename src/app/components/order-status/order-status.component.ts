@@ -10,7 +10,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class OrderStatusComponent implements OnInit, OnDestroy {
 
   public columnNames: Array<string> = [];
+  public columnsInsideOrders: Array<string> = [];
   public columnData: any = {};
+  public details: Array<boolean> = [];
 
   constructor(public activatedRoute: ActivatedRoute,
               public appModel: AppModel,
@@ -19,18 +21,19 @@ export class OrderStatusComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.columnNames = this.appModel.orderStatusColNames;
-    this.columnData = this.appModel.orderStatusData;
+    this.columnsInsideOrders = this.appModel.columnsInsideOrders;
+    this.columnData = this.appModel.orders;
+    for ( let i = 0; i < this.appModel.orders.length; i++) {
+      this.details[i] = false;
+    }
   }
 
   public ngOnDestroy(): void {
   }
 
-  public changeStatusToPrinted(request): void {
-    request.orderStatus = 1;
-  }
-
-  public chagneStatusToWaiting(request): void {
-    request.orderStatus = 0;
+  public detailsOpened(index: number): void {
+    console.log(this.details)
+    this.details[index] = !this.details[index];
   }
 
 }

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AppModel} from './app.model';
 
 @Component({
@@ -6,8 +6,17 @@ import {AppModel} from './app.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   constructor(public appModel: AppModel) {
+  }
+
+  public ngOnInit(): void {
+    this.appModel.getAllProducts().subscribe((products) => {
+      this.appModel.products = products;
+    });
+    this.appModel.getAllInfluencers().subscribe((influencers) => {
+      this.appModel.influencers = influencers;
+    });
   }
 
 }
