@@ -437,6 +437,45 @@ export class AppModel {
     }
   ];
 
+  public countries: Array<any> = [
+    {
+      id: 1,
+      serbianName: 'Srbija'
+    },
+    {
+      id: 2,
+      serbianName: 'Madjarska'
+    },
+    {
+      id: 3,
+      serbianName: 'Hrvatska'
+    },
+    {
+      id: 4,
+      serbianName: 'Bosna i Hercegovina'
+    },
+    {
+      id: 5,
+      serbianName: 'Crna Gora'
+    },
+    {
+      id: 6,
+      serbianName: 'Albanija'
+    },
+    {
+      id: 7,
+      serbianName: 'Severna Makedonija'
+    },
+    {
+      id: 8,
+      serbianName: 'Bugarska'
+    },
+    {
+      id: 9,
+      serbianName: 'Rumunija'
+    }
+  ];
+
   public isModalConfirmDeleteOpened: boolean = false;
 
   public articles: Array<any> = [
@@ -696,8 +735,8 @@ export class AppModel {
 
   public getAllUsers(): void {
     this.appService.getAllUsers().subscribe((users) => {
-    this.users = users;
-      });
+      this.users = users;
+    });
   }
 
   public getUserById = (userId: number): Observable<any> => {

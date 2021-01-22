@@ -1,3 +1,95 @@
 :host {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5em;
+
+  .login-wrapper {
+    text-align: center;
+    align-items: center;
+  }
+
+  .forgot-password {
+    margin: 1em 0;
+    font-size: 1.3em;
+    cursor: pointer;
+  }
+
+  .email-password-box-wrapper {
+    margin-bottom: 0.5em;
+    width: 20em;
+  }
+
+  .email-password-input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid lightgrey;
+    font-size: 1.3em;
+  }
+
+  .email-password-input::placeholder{
+    text-align: left !important;
+    width: 20em;
+    color: darkgrey;
+  }
+
+  .login-show-password-button {
+    height: auto !important;
+    width: auto !important;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  .login-password-wrapper{
+    border-bottom: 1px solid lightgrey;
+  }
+
+  .email-password-label {
+    text-align: left !important;
+    width: 20em;
+    color: darkgrey;
+  }
+
+  .login-button {
+    display: flex;
+    width: auto !important;;
+    height: auto !important;
+    margin: 0 1em 0 !important;
+    padding: 0 1em;
+    justify-content: center;
+    align-items: center;
+    min-width: 3em;
+    text-align: center;
+    border-radius: 15px;
+    border: 2px solid black;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.5em;
+  }
+
+  .sign-up-text{
+    font-size: 1.3em;
+    padding-right: 27em;
+    text-align: justify;
+  }
+
+  .sign-up-button {
+    display: flex;
+    width: auto !important;
+    height: auto !important;
+    margin: 1em 23em 0 0 !important;
+    padding: 0 1em;
+    justify-content: center;
+    align-items: center;
+    min-width: 3em;
+    text-align: center;
+    border-radius: 15px;
+    border: 2px solid black;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.5em;
+  }
 }
 
