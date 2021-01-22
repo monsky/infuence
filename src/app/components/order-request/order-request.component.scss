@@ -15,7 +15,7 @@
   .column-data-row {
     font-size: 1.3em;
     border-bottom: 1px solid lightgray;
-    padding: 0.2em 0;
+    padding: 1em 0;
   }
 
   .column-data-row:hover {
@@ -27,26 +27,17 @@
     width: 8em;
   }
 
+  .zoom {
+    margin: unset;
+  }
+
   @mixin order-request-button( $approve: false) {
     display: flex;
-    width: auto !important;;
-    height: auto !important;
     padding: 0 1em;
     justify-content: center;
     align-items: center;
-    min-width: 3em;
     text-align: center;
-    border: 2px solid;
     cursor: pointer;
-    user-select: none;
-    @if $approve {
-      background-color: darkslateblue;
-      margin: 0 !important;
-    }
-    @else {
-      background-color: tomato;
-      margin: 1em 0 0 0 !important;
-    }
   }
 
   .order-request-button-approved {

@@ -11,7 +11,7 @@ import {Subscription} from 'rxjs';
 export class InfluencerProfileComponent implements OnInit, OnDestroy {
   public userData: any;
   public tableDataHeader: Array<string> = [
-    'No', 'Naziv', 'Kolicina', 'Cena', 'Datum', 'Status', 'Isplaceno', 'Zarada'
+    'No', 'Naziv', 'Kolicina', 'Cena', 'Datum', 'Dostavljeno', 'Isplaceno', 'Zarada'
   ];
   private subscription: Subscription;
 
@@ -24,37 +24,9 @@ export class InfluencerProfileComponent implements OnInit, OnDestroy {
     this.subscription = this.activatedRoute.params
       .subscribe((params: Params) => {
         const id = Number(params.id);
-        // TODO: userData from model
-        this.userData = {
-          id: 0,
-          name: 'Ena Luna',
-          contract: 50,
-          contractId: 0,
-          earned: 1234,
-          itemCount: 5,
-          tableData: [
-            {
-              id: 0,
-              name: 'Majica 5',
-              amount: 2,
-              prize: 1256,
-              date : '12/10/2020',
-              state: 'Isporuceno',
-              isInfluencerPaid: 1,
-              earned: 1
-            },
-            {
-              id: 1,
-              name: 'Majica 4',
-              amount: 1,
-              prize: 628,
-              date : '12/10/2020',
-              state: 'Neisporuceno',
-              isInfluencerPaid: 0,
-              earned: 1
-            }
-          ]
-      };
+        this.appModel.getUserById(id).subscribe((userData) => {
+          // this.appModel.user = userData;
+        });
       });
   }
 

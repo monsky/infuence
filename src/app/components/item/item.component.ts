@@ -22,7 +22,7 @@ export class ItemComponent implements OnInit, OnDestroy {
     this.subscription = this.activatedRoute.params
       .subscribe((params: Params) => {
         const id = Number(params.id);
-        this.item = this.appModel.items.filter(item => item.id === id)[0];
+        this.item = this.appModel.products.filter(item => item.id === id)[0];
       });
   }
 

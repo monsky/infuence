@@ -14,8 +14,8 @@ div, i {
 
 .zoom {
   transition: transform .2s;
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 300px !important;
   margin: 0 auto;
 }
 
@@ -81,6 +81,7 @@ i {
 }
 
 .flex-1 {
+  display: flex;
   flex: 1;
 }
 

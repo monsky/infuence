@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import { Router} from '@angular/router';
 import {AppService} from '../../app.service';
 import {AppModel} from '../../app.model';
 
@@ -9,7 +9,6 @@ import {AppModel} from '../../app.model';
   styleUrls: ['./influencers.component.scss']
 })
 export class InfluencersComponent implements OnInit, OnDestroy {
-  public influencers: Array<any> = [];
 
   constructor(public appService: AppService,
               public appModel: AppModel,
@@ -17,7 +16,6 @@ export class InfluencersComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.influencers = this.appModel.influencers;
   }
 
   public ngOnDestroy(): void {

@@ -4,14 +4,14 @@
        alt="smaple image">
   <div class="flex-column conditions-wrapper">
     <div class="item-name">
-      {{ userData.name }}
+      {{ appModel.user.firstName }}
     </div>
     <div class="condition">
       <div>
         Uslovi
       </div>
       <div class="value">
-        {{userData.contract}}%
+        {{appModel.user.terms}}%
       </div>
     </div>
     <div class="condition">
@@ -19,7 +19,7 @@
         Zaradjeno
       </div>
       <div class="value">
-        {{userData.earned}}
+        {{appModel.user.influencerEarned}}
       </div>
     </div>
     <div class="condition">
@@ -27,7 +27,15 @@
         Broj prodanih artikala
       </div>
       <div class="value">
-        {{userData.itemCount}}
+        {{appModel.user.ordersNumber}}
+      </div>
+    </div>
+    <div class="condition">
+      <div>
+        Datum poslednje isplate:
+      </div>
+      <div class="value">
+        {{appModel.user.last_paid}}
       </div>
     </div>
   </div>
@@ -40,7 +48,7 @@
   </div>
 </div>
 <div class="flex-column">
-  <div *ngFor="let row of userData.tableData"
+  <div *ngFor="let row of appModel.user.orders"
        class="flex-row table-row">
     <div class="count item-margin-right">
       {{ row.id }}
@@ -58,13 +66,13 @@
       {{ row.date }}
     </div>
     <div class="flex-1 item-margin-right text-align-end">
-      {{ row.state }}
+      {{ row.delivered === true ? 'Da' : 'Ne'}}
     </div>
     <div class="paid item-margin-right text-align-end">
-      {{ row.isInfluencerPaid }}
+      {{ row.paid === true ? 'Da' : 'Ne' }}
     </div>
     <div class="flex-1 item-margin-right text-align-end">
-      {{ row.earned }}
+      {{ row.prize * appModel.user.terms/100 }}
     </div>
   </div>
 </div>

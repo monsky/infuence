@@ -18,10 +18,15 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.subscription = this.activatedRoute.params
-      .subscribe((params: Params) => {
-
-      });
+    this.appModel.getAllOrders().subscribe((orders) => {
+      this.appModel.orders = orders;
+    });
+    this.appModel.getAllInfluencersAdmin().subscribe((influencers) => {
+      this.appModel.influencersAdmin = influencers;
+    });
+    this.appModel.getContracts().subscribe((contracts) => {
+      this.appModel.contracts = contracts;
+    });
   }
 
   public ngOnDestroy(): void {

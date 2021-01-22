@@ -2,49 +2,97 @@
   <div class="flex-row table-header">
     <div *ngFor="let columnName of columnNames, let i = index"
          class="column-name"
-         [ngClass]="{'fixed-width-8': i===3, 'fixed-width-9': i===4, 'flex-1': i===0 || i===1 || i===2}">
+         [ngClass]="{'flex-1': i !== 0 && i !== 1}"
+         [style.width]="i === 0 ? '250px' : i === 1 ? '2em' : ''"
+         [style.margin-right]="i === 0 ? '1em' : ''">
       {{columnName}}
     </div>
   </div>
 
   <div *ngFor="let data of columnData; let j=index"
        [style.background-color]="(j%2) === 0 ?'#f9fcff':'white'"
-       class="flex-row column-data-row">
+       class="column-data-row">
     <div class="flex-1">
-      <img src="{{ data.imgUrl }}"
-           class="img-fluid zoom"
-           alt="smaple image">
-    </div>
-    <div class="flex-1">
-      {{ data.influencerName }}
-    </div>
-    <div class="flex-1">
-      {{ data.clientName }}
-    </div>
-    <div class="fixed-width-8">
-      {{ data.orderId }}
-    </div>
-    <div class="flex-column fixed-width-9">
-      <div class="order-status-button-printed"
-           [ngClass]="{'zoom' : data.orderStatus === 0}"
-           [style.border-color]="data.orderStatus === 1 ? 'grey' : 'black'"
-           [style.color]="data.orderStatus === 1 ? 'grey' : 'black'"
-           (click)="!data.orderStatus && changeStatusToPrinted(data)">
-        Odštampano
+      <div style="margin-right: 1em">
+        <img src="{{ data.imgUrl }}"
+             class="img-fluid zoom"
+             alt="smaple image">
       </div>
-      <div class="order-status-button-waiting"
-           [ngClass]="{'zoom' : data.orderStatus === 1}"
-           [style.border-color]="data.orderStatus === 0 ? 'grey' : 'black'"
-           [style.color]="data.orderStatus === 0 ? 'grey' : 'black'"
-           (click)="data.orderStatus && chagneStatusToWaiting(data)">
-        Čeka na štampu
+      <div style="width: 2em">
+        {{ data.id }}
+      </div>
+      <div class="column-name">
+        {{ data.name }}
+      </div>
+      <div class="column-name">
+        {{ data.idArticle }}
+      </div>
+      <div class="column-name">
+        {{ data.amount }}
+      </div>
+      <div class="column-name">
+        {{ data.prize }}
+      </div>
+      <div class="column-name">
+        {{ data.size }}
+      </div>
+      <div class="column-name">
+        {{ data.date }}
       </div>
 
+      <div class="column-name">
+        {{ data.idInfluenser }}
+      </div>
+      <div class="column-name">
+        {{ data.nameInfluenser }}
+      </div>
+      <div class="column-name">
+        {{ data.idOrderer }}
+      </div>
+      <div class="column-name">
+        {{ data.nameOrderer }}
+      </div>
+
+      <div (click)="detailsOpened(j)"
+           class="flex-1 more-button">
+        {{ details[j] === false ? 'More ...' : 'Less' }}
+      </div>
     </div>
-
-
+    <div *ngIf="details[j] === true"
+         class="flex-column flex-1 orders">
+      <div class="flex-row"
+           style="border-bottom: 1px solid lightblue;">
+        <div *ngFor="let columnName of columnsInsideOrders, let i = index"
+             class="column-name flex-1 flex-row">
+          {{columnName}}
+        </div>
+      </div>
+      <div class="flex-row">
+        <div class="flex-1"
+             [style.color]="data.delivered === true ? 'black' : 'red'">
+          {{ data.delivered === true ? 'Isporuceno' : 'Nije isporuceno' }}
+        </div>
+        <div class="flex-1"
+             [style.color]="data.paid === true ? 'black' : 'red'">
+          {{ data.paid === true ? 'Placeno' : 'Nije placeno' }}
+        </div>
+        <div class="flex-1"
+             [style.color]="data.status === 'printed' ? 'black' : 'red'">
+          {{ data.status === 'printed' ? 'Odstampano' : 'Nije odstampano' }}
+        </div>
+        <div class="flex-1">
+          <div *ngIf="data.approved === 'waiting'">
+            Ceka odobrenje
+          </div>
+          <div *ngIf="data.approved !== 'waiting'">
+            <div [style.color]="data.approved === 'approved' ? 'black' : 'red'">
+              {{ data.approved === 'approved' ? 'Odobreno' : 'Nije odobreno'}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
 </div>
 
 

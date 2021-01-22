@@ -31,7 +31,7 @@ export class AppService {
 
   // POST
 
-  public loginRequest = (data: any) => {
+  public login = (data: any) => {
     return this.httpClient.post<any>(`${this.API_URL}/users/login`,
       {username: data.username, password: data.password},
       {headers: this.headers});
@@ -50,6 +50,42 @@ export class AppService {
         catchError(this.handleError)
       );
   }
+
+  public getAllInfluencers = (): Observable<any> => {
+    return this.httpClient.get(`${this.API_URL}/influencers`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  public getAllInfluencersAdmin = (): Observable<any> => {
+    return this.httpClient.get(`${this.API_URL}/influencers/admin`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  public getAllOrders = (): Observable<any> => {
+    return this.httpClient.get(`${this.API_URL}/orders`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  public getAllOrderRequests = (): Observable<any> => {
+    return this.httpClient.get(`${this.API_URL}/orders/requests`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  public getContracts = (): Observable<any> => {
+    return this.httpClient.get(`${this.API_URL}/contracts`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
 
   public getProductById = (productId: number): Observable<any> => {
     return this.httpClient.get(`${this.API_URL}/products/${productId}`)
