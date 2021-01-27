@@ -374,6 +374,45 @@ export class AppModel {
     'Zahtev za odobrenje'
   ];
 
+  public countries: Array<any> = [
+    {
+      id: 1,
+      serbianName: 'Srbija'
+    },
+    {
+      id: 2,
+      serbianName: 'Madjarska'
+    },
+    {
+      id: 3,
+      serbianName: 'Hrvatska'
+    },
+    {
+      id: 4,
+      serbianName: 'Bosna i Hercegovina'
+    },
+    {
+      id: 5,
+      serbianName: 'Crna Gora'
+    },
+    {
+      id: 6,
+      serbianName: 'Albanija'
+    },
+    {
+      id: 7,
+      serbianName: 'Severna Makedonija'
+    },
+    {
+      id: 8,
+      serbianName: 'Bugarska'
+    },
+    {
+      id: 9,
+      serbianName: 'Rumunija'
+    }
+  ];
+
   public isModalConfirmDeleteOpened: boolean = false;
 
   public products: Array<any> = [

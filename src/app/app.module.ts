@@ -29,6 +29,8 @@ import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {ColorPickerModule} from 'ngx-color-picker';
 import {ClickOutsideDirective} from './directives/ClickOutsideDirective';
 import {ShoppingBagItemComponent} from './components/shopping-bag-item/shopping-bag-item.component';
+import {SignUpComponent} from './components/sign-up/sign-up.component';
+import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import {ShoppingBagItemComponent} from './components/shopping-bag-item/shopping-
     OrderRequestComponent,
     EditorComponent,
     ModalConfirmDeleteComponent,
-    ShoppingBagItemComponent
+    ShoppingBagItemComponent,
+    SignUpComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

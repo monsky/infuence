@@ -1,0 +1,48 @@
+<div class="d-flex flex-row flex-1">
+  <div class="flex-column login-wrapper flex-1">
+    <div class="email-password-box-wrapper">
+      <input type="text" class="email-password-input" placeholder="E-mail"
+             [(ngModel)]="email"
+             (focus)="emailFocus()"
+             (focusout)="emailFocusOut()">
+      <label *ngIf="emailFocused" class="email-password-label">Unesite svoj e-mail ovde</label>
+    </div>
+    <div class="email-password-box-wrapper">
+      <div class="flex-row">
+        <input [type]="showPass===true ? 'text' : 'password'" class="email-password-input" placeholder="Lozinka"
+               [(ngModel)]="pass"
+               (focus)="passwordFocus()"
+               (focusout)="passwordFocusOut()">
+        <div class="login-password-wrapper">
+          <i class="zoom login-show-password-button fa"
+             [ngClass]="{'fa-eye' : showPass === false, 'fa-eye-slash' : showPass === true}"
+             (click)="toggleShowPassword()"
+          ></i>
+        </div>
+      </div>
+      <label *ngIf="passwordFocused" class="email-password-label">Unesite svoju lozinku ovde</label>
+    </div>
+
+    <div [routerLink]="'/forgot-password'"
+      class="forgot-password">
+      Zaboravili ste lozinku?
+    </div>
+    <div class="login-button"
+    (click)="login()">
+      Uloguj se
+    </div>
+  </div>
+  <div class="flex-column flex-1">
+    <div class="sign-up-text">
+      Ako jošuvek nemate nalog, možete ga napraviti ovde. <br> <br>
+      Ostavljanjem informacija prilikom registracije ćete doprineti tome da Vam korišćenje ove stranice bude lakše i
+      lepše iskustvo.
+    </div>
+    <div [routerLink]="'/sign-up'"
+         class="sign-up-button">
+      Registruj se
+    </div>
+  </div>
+
+</div>
+

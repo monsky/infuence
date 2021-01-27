@@ -13,6 +13,9 @@ import {ProfileComponent} from './components/profile/profile.component';
 import {InfluencerGuard} from './influencer-guard';
 import {UserGuard} from './user-guard';
 import {AdminGuard} from './admin-guard';
+import {LoginComponent} from './components/login/login.component';
+import {SignUpComponent} from './components/sign-up/sign-up.component';
+import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
@@ -21,11 +24,11 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: AppComponent
+    component: LoginComponent
   },
   {
     path: 'sign-up',
-    component: AppComponent
+    component: SignUpComponent
   },
   {
     path: 'influencers/:id',
@@ -69,7 +72,11 @@ const routes: Routes = [
     path: 'profile',
     canActivate: [UserGuard],
     component: ProfileComponent
-  }
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent
+  },
 ];
 
 @NgModule({

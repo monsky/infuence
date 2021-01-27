@@ -1,0 +1,82 @@
+<div class="d-flex flex-column flex-1">
+
+  <div class="signup-column-wrapper">
+    <div class="input-field-email-wrapper">
+      <input type="text" class="input-field" placeholder="E-mail" [(ngModel)]="email">
+    </div>
+  </div>
+  <div class="flex-row">
+    <div class="flex-column signup-column-wrapper">
+      <div class="flex-row input-field-wrapper">
+        <input [type]="showPass===true ? 'text' : 'password'" class="input-field"
+               placeholder="Lozinka"
+               [(ngModel)]="pass">
+        <i class="zoom sigunp-show-password-button fa"
+           [ngClass]="{'fa-eye' : showPass === false, 'fa-eye-slash' : showPass === true}"
+           (click)="toggleShowPassword()"
+        ></i>
+      </div>
+
+      <div class="input-field-wrapper">
+        <input type="text" class="input-field" placeholder="Ime" [(ngModel)]="firstName">
+      </div>
+
+      <div class="input-field-wrapper">
+        <input type="text" class="input-field" placeholder="Adresa" [(ngModel)]="address">
+      </div>
+
+      <div class="input-field-wrapper">
+        <input type="text" class="input-field" placeholder="Poštanski broj" [(ngModel)]="zipCode">
+      </div>
+
+    </div>
+
+    <div class="flex-column signup-column-wrapper">
+      <div class="flex-row input-field-wrapper">
+        <input [type]="showRepeatedPass===true ? 'text' : 'password'" class="input-field"
+               placeholder="Ponovljena lozinka"
+               [(ngModel)]="repeatedPass">
+        <i class="zoom sigunp-show-password-button fa"
+           [ngClass]="{'fa-eye' : showRepeatedPass === false, 'fa-eye-slash' : showRepeatedPass === true}"
+           (click)="toggleShowRepeatedPassword()"
+        ></i>
+      </div>
+      <div class="input-field-wrapper">
+        <input type="text" class="input-field" placeholder="Prezime" [(ngModel)]="lastName">
+      </div>
+      <div class="input-field-wrapper">
+        <input type="text" class="input-field" placeholder="Grad" [(ngModel)]="city">
+      </div>
+      <div class="input-field-wrapper">
+        <input type="text" class="input-field" placeholder="Telefon" [(ngModel)]="phone">
+      </div>
+    </div>
+  </div>
+
+  <div class="flex-column signup-column-wrapper drop-down-wrapper"
+       (click)="dropDownFocusIn()"
+       (clickOutside)="dropDownFocusOut()">
+    <div class="drop-down-slected-item">
+      {{selectedCountry['serbianName']}}
+    </div>
+    <div class="flex-column"
+         [ngClass]="dropDownFocused === true ? 'drop-down-options-expanded':'drop-down-options-collapsed'">
+      <div *ngFor="let country of countries; let i=index">
+        <div class="drop-down-item"
+             (click)="selectCountry(country)">
+          {{country.serbianName}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex-row sign-up-button-wrapper">
+    <div (click)="signUp()"
+         class="sign-up-confirm-button">
+      Napravi nalog
+    </div>
+  </div>
+
+
+</div>
+
