@@ -349,36 +349,6 @@ export class AppModel {
     'Ime ugovora',
     'Broj poručenih artikala'
   ];
-  public printShopContractData: Array<any> = [
-    {
-      name: 'Copy Studio',
-      contractId: '12335',
-      contractType: 1,
-      discount: 20,
-      numberOfOrderedArticles: '52'
-    },
-    {
-      name: 'Stamparija',
-      contractId: '65198',
-      contractType: 1,
-      discount: 30,
-      numberOfOrderedArticles: '134'
-    },
-    {
-      name: 'StampaMajica',
-      contractId: '9845',
-      contractType: 2,
-      discount: 15,
-      numberOfOrderedArticles: '23'
-    },
-    {
-      name: 'BrzaStampa',
-      contractId: '98465',
-      contractType: 1,
-      discount: 20,
-      numberOfOrderedArticles: '78'
-    }
-  ];
 
   public orderStatusColNames: Array<string> = [
     'Slika',
@@ -395,29 +365,6 @@ export class AppModel {
     'Ime narucioca',
     'More...'
   ];
-  public orderStatusData: Array<any> = [
-    {
-      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
-      influencerName: 'Ena Luna',
-      clientName: 'Marko Trajkovic',
-      orderId: 30,
-      orderStatus: 1
-    },
-    {
-      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
-      influencerName: 'Ena Luna',
-      clientName: 'Trajko Markovic',
-      orderId: 50,
-      orderStatus: 0
-    },
-    {
-      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
-      influencerName: 'Zorannah',
-      clientName: 'Marko Trajkovic',
-      orderId: 43,
-      orderStatus: 1
-    }
-  ];
 
   public orderRequestColNames: Array<string> = [
     'Slika',
@@ -425,26 +372,6 @@ export class AppModel {
     'Ime poručioca',
     'Ime influensera',
     'Zahtev za odobrenje'
-  ];
-  public orderRequestData: Array<any> = [
-    {
-      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
-      orderId: 30,
-      clientName: 'Marko Trajkovic',
-      orderStatus: 1
-    },
-    {
-      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
-      orderId: 50,
-      clientName: 'Trajko Markovic',
-      orderStatus: 0
-    },
-    {
-      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
-      orderId: 43,
-      clientName: 'Marko Trajkovic',
-      orderStatus: 1
-    }
   ];
 
   public isModalConfirmDeleteOpened: boolean = false;

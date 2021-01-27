@@ -16,20 +16,23 @@ export class AppService {
   constructor(private httpClient: HttpClient) {
   }
 
-  // GLOBAL GETTERS
-
+  // LOCAL STORAGE
 
   public getUser(): any {
     return JSON.parse(localStorage.getItem('user'));
   }
 
+
+
+  // RESPONSIVE DESIGN
+
   public get isMobile(): boolean {
     return window.screen.width < 768;
   }
 
-  // API REQUESTS
 
-  // POST
+
+  // LOGIN AND SIGN UP
 
   public login = (data: any) => {
     return this.httpClient.post<any>(`${this.API_URL}/users/login`,
@@ -37,19 +40,8 @@ export class AppService {
       {headers: this.headers});
   }
 
-  public createUser = (user: any): Observable<any> => {
-    return this.httpClient.post(`${this.API_URL}/users/create`, user)
-      .pipe(
-        catchError(this.handleError)
-      );
-  }
 
-  public getAllProducts = (): Observable<any> => {
-    return this.httpClient.get(`${this.API_URL}/products`)
-      .pipe(
-        catchError(this.handleError)
-      );
-  }
+// INFLUENCERS
 
   public getAllInfluencers = (): Observable<any> => {
     return this.httpClient.get(`${this.API_URL}/influencers`)
@@ -65,19 +57,9 @@ export class AppService {
       );
   }
 
-  public getAllOrders = (): Observable<any> => {
-    return this.httpClient.get(`${this.API_URL}/orders`)
-      .pipe(
-        catchError(this.handleError)
-      );
-  }
 
-  public getAllOrderRequests = (): Observable<any> => {
-    return this.httpClient.get(`${this.API_URL}/orders/requests`)
-      .pipe(
-        catchError(this.handleError)
-      );
-  }
+
+  // CONTRACTS
 
   public getContracts = (): Observable<any> => {
     return this.httpClient.get(`${this.API_URL}/contracts`)
@@ -87,12 +69,26 @@ export class AppService {
   }
 
 
+
+// PRODUCTS
+
   public getProductById = (productId: number): Observable<any> => {
     return this.httpClient.get(`${this.API_URL}/products/${productId}`)
       .pipe(
         catchError(this.handleError)
       );
   }
+
+  public getAllProducts = (): Observable<any> => {
+    return this.httpClient.get(`${this.API_URL}/products`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+
+
+// USERS
 
   public getAllUsers = (): Observable<any> => {
     return this.httpClient.get(`${this.API_URL}/users`)
@@ -108,8 +104,33 @@ export class AppService {
       );
   }
 
+  public createUser = (user: any): Observable<any> => {
+    return this.httpClient.post(`${this.API_URL}/users/create`, user)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+
+
+// ORDERS
+
   public getOrdersByUserId = (userId: number): Observable<any> => {
     return this.httpClient.get(`${this.API_URL}/orders/${userId}`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  public getAllOrders = (): Observable<any> => {
+    return this.httpClient.get(`${this.API_URL}/orders`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  public getAllOrderRequests = (): Observable<any> => {
+    return this.httpClient.get(`${this.API_URL}/orders/requests`)
       .pipe(
         catchError(this.handleError)
       );
