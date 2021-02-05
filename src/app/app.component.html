@@ -1,3 +1,8 @@
 <app-header></app-header>
-<router-outlet></router-outlet>
-<app-modal-confirm-delete *ngIf="appModel.isModalConfirmDeleteOpened === true"></app-modal-confirm-delete>
+<router-outlet *ngIf="this.appModel.productsLoaded && this.appModel.influensersLoaded && this.appModel.categoriesLoaded && this.appModel.sizesLoaded && this.appModel.colorsLoaded">
+</router-outlet>
+<app-modal-confirm-delete *ngIf="appModel.isModalConfirmDeleteOpened === true">
+</app-modal-confirm-delete>
+<!--<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-spin" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>-->
+<ngx-spinner>
+</ngx-spinner>

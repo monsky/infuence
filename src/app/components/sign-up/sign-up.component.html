@@ -7,7 +7,8 @@
   </div>
   <div class="flex-row">
     <div class="flex-column signup-column-wrapper">
-      <div class="flex-row input-field-wrapper">
+      <div *ngIf="isOrderingOn === false"
+           class="flex-row input-field-wrapper">
         <input [type]="showPass===true ? 'text' : 'password'" class="input-field"
                placeholder="Lozinka"
                [(ngModel)]="pass">
@@ -26,13 +27,14 @@
       </div>
 
       <div class="input-field-wrapper">
-        <input type="text" class="input-field" placeholder="Poštanski broj" [(ngModel)]="zipCode">
+        <input type="text" class="input-field" placeholder="Poštanski broj" [(ngModel)]="postCode">
       </div>
 
     </div>
 
     <div class="flex-column signup-column-wrapper">
-      <div class="flex-row input-field-wrapper">
+      <div *ngIf="isOrderingOn === false"
+           class="flex-row input-field-wrapper">
         <input [type]="showRepeatedPass===true ? 'text' : 'password'" class="input-field"
                placeholder="Ponovljena lozinka"
                [(ngModel)]="repeatedPass">
@@ -70,10 +72,28 @@
     </div>
   </div>
 
+  <div *ngIf="isOrderingOn === false"
+       class="flex-column signup-column-wrapper drop-down-wrapper"
+       (click)="dropDownFocusInTerms()"
+       (clickOutside)="dropDownFocusOutTerms()">
+    <div class="drop-down-slected-item">
+      {{selectedTerm['percent']}}
+    </div>
+    <div class="flex-column"
+         [ngClass]="dropDownFocusedTerms === true ? 'drop-down-options-expanded':'drop-down-options-collapsed'">
+      <div *ngFor="let term of terms; let i=index">
+        <div class="drop-down-item"
+             (click)="selectTerm(term)">
+          {{term.percent}}
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="flex-row sign-up-button-wrapper">
     <div (click)="signUp()"
          class="sign-up-confirm-button">
-      Napravi nalog
+      {{  isOrderingOn === false ? 'Napravi nalog' : 'Poruci'}}
     </div>
   </div>
 

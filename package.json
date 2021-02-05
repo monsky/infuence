@@ -23,8 +23,10 @@
     "bootstrap": "^4.5.2",
     "fabric": "^4.2.0",
     "font-awesome": "^4.7.0",
+    "moment": "^2.29.1",
     "ngx-bootstrap": "^6.2.0",
     "ngx-color-picker": "^10.1.0",
+    "ngx-spinner": "6.1.2",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

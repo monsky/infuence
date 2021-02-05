@@ -1,5 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AppModel} from '../../app.model';
+import {User} from '../../classes';
+import {Country, Term} from '../../interfaces';
+import {Router} from '@angular/router';
+import {LocalStorageService} from '../../local-storage-service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,63 +20,91 @@ export class SignUpComponent implements OnInit, OnDestroy {
   public lastName = '';
   public address = '';
   public city = '';
-  public zipCode = '';
+  public postCode: number;
   public phone = '';
 
   public showPass = false;
   public showRepeatedPass = false;
 
   public countries: Array<any> = [];
-  public selectedCountry = {};
+  public terms: Array<any> = [];
+  public selectedCountry: Country;
+  public selectedTerm: Term;
   public dropDownFocused = false;
+  public dropDownFocusedTerms = false;
+  public isOrderingOn: boolean;
 
-  constructor(public appModel: AppModel) {
+  constructor(public appModel: AppModel,
+              public router: Router,
+              public localStorage: LocalStorageService) {
   }
 
   public ngOnInit(): void {
     this.countries = this.appModel.countries;
+    this.terms = this.appModel.terms;
     this.selectedCountry = this.countries[0];
+    this.selectedTerm = this.terms[0];
+    this.isOrderingOn = this.appModel.bagItems.length !== 0;
   }
 
   public ngOnDestroy(): void {
   }
 
-  public signUp() {
-    console.log(this.email);
-    console.log(this.pass);
-    console.log(this.repeatedPass);
-    console.log(this.firstName);
-    console.log(this.lastName);
-    console.log(this.address);
-    console.log(this.city);
-    console.log(this.zipCode);
-    console.log(this.phone);
-    // user : User = new User(email...);
-    // this.appModel.createUser(user);
+  public signUp(): void {
+    if (this.isOrderingOn === false) {
+      const user: User = new User(this.email, this.pass, this.firstName, this.lastName, this.address, this.city, this.postCode, this.selectedCountry.serbianName, this.selectedTerm.percent, '');
+      this.appModel.createUser(user).subscribe((response) => {
+        this.appModel.saveUser(user);
+        this.router.navigateByUrl('/product-creation');
+      });
+    } else {
+      const orderObject = {
+        name: this.firstName,
+        last_name: this.lastName,
+        address: this.address,
+        city: this.city,
+        zip_code: this.postCode,
+        mobile: this.phone,
+        country: this.selectedCountry.serbianName,
+        date: moment().toDate().toDateString(),
+        order_products: this.appModel.bagItems
+      }
+      this.appModel.createOrder(orderObject).subscribe((response) => {
+        this.router.navigateByUrl('');
+      });
+    }
   }
 
-  public toggleShowPassword() {
+  public toggleShowPassword(): void {
     this.showPass = !this.showPass;
   }
 
-  public toggleShowRepeatedPassword() {
+  public toggleShowRepeatedPassword(): void {
     this.showRepeatedPass = !this.showRepeatedPass;
   }
 
-  public dropDownFocusIn() {
-    this.dropDownFocused = true;
-    console.log('focused');
+  public dropDownFocusIn(): void {
+    this.dropDownFocused = !this.dropDownFocused;
   }
 
-  public dropDownFocusOut() {
+  public dropDownFocusOut(): void {
     this.dropDownFocused = false;
-    console.log('Not focused');
   }
 
-  public selectCountry(country) {
+  public dropDownFocusInTerms(): void {
+    this.dropDownFocusedTerms = !this.dropDownFocusedTerms;
+  }
+
+  public dropDownFocusOutTerms(): void {
+    this.dropDownFocusedTerms = false;
+  }
+
+  public selectCountry(country): void {
     this.selectedCountry = country;
-    console.log(country.id);
-    console.log(country.serbianName);
+  }
+
+  public selectTerm(term): void {
+    this.selectedTerm = term;
   }
 
 }

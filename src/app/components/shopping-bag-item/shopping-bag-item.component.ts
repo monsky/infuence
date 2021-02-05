@@ -23,16 +23,16 @@ export class ShoppingBagItemComponent implements OnInit, OnDestroy {
   }
 
   public plusOnClick(): void {
-    this.itemData.quantity++;
-    if (this.itemData.quantity > 10) {
-      this.itemData.quantity = 10;
+    this.itemData.amount++;
+    if (this.itemData.amount > 10) {
+      this.itemData.amount = 10;
     }
   }
 
   public minusOnClick(): void {
-    this.itemData.quantity--;
-    if (this.itemData.quantity < 1) {
-      this.itemData.quantity = 1;
+    this.itemData.amount--;
+    if (this.itemData.amount < 1) {
+      this.itemData.amount = 1;
     }
   }
 

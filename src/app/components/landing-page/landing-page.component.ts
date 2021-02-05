@@ -3,6 +3,7 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 import {AppService} from '../../app.service';
 import {Subscription} from 'rxjs';
 import {AppModel} from '../../app.model';
+import {connectableObservableDescriptor} from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
   selector: 'app-landing-page',
@@ -25,7 +26,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
     this.subscription = this.activatedRoute.params
       .subscribe((params: Params) => {
         this.selectedItems = [];
-        id = params.id ? Number(params.id) : 0;
+        id = params.id ? Number(params.id) : 1;
         this.appModel.products.map(item => (item.categoryId === id) ? this.selectedItems.push(item) : '');
         this.cdr.detectChanges();
       });

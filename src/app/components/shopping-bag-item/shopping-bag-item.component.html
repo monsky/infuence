@@ -1,5 +1,5 @@
 <div class="d-flex flex-row shopping-bag-item">
-  <img src={{itemData.imgUrl}}
+  <img src={{itemData.img_url}}
        class="img-fluid zoom zoom-bag"
        alt="smaple image">
 
@@ -7,11 +7,11 @@
     <div class="shopping-bag-item-name">
       {{itemData['name']}}
     </div>
-    <div class="shopping-bag-item-color">
-      {{itemData['color']}}
-    </div>
+<!--    <div class="shopping-bag-item-color">-->
+<!--      {{itemData['color']}}-->
+<!--    </div>-->
     <div class="shopping-bag-item-price">
-      {{itemData['price']}} RSD
+      {{itemData['prize']}} RSD
     </div>
     <div class="shopping-bag-item-size">
       {{itemData['size']}}
@@ -21,7 +21,7 @@
          (click)="minusOnClick()"
       ></i>
       <div class="shopping-bag-item-quantity-label">
-        {{itemData['quantity']}}
+        {{itemData['amount']}}
       </div>
       <i class="fa fa-plus zoom shopping-bag-item-quantity-button"
          (click)="plusOnClick()"

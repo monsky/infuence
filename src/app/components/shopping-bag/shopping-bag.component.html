@@ -15,7 +15,8 @@
 </div>
 
 <div class="shopping-chart-button-wrapper flex-row">
-  <div [routerLink]="items.length===0 ? '' : '/profile'"
+  <div (click)="order()"
+       [routerLink]="items.length===0 ? '' : '/profile'"
        class="shopping-chart-button zoom">
     KUPI
   </div>

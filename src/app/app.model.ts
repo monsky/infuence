@@ -3,35 +3,41 @@ import {SignalOne} from '../libs/signal/SignalOne';
 import {AppService} from './app.service';
 import {Observable} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import {Category, Color, Product, Size} from './interfaces';
+import {ProductApi, User} from './classes';
+import {LocalStorageService} from './local-storage-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppModel {
+  public categories: Array<Category>;
+  public sizes: Array<Size>;
+  public colors: Array<Color>;
   public readonly categoryChanged: SignalOne<string> = new SignalOne<string>();
   public bagItems: Array<any> = [
-    {
-      id: 4,
-      name: 'Majica 4',
-      category: 2,
-      price: 1000.00,
-      size: 'XL',
-      color: 'red',
-      owner: 1,
-      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
-      quantity: 3
-    },
-    {
-      id: 5,
-      name: 'Majica 3',
-      category: 2,
-      price: 1300,
-      size: 'L',
-      color: 'blue',
-      owner: 1,
-      imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
-      quantity: 2
-    }
+    // {
+    //   id: 4,
+    //   name: 'Majica 4',
+    //   category: 2,
+    //   price: 1000.00,
+    //   size: 'XL',
+    //   color: 'red',
+    //   owner: 1,
+    //   imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
+    //   quantity: 3
+    // },
+    // {
+    //   id: 5,
+    //   name: 'Majica 3',
+    //   category: 2,
+    //   price: 1300,
+    //   size: 'L',
+    //   color: 'blue',
+    //   owner: 1,
+    //   imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
+    //   quantity: 2
+    // }
   ];
   public influencers: Array<any> = [
     {
@@ -413,90 +419,32 @@ export class AppModel {
     }
   ];
 
-  public isModalConfirmDeleteOpened: boolean = false;
-
-  public products: Array<any> = [
-    {
-      id: 0,
-      name: 'Majica Kat 0',
-      idSeller: 0,
-      prize: 1256,
-      colors: [
-        'red', 'blue', 'yellow'
-      ],
-      sizes: [
-        'S', 'M', 'L'
-      ],
-      imgUrl: 'https://images.unsplash.com/photo-1600328759671-85927887458d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
-      categoryId: 0,
-      categoryName: 'Majice',
-      itemsSold: 30
-    },
+  public terms: Array<any> = [
     {
       id: 1,
-      name: 'Majica 2 Kat 1',
-      idSeller: 1,
-      prize: 1256,
-      colors: [
-        'red', 'blue', 'yellow'
-      ],
-      sizes: [
-        'S', 'M', 'L'
-      ],
-      imgUrl: 'https://images.unsplash.com/photo-1484663548870-2aa675ba38fb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
-      categoryId: 1,
-      categoryName: 'Majice',
-      itemsSold: 30
+      percent: 30
     },
     {
       id: 2,
-      name: 'Majica Kat 1',
-      idSeller: 2,
-      prize: 1256,
-      colors: [
-        'red', 'blue', 'yellow'
-      ],
-      sizes: [
-        'S', 'M', 'L'
-      ],
-      imgUrl: 'https://images.unsplash.com/photo-1530475329205-1c5333ae40fb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80',
-      categoryId: 1,
-      categoryName: 'Majice',
-      itemsSold: 30
+      percent: 40
     },
     {
       id: 3,
-      name: 'Majica kat 2',
-      idSeller: 3,
-      prize: 1256,
-      colors: [
-        'red', 'blue', 'yellow'
-      ],
-      sizes: [
-        'S', 'M', 'L'
-      ],
-      imgUrl: 'https://images.unsplash.com/photo-1528938102132-4a9276b8e320?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
-      categoryId: 2,
-      categoryName: 'Majice',
-      itemsSold: 30
+      percent: 50
     },
     {
       id: 4,
-      name: 'Majica kat 0',
-      idSeller: 0,
-      prize: 1256,
-      colors: [
-        'red', 'blue', 'yellow'
-      ],
-      sizes: [
-        'S', 'M', 'L'
-      ],
-      imgUrl: 'https://images.unsplash.com/photo-1595136895914-da8f886a7ed8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80',
-      categoryId: 0,
-      categoryName: 'Majice',
-      itemsSold: 30
+      percent: 60
+    },
+    {
+      id: 5,
+      percent: 70
     }
   ];
+
+  public isModalConfirmDeleteOpened: boolean = false;
+
+  public products: Array<ProductApi>;
 
   public influencersAdmin: Array<any> = [
     {
@@ -931,7 +879,14 @@ export class AppModel {
     }
   ]
 
-  constructor(private appService: AppService) {
+  public productsLoaded: boolean;
+  public influensersLoaded: boolean = true;
+  public categoriesLoaded: boolean;
+  public sizesLoaded: boolean;
+  public colorsLoaded: boolean;
+
+  constructor(private appService: AppService,
+              private localStorage: LocalStorageService) {
   }
 
   public getAllProducts(): Observable<any> {
@@ -940,6 +895,18 @@ export class AppModel {
 
   public getAllInfluencers(): Observable<any> {
     return this.appService.getAllInfluencers();
+  }
+
+  public getAllCategories(): Observable<Array<Category>> {
+    return this.appService.getAllCategories();
+  }
+
+  public getAllColors(): Observable<Array<Color>> {
+    return this.appService.getAllColors();
+  }
+
+  public getAllSizes(): Observable<Array<Size>> {
+    return this.appService.getAllSizes();
   }
 
   public getAllInfluencersAdmin(): Observable<any> {
@@ -972,6 +939,22 @@ export class AppModel {
 
   public getContracts = (): Observable<any> => {
     return this.appService.getContracts();
+  }
+
+  public createProduct = (product: Product): Observable<any> => {
+    return this.appService.createProduct(product);
+  }
+
+  public createUser = (user: User): Observable<any> => {
+    return this.appService.createUser(user);
+  }
+
+  public createOrder = (orderObject): Observable<any> => {
+    return this.appService.createOrder(orderObject);
+  }
+
+  public saveUser = (user: User): void => {
+    this.localStorage.saveUser(user);
   }
 
 }

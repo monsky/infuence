@@ -1,0 +1,92 @@
+<div class="d-flex flex-column flex-1">
+
+  <div class="flex-row">
+    <div class="flex-column signup-column-wrapper">
+      <div class="input-field-email-wrapper">
+        <input type="text"
+               class="input-field"
+               placeholder="Ime proizvoda"
+               [(ngModel)]="name">
+      </div>
+
+      <div class="input-field-wrapper">
+        <input type="text"
+               class="input-field"
+               placeholder="Cena"
+               [(ngModel)]="prize">
+      </div>
+
+      <div *ngIf="appModel.colorsLoaded === true"
+           class="flex-column drop-down-wrapper"
+           (click)="dropDownFocusInColor()"
+           (clickOutside)="dropDownFocusOutColor()">
+        <div class="drop-down-slected-item">
+          {{ appModel.colorsLoaded === true ? selectedColor.name : 'Loading...' }}
+        </div>
+        <div class="flex-column"
+             [ngClass]="dropDownFocusedColor === true ? 'drop-down-options-expanded':'drop-down-options-collapsed'">
+          <div *ngFor="let color of colors; let i=index">
+            <div class="drop-down-item"
+                 (click)="dropdownSelect(color, 0)">
+              {{ color.name }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="appModel.sizesLoaded === true"
+           class="flex-column drop-down-wrapper"
+           (click)="dropDownFocusInSize()"
+           (clickOutside)="dropDownFocusOutSize()">
+        <div class="drop-down-slected-item">
+          {{ appModel.sizesLoaded === true ?  selectedSize.name : 'Loading...' }}
+        </div>
+        <div class="flex-column"
+             [ngClass]="dropDownFocusedSize === true ? 'drop-down-options-expanded':'drop-down-options-collapsed'">
+          <div *ngFor="let size of sizes; let i=index">
+            <div class="drop-down-item"
+                 (click)="dropdownSelect(size, 1)">
+              {{ size.name }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-field-wrapper">
+        <input type="text"
+               class="input-field"
+               placeholder="Url slike"
+               [(ngModel)]="imgUrl">
+      </div>
+
+      <div *ngIf="appModel.categoriesLoaded === true"
+           class="flex-column drop-down-wrapper"
+           (click)="dropDownFocusInCategories()"
+           (clickOutside)="dropDownFocusOutCategories()">
+        <div class="drop-down-slected-item">
+          {{ appModel.categoriesLoaded === true ? selectedCategory.name : 'Loading...' }}
+        </div>
+        <div class="flex-column"
+             [ngClass]="dropDownFocusedCategories === true ? 'drop-down-options-expanded':'drop-down-options-collapsed'">
+          <div *ngFor="let category of categories; let i=index">
+            <div class="drop-down-item"
+                 (click)="dropdownSelect(category, 2)">
+              {{ category.name }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="flex-row sign-up-button-wrapper">
+    <div (click)="createProduct()"
+         class="sign-up-confirm-button">
+      Napravi proizvod
+    </div>
+  </div>
+
+</div>
+

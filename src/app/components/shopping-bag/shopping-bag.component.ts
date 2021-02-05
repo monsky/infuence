@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AppModel} from '../../app.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-shopping-bag',
@@ -10,7 +11,8 @@ export class ShoppingBagComponent implements OnInit, OnDestroy {
 
   public items: Array<number> = [];
 
-  constructor(public appModel: AppModel) {
+  constructor(public appModel: AppModel,
+              public router: Router) {
   }
 
   public ngOnInit(): void {
@@ -29,6 +31,10 @@ export class ShoppingBagComponent implements OnInit, OnDestroy {
 
   public openModalConfirmDelete() {
     this.appModel.isModalConfirmDeleteOpened = true;
+  }
+
+  public order() {
+    this.router.navigateByUrl('/sign-up');
   }
 
 }

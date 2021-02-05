@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import {Product} from './interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -70,6 +71,40 @@ export class AppService {
 
 
 
+  // COLORS
+
+  public getAllColors = (): Observable<any> => {
+    return this.httpClient.get(`${this.API_URL}/colors`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+
+
+  // SIZES
+
+  public getAllSizes = (): Observable<any> => {
+    return this.httpClient.get(`${this.API_URL}/sizes`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+
+
+  // CATEGORIES
+
+  public getAllCategories = (): Observable<any> => {
+    return this.httpClient.get(`${this.API_URL}/categories`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+
+
+
 // PRODUCTS
 
   public getProductById = (productId: number): Observable<any> => {
@@ -86,6 +121,14 @@ export class AppService {
       );
   }
 
+  public createProduct  = (product: Product): Observable<any> => {
+    return this.httpClient.post<any>(`${this.API_URL}/products/create`,
+      product,
+      {headers: this.headers})
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 
 
 // USERS
@@ -114,6 +157,15 @@ export class AppService {
 
 
 // ORDERS
+
+  public createOrder  = (order: any): Observable<any> => {
+    return this.httpClient.post<any>(`${this.API_URL}/orders/create`,
+      order,
+      {headers: this.headers})
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 
   public getOrdersByUserId = (userId: number): Observable<any> => {
     return this.httpClient.get(`${this.API_URL}/orders/${userId}`)

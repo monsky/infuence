@@ -14,21 +14,26 @@
     {{ item.prize}} RSD
   </div>
   <div class="size-list-item-wrapper">
-    <div *ngFor="let size of item.sizes"
+    <div *ngFor="let size of sizes"
          class="size-list-item"
+         [style.background-color]="bagItem.size === size ? 'lightblue' : ''"
          (click)="choseSize(size)">
       {{ size }}
     </div>
   </div>
-  <div class="flex-row justify-content-between color-items">
-    <div *ngFor="let color of item.colors"
-         class="color-item"
-         (click)="choseColor(color)">
-      {{ color }}
-    </div>
-  </div>
-  <button (click)="addToShoppingBag()"
-          [disabled]="!bagItem['size'] || !bagItem['color']">
+<!--  <div class="flex-row justify-content-between color-items">-->
+<!--    <div *ngFor="let color of item.colors"-->
+<!--         class="color-item"-->
+<!--         (click)="choseColor(color)">-->
+<!--      {{ color }}-->
+<!--    </div>-->
+<!--  </div>-->
+  <div (click)="addToShoppingBag()"
+       class="buy-button"
+       [class.isDisabled]="!bagItem['size']">
     ADD
-  </button>
+  </div>
+  <div *ngIf="addedToBagFlag === true">
+    Dodali ste proizvod u korpu!
+  </div>
 </div>

@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './components/header/header.component';
@@ -31,6 +31,8 @@ import {ClickOutsideDirective} from './directives/ClickOutsideDirective';
 import {ShoppingBagItemComponent} from './components/shopping-bag-item/shopping-bag-item.component';
 import {SignUpComponent} from './components/sign-up/sign-up.component';
 import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component';
+import {ProductUploadComponent} from './components/product-upload/product-upload.component';
+import {NgxSpinnerModule} from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import {ForgotPasswordComponent} from './components/forgot-password/forgot-passw
     ModalConfirmDeleteComponent,
     ShoppingBagItemComponent,
     SignUpComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ProductUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -63,8 +66,10 @@ import {ForgotPasswordComponent} from './components/forgot-password/forgot-passw
     HttpClientModule,
     FormsModule,
     ColorPickerModule,
+    NgxSpinnerModule,
     BsDropdownModule.forRoot()
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     AppService,
     LocalStorageService,

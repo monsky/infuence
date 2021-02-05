@@ -12,9 +12,9 @@ import {Router} from '@angular/router';
 export class HeaderComponent {
 
   public categories: Array<any> = [
-    { id: 0, name: 'majice'},
-    { id: 1, name: 'duksevi'},
-    { id: 2, name: 'rokovnici'}
+    { id: 1, name: 'majice'},
+    { id: 2, name: 'duksevi'},
+    { id: 3, name: 'rokovnici'}
   ];
   public selectedCategory = { id: 0, name: 'majice'};
   public selectedArray: Array<any> = [];
