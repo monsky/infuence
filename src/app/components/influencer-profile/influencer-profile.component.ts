@@ -25,7 +25,7 @@ export class InfluencerProfileComponent implements OnInit, OnDestroy {
       .subscribe((params: Params) => {
         const id = Number(params.id);
         this.appModel.getUserById(id).subscribe((userData) => {
-          // this.appModel.user = userData;
+          this.appModel.user = userData;
         });
       });
   }

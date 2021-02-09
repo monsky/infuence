@@ -37,7 +37,6 @@ const routes: Routes = [
   },
   {
     path: 'influencers/private/:id',
-    canActivate: [InfluencerGuard],
     component: InfluencerProfileComponent
   },
   {

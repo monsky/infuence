@@ -14,7 +14,7 @@
        class="column-data-row">
     <div class="flex-1">
       <div style="margin-right: 1em">
-        <img src="{{ data.imgUrl }}"
+        <img src="{{ data.img_url }}"
              class="img-fluid zoom"
              alt="smaple image">
       </div>
@@ -25,7 +25,7 @@
         {{ data.name }}
       </div>
       <div class="column-name">
-        {{ data.idArticle }}
+        {{ data.id_article }}
       </div>
       <div class="column-name">
         {{ data.amount }}
@@ -34,23 +34,23 @@
         {{ data.prize }}
       </div>
       <div class="column-name">
-        {{ data.size }}
+        {{ data.size ? data.size : 'S' }}
       </div>
       <div class="column-name">
         {{ data.date }}
       </div>
 
       <div class="column-name">
-        {{ data.idInfluenser }}
+        {{ data.id_influenser }}
       </div>
       <div class="column-name">
-        {{ data.nameInfluenser }}
+        {{ data.name_influenser }}
       </div>
       <div class="column-name">
-        {{ data.idOrderer }}
+        {{ data.user }}
       </div>
       <div class="column-name">
-        {{ data.nameOrderer }}
+        {{ data.address }}
       </div>
 
       <div (click)="detailsOpened(j)"

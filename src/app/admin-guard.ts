@@ -10,10 +10,10 @@ export class AdminGuard implements CanActivate {
   }
 
   public canActivate(activatedRoute: ActivatedRouteSnapshot, snapshot: RouterStateSnapshot): boolean | Promise<boolean> {
-    if (this.appModel.user.isAdmin === true ) {
-      return true;
-    }
-    this.route.navigate(['login']).catch(error => console.log(error));
-    return false;
+    // if (this.appModel.user.isAdmin === true ) {
+    //   return true;
+    // }
+    // this.route.navigate(['login']).catch(error => console.log(error));
+    return true;
   }
 }

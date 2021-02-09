@@ -4,7 +4,7 @@
        alt="smaple image">
   <div class="flex-column conditions-wrapper">
     <div class="item-name">
-      {{ appModel.user.firstName }}
+      {{ appModel.user.first_name }}
     </div>
     <div class="condition">
       <div>
@@ -19,7 +19,7 @@
         Zaradjeno
       </div>
       <div class="value">
-        {{appModel.user.influencerEarned}}
+        {{appModel.user.total_earned ? appModel.user.total_earned : 0 }}
       </div>
     </div>
     <div class="condition">
@@ -27,7 +27,7 @@
         Broj prodanih artikala
       </div>
       <div class="value">
-        {{appModel.user.ordersNumber}}
+        {{appModel.user.orders_number ? appModel.user.orders_number : 0 }}
       </div>
     </div>
     <div class="condition">
@@ -35,7 +35,7 @@
         Datum poslednje isplate:
       </div>
       <div class="value">
-        {{appModel.user.last_paid}}
+        {{appModel.user.last_paid ? appModel.user.last_paid : ''}}
       </div>
     </div>
   </div>
