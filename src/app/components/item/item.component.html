@@ -30,7 +30,7 @@
 <!--  </div>-->
   <div (click)="addToShoppingBag()"
        class="buy-button"
-       [class.isDisabled]="!bagItem['size']">
+       [class.isDisabled]="bagItem['size'] === ''">
     ADD
   </div>
   <div *ngIf="addedToBagFlag === true">

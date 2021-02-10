@@ -21,7 +21,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
   public address = '';
   public city = '';
   public postCode: number;
-  public phone = '';
+  public phone: number;
+  public imgUrl = '';
 
   public showPass = false;
   public showRepeatedPass = false;
@@ -52,9 +53,9 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
   public signUp(): void {
     if (this.isOrderingOn === false) {
-      const user: User = new User(this.email, this.pass, this.firstName, this.lastName, this.address, this.city, this.postCode, this.selectedCountry.serbianName, this.selectedTerm.percent, '');
+      const user: User = new User(this.email, this.pass, this.firstName, this.lastName, this.address, this.city, this.postCode, this.phone, this.selectedCountry.serbianName, this.selectedTerm.percent, this.imgUrl);
       this.appModel.createUser(user).subscribe((response) => {
-        this.appModel.saveUser(user);
+        this.appModel.saveUser(response);
         this.router.navigateByUrl('/product-creation');
       });
     } else {
@@ -65,6 +66,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
         city: this.city,
         zip_code: this.postCode,
         mobile: this.phone,
+        img_url: this.imgUrl,
         country: this.selectedCountry.serbianName,
         date: moment().toDate().toDateString(),
         order_products: this.appModel.bagItems

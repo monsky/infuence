@@ -4,6 +4,7 @@ import {Category, Color, Product, Size} from '../../interfaces';
 import {ProductApi} from '../../classes';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {Router} from '@angular/router';
+import {LocalStorageService} from '../../local-storage-service';
 
 @Component({
   selector: 'app-product-upload',
@@ -29,6 +30,7 @@ export class ProductUploadComponent implements OnInit, OnDestroy {
 
   constructor(public appModel: AppModel,
               private spinnerService: NgxSpinnerService,
+              private localStorage: LocalStorageService,
               private router: Router) {
   }
 
@@ -47,7 +49,7 @@ export class ProductUploadComponent implements OnInit, OnDestroy {
   public createProduct() {
     const product: Product = {
       name: this.name,
-      id_seller: this.appModel.user.id,
+      id_seller: this.localStorage.getUser().id,
       prize: this.prize,
       color: this.selectedColor.name,
       // 'sizes': self.sizes,

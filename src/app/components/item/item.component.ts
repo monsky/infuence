@@ -23,6 +23,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
+    this.bagItem.size = 'S';
     this.subscription = this.activatedRoute.params
       .subscribe((params: Params) => {
         const id = Number(params.id);
@@ -44,10 +45,10 @@ export class ItemComponent implements OnInit, OnDestroy {
   }
 
   public addToShoppingBag(): void {
-    const bagItem: OrderItem = new OrderItem(this.item.imgUrl, this.item.name, 1, this.item.id, this.item.idSeller, '', this.item.prize,  this.bagItem.size)
-    this.appModel.bagItems.push(bagItem);
-    this.addedToBagFlag = true;
-    this.bagItem = {};
+      const bagItem: OrderItem = new OrderItem(this.item.imgUrl, this.item.name, 1, this.item.id, this.item.idSeller, '', this.item.prize,  this.bagItem.size)
+      this.appModel.bagItems.push(bagItem);
+      this.addedToBagFlag = true;
+      this.bagItem = {};
   }
 
 }

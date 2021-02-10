@@ -791,7 +791,7 @@ export class AppModel {
   ]
 
   public productsLoaded: boolean;
-  public influensersLoaded: boolean = true;
+  public influensersLoaded: boolean;
   public categoriesLoaded: boolean;
   public sizesLoaded: boolean;
   public colorsLoaded: boolean;

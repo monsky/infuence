@@ -25,10 +25,10 @@ export class AppComponent implements OnInit{
       this.checkHideLoader();
     });
 
-    // this.appModel.getAllInfluencers().subscribe((influencers) => {
-    // this.influensersLoaded  = true;
-    // this.appModel.influencers = influencers;
-    // });
+    this.appModel.getAllInfluencers().subscribe((influencers) => {
+      this.appModel.influensersLoaded  = true;
+      this.appModel.influencers = influencers;
+    });
 
     this.appModel.getAllCategories().subscribe((categories) => {
       this.appModel.categories = categories;

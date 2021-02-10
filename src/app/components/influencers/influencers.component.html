@@ -2,11 +2,11 @@
   <div *ngFor="let influencer of appModel.influencers"
        (click)="choseListItem(influencer)"
        class="d-flex flex-column list-item">
-    <img [src]="influencer.imgUrl"
+    <img [src]="influencer.img_url"
          class="img-fluid zoom"
          alt="smaple image">
     <div class="list-item-name">
-      {{ influencer.firstName + ' ' + influencer.lastName }}
+      {{ influencer.first_name + ' ' + influencer.last_name }}
     </div>
   </div>
 </div>

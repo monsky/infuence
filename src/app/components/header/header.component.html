@@ -44,7 +44,7 @@
           <div *ngFor="let influencer of searchResultsInfluencers"
                class="search-category-item"
                (click)="goToPage('/influencers/', influencer.id)">
-            {{ influencer.firstName }}
+            {{ influencer.first_name }}
           </div>
         </div>
         <div *ngIf="searchResultsItems.length > 0"

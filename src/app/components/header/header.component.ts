@@ -38,7 +38,7 @@ export class HeaderComponent {
     this.searchResultsItems = [];
     if (searchWord.length > 2) {
       this.appModel.influencers.filter((influencer) => {
-        influencer.firstName.substring(0, searchWord.length).toLowerCase() == searchWord.toLowerCase() ?
+        influencer['first_name'].substring(0, searchWord.length).toLowerCase() == searchWord.toLowerCase() ?
           this.searchResultsInfluencers.push(influencer) : '';
       });
       this.appModel.products.filter((item) => {

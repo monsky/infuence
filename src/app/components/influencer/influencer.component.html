@@ -1,6 +1,11 @@
 <div class="flex-row influencer-title">
   <div class="explanation">
-    {{ influencer.firstName + ' ' + influencer.lastName }}
+    {{ influencer.first_name + ' ' + influencer.last_name }}
+  </div>
+  <div *ngIf="addProductButton === true"
+       class="influencer-button"
+       [routerLink]="'/editor'">
+    Dodaj proizvod
   </div>
 </div>
 <div class="d-flex flex-row flex-wrap">
