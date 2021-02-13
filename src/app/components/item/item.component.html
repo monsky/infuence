@@ -2,13 +2,17 @@
   <img [src]="item.imgUrl"
        class="img-fluid image-item"
        alt="smaple image">
-  <div class="explanation">
-    Dostava objasnjenje
+  <div class="explanation"
+       [routerLink]="'/category/' + item.categoryId">
+    {{ item.categoryName}}
   </div>
 </div>
 <div>
   <div class="item-name">
     {{ item.name }}
+  </div>
+  <div class="influenser">
+    by Ena Luna
   </div>
   <div class="prize">
     {{ item.prize}} RSD
@@ -33,7 +37,9 @@
        [class.isDisabled]="bagItem['size'] === ''">
     ADD
   </div>
-  <div *ngIf="addedToBagFlag === true">
+  <div *ngIf="addedToBagFlag === true"
+       class="add-to-bag"
+       [routerLink]="'/shopping-bag'">
     Dodali ste proizvod u korpu!
   </div>
 </div>

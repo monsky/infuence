@@ -1,32 +1,56 @@
-import { Component } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {LocalStorageService} from '../../local-storage-service';
 import {AppModel} from '../../app.model';
+import {ActivatedRoute, ActivationEnd, ParamMap, Params, Router} from '@angular/router';
+import {Category} from '../../interfaces';
+import {NgxSpinnerService} from 'ngx-spinner';
+import {Subscription} from 'rxjs';
+import {filter, map} from 'rxjs/operators';
 import {connectableObservableDescriptor} from 'rxjs/internal/observable/ConnectableObservable';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
-  public categories: Array<any> = [
-    { id: 1, name: 'majice'},
-    { id: 2, name: 'duksevi'},
-    { id: 3, name: 'rokovnici'}
-  ];
-  public selectedCategory = { id: 0, name: 'majice'};
+  public categories: Array<any> = [];
+  public selectedCategory: Category;
   public selectedArray: Array<any> = [];
-  public searchWord: string = '';
+  public searchWord: string;
   public searchResultsInfluencers: Array<any> = [];
   public searchResultsItems: Array<any> = [];
   public searchFlag: boolean;
+  private subscription: Subscription;
+  private catergoryId: number;
 
   constructor(public localStorageService: LocalStorageService,
               public router: Router,
-              public appModel: AppModel) {
+              public appModel: AppModel,
+              public cdr: ChangeDetectorRef,
+              public activatedRoute: ActivatedRoute) {
   }
+
+  public ngOnInit(): void {
+    this.router.events
+      .pipe(
+        filter(e => (e instanceof ActivationEnd) && (Object.keys(e.snapshot.params).length > 0)),
+        map(e => e instanceof ActivationEnd ? e.snapshot.params : {})
+      )
+      .subscribe(params => {
+        this.catergoryId = params.categoryId;
+      });
+    this.appModel.getCategoriesSubject().subscribe((value) => {
+      if (value.length !== 0) {
+        this.categories = this.appModel.categories;
+        this.cdr.detectChanges();
+        this.selectedCategory = this.appModel.categories.filter(item => item.id == this.catergoryId)[0]
+      }
+    });
+
+  }
+
 
   public choseCategory(category): void {
     this.selectedCategory = category;

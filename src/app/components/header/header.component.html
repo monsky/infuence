@@ -1,82 +1,84 @@
-<div class="header-main">
-  <div class="flex-row align-items-center"
-       style="margin-left: 1.5em">
-    <img [routerLink]="''"
-         src="../../../assets/homepage.png"
-         class="home-icon">
-    <div [routerLink]="'/editor'"
-         class="navigation-item">
-      MAKE YOUR OWN SHIRT
+<div *ngIf="appModel.allLoaded === true"
+     class="loaded-wrapper">
+  <div class="header-main">
+    <div class="flex-row align-items-center"
+         style="margin-left: 1.5em">
+      <img [routerLink]="''"
+           src="../../../assets/homepage.png"
+           class="home-icon">
+      <div [routerLink]="'/editor'"
+           class="navigation-item">
+        MAKE YOUR OWN SHIRT
+      </div>
+      <div [routerLink]="'/influencers'"
+           class="navigation-item">
+        INFLUENSERI
+      </div>
     </div>
-    <div [routerLink]="'/influencers'"
-         class="navigation-item">
+    <div class="main-title"
+         style="cursor: pointer"
+         [routerLink]="''">
       INFLUENSERI
     </div>
-  </div>
-  <div class="main-title"
-       style="cursor: pointer"
-       [routerLink]="''">
-    INFLUENSERI
-  </div>
-  <div class="align-items-center d-flex flex-row"
-       style="margin-right: 1.5em">
-    <div class="input-group md-form form-sm form-2 pl-0 search-input">
-      <input (input)="applySearch($event.target.value)"
-             class="my-0 py-1"
-             type="text"
-             [(ngModel)]="searchWord"
-             placeholder="Search"
-             aria-label="Search">
-      <div class="input-group-append">
+    <div class="align-items-center d-flex flex-row"
+         style="margin-right: 1.5em">
+      <div class="input-group md-form form-sm form-2 pl-0 search-input">
+        <input (input)="applySearch($event.target.value)"
+               class="my-0 py-1"
+               type="text"
+               [(ngModel)]="searchWord"
+               placeholder="Search"
+               aria-label="Search">
+        <div class="input-group-append">
         <span class="input-group-text amber lighten-3"
               id="basic-text1">
           <i class="fa fa-search text-grey" aria-hidden="true">
           </i>
         </span>
-      </div>
-      <div *ngIf="searchFlag === true"
-           class="search-results">
-        <div *ngIf="searchResultsInfluencers.length > 0"
-             class="flex-column">
-          <div class="search-category-title">
-            Influenseri
+        </div>
+        <div *ngIf="searchFlag === true"
+             class="search-results">
+          <div *ngIf="searchResultsInfluencers.length > 0"
+               class="flex-column">
+            <div class="search-category-title">
+              Influenseri
+            </div>
+            <div *ngFor="let influencer of searchResultsInfluencers"
+                 class="search-category-item"
+                 (click)="goToPage('/influencers/', influencer.id)">
+              {{ influencer.first_name }}
+            </div>
           </div>
-          <div *ngFor="let influencer of searchResultsInfluencers"
-               class="search-category-item"
-               (click)="goToPage('/influencers/', influencer.id)">
-            {{ influencer.first_name }}
+          <div *ngIf="searchResultsItems.length > 0"
+               class="flex-column">
+            <div class="search-category-title">
+              Proizvodi
+            </div>
+            <div *ngFor="let item of searchResultsItems"
+                 (click)="goToPage('/item/', item.id)"
+                 class="search-category-item">
+              {{ item.name }}
+            </div>
           </div>
         </div>
-        <div *ngIf="searchResultsItems.length > 0"
-             class="flex-column">
-          <div class="search-category-title">
-            Proizvodi
-          </div>
-          <div *ngFor="let item of searchResultsItems"
-               (click)="goToPage('/item/', item.id)"
-               class="search-category-item">
-            {{ item.name }}
-          </div>
-        </div>
+
       </div>
-
+      <div [routerLink]="localStorageService.isUserLogged()? '/profile' : '/login'"
+           class="username">
+        {{ localStorageService.isUserLogged() ? appModel.user.firstName : 'LOGIN' }}
+      </div>
+      <img [routerLink]="'/shopping-bag'"
+           src="../../../assets/shopping_bag.png"
+           class="shopping-bag-icon">
     </div>
-    <div [routerLink]="localStorageService.isUserLogged()? '/profile' : '/login'"
-         class="username">
-      {{ localStorageService.isUserLogged() ? appModel.user.firstName : 'LOGIN' }}
+  </div>
+  <div class="d-flex align-items-center justify-content-center header-navigation">
+    <div *ngFor="let category of categories"
+         [routerLink]="'category/' + category.id"
+         (click)="choseCategory(category)"
+         [style.color]="selectedCategory?.id === category.id ? 'gray' : 'black'"
+         class="category">
+      {{ category.name }}
     </div>
-    <img [routerLink]="'/shopping-bag'"
-         src="../../../assets/shopping_bag.png"
-         class="shopping-bag-icon">
   </div>
 </div>
-<div class="d-flex align-items-center justify-content-center header-navigation">
-  <div *ngFor="let category of categories"
-       [routerLink]="'category/' + category.id"
-       (click)="choseCategory(category)"
-       [style.color]="selectedCategory.id === category.id ? 'gray' : 'black'"
-       class="category">
-    {{ category.name }}
-  </div>
-</div>
-

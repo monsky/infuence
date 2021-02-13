@@ -2,6 +2,7 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {AppModel} from './app.model';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {ProductApi} from './classes';
+import {templateJitUrl} from '@angular/compiler';
 
 @Component({
   selector: 'app-root',
@@ -17,22 +18,24 @@ export class AppComponent implements OnInit{
   }
 
   public ngOnInit(): void {
-    this.spinnerService.show();
-
     this.appModel.getAllProducts().subscribe((products: Array<any>) => {
       this.appModel.products = products.map(product => new ProductApi(product));
       this.appModel.productsLoaded  = true;
+      this.appModel.setProductsSubject(products);
       this.checkHideLoader();
     });
 
     this.appModel.getAllInfluencers().subscribe((influencers) => {
       this.appModel.influensersLoaded  = true;
       this.appModel.influencers = influencers;
+      this.appModel.setInfluensersSubject(influencers);
+      this.checkHideLoader();
     });
 
     this.appModel.getAllCategories().subscribe((categories) => {
       this.appModel.categories = categories;
       this.appModel.categoriesLoaded  = true;
+      this.appModel.setCategoriesSubject(categories);
       this.checkHideLoader();
     });
 
@@ -51,8 +54,8 @@ export class AppComponent implements OnInit{
 
   public checkHideLoader(): void {
     if ( this.appModel.productsLoaded && this.appModel.influensersLoaded && this.appModel.categoriesLoaded && this.appModel.sizesLoaded && this.appModel.colorsLoaded) {
-      this.cdr.detectChanges();
-      this.spinnerService.hide();
+      this.appModel.allLoaded = true;
+
     }
   }
 

@@ -52,7 +52,6 @@ export class ProductUploadComponent implements OnInit, OnDestroy {
       id_seller: this.localStorage.getUser().id,
       prize: this.prize,
       color: this.selectedColor.name,
-      // 'sizes': self.sizes,
       img_url: this.imgUrl,
       category_id: this.selectedCategory.id,
       category_name: this.selectedCategory.name,

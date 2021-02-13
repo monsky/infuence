@@ -26,12 +26,12 @@ export class InfluencerComponent implements OnInit, OnDestroy {
     this.subscription = this.activatedRoute.params
       .subscribe((params: Params) => {
         const id = Number(params.id);
-        console.log(id)
-        console.log(this.appModel.user.id)
-        console.log(id === this.appModel.user.id)
         this.selectedItems = this.appModel.products.filter(item => item.idSeller === id);
         this.influencer = this.appModel.influencers.filter(influencer => influencer.id === id)[0];
-        this.addProductButton = id === this.localStorage.getUser().id;
+        this.addProductButton = id === this.localStorage.getUser()?.id;
+        if (!this.influencer) {
+          this.router.navigateByUrl('/not-found');
+        }
       });
   }
 

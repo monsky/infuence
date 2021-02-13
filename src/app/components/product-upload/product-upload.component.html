@@ -34,24 +34,6 @@
         </div>
       </div>
 
-      <div *ngIf="appModel.sizesLoaded === true"
-           class="flex-column drop-down-wrapper"
-           (click)="dropDownFocusInSize()"
-           (clickOutside)="dropDownFocusOutSize()">
-        <div class="drop-down-slected-item">
-          {{ appModel.sizesLoaded === true ?  selectedSize.name : 'Loading...' }}
-        </div>
-        <div class="flex-column"
-             [ngClass]="dropDownFocusedSize === true ? 'drop-down-options-expanded':'drop-down-options-collapsed'">
-          <div *ngFor="let size of sizes; let i=index">
-            <div class="drop-down-item"
-                 (click)="dropdownSelect(size, 1)">
-              {{ size.name }}
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="input-field-wrapper">
         <input type="text"
                class="input-field"

@@ -70,5 +70,24 @@
     }
   }
 
+  .influenser {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1em;
+  }
+
+  .explanation {
+    font-size: 2em;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-top: 0.5em;
+    cursor: pointer;
+  }
+
+  .add-to-bag {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
 }
 

@@ -34,7 +34,7 @@ export class ShoppingBagComponent implements OnInit, OnDestroy {
   }
 
   public order() {
-    this.router.navigateByUrl('/sign-up');
+    this.items.length === 0 ? this.router.navigateByUrl('') : this.router.navigateByUrl('/sign-up');
   }
 
 }

@@ -1,0 +1,45 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+
+  .image-item {
+    width: 150px;
+    height: 100px;
+    margin-right: 3em;
+  }
+
+  .explanation {
+    font-size: 2em;
+    font-weight: bold;
+  }
+
+  .side-navigation {
+    width: 17em;
+    border-right: 1px solid lightgrey;
+    margin-right: 2em;
+
+    .category {
+      padding: 0.5em 0;
+    }
+
+    .category:hover {
+      font-weight: bold !important;
+      font-size: 1.05em;
+      cursor: pointer;
+    }
+  }
+
+  .admin-title {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+  }
+
+  .zoom {
+    height: revert !important;
+  }
+
+
+}
+

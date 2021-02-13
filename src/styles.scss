@@ -101,7 +101,7 @@ i {
   color: black !important;
 }
 
-.influencer-button {
+.universal-button {
   width: 17em;
   cursor: pointer;
   padding: 1em;
@@ -112,4 +112,15 @@ i {
   &:hover {
     background-color: #e9ecef;
   }
+}
+
+.loaded-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2em;
+  border-bottom: 1px solid lightgray;
+
 }

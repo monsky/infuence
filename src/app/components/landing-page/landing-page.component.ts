@@ -4,6 +4,7 @@ import {AppService} from '../../app.service';
 import {Subscription} from 'rxjs';
 import {AppModel} from '../../app.model';
 import {connectableObservableDescriptor} from 'rxjs/internal/observable/ConnectableObservable';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-landing-page',
@@ -18,18 +19,25 @@ export class LandingPageComponent implements OnInit, OnDestroy {
               public cdr: ChangeDetectorRef,
               public appModel: AppModel,
               private router: Router,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private spinnerService: NgxSpinnerService) {
   }
 
   public ngOnInit(): void {
+    this.spinnerService.show();
     let id = 0;
     this.subscription = this.activatedRoute.params
       .subscribe((params: Params) => {
         this.selectedItems = [];
-        id = params.id ? Number(params.id) : 1;
-        this.appModel.products.map(item => (item.categoryId === id) ? this.selectedItems.push(item) : '');
+        id = params.categoryId ? Number(params.categoryId) : 1;
+        this.appModel.products.map(item => (item.categoryId == id) ? this.selectedItems.push(item) : '');
         this.cdr.detectChanges();
       });
+    this.appModel.getProductsSubject().subscribe((value) => {
+      if (value.length !== 0) {
+        this.spinnerService.hide();
+      }
+    });
   }
 
   public ngOnDestroy(): void {
