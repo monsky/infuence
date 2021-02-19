@@ -1,10 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AppModel} from '../../app.model';
-import {User} from '../../classes';
+import {ProductApi, User} from '../../classes';
 import {Country, Term} from '../../interfaces';
 import {Router} from '@angular/router';
 import {LocalStorageService} from '../../local-storage-service';
 import * as moment from 'moment';
+import {templateJitUrl} from '@angular/compiler';
 
 @Component({
   selector: 'app-sign-up',
@@ -34,6 +35,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
   public dropDownFocused = false;
   public dropDownFocusedTerms = false;
   public isOrderingOn: boolean;
+  public fileToUpload: File = null;
+  public formData: FormData = null;
 
   constructor(public appModel: AppModel,
               public router: Router,
@@ -60,6 +63,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
       });
     } else {
       const orderObject = {
+        email: this.email,
         name: this.firstName,
         last_name: this.lastName,
         address: this.address,
@@ -70,7 +74,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
         country: this.selectedCountry.serbianName,
         date: moment().toDate().toDateString(),
         order_products: this.appModel.bagItems
-      }
+      };
       this.appModel.createOrder(orderObject).subscribe((response) => {
         this.router.navigateByUrl('');
       });
@@ -107,6 +111,19 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
   public selectTerm(term): void {
     this.selectedTerm = term;
+  }
+
+  public handleFileInput(files: FileList) {
+    this.fileToUpload = files.item(0);
+  }
+
+  public uploadFile() {
+    console.log(this.fileToUpload)
+    this.formData = new FormData();
+    this.formData.append('fileKey', this.fileToUpload, this.fileToUpload.name);
+    this.appModel.uploadFile(this.formData).subscribe((res) => {
+      console.log(this.fileToUpload);
+    });
   }
 
 }

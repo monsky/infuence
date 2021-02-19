@@ -34,6 +34,9 @@ export class LandingPageComponent implements OnInit, OnDestroy {
         this.cdr.detectChanges();
       });
     this.appModel.getProductsSubject().subscribe((value) => {
+      // TODO:
+      this.spinnerService.hide();
+
       if (value.length !== 0) {
         this.spinnerService.hide();
       }

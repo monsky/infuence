@@ -672,4 +672,8 @@ export class AppModel {
     this.productsSubject.next(this.products);
   }
 
+  public uploadFile(file): Observable<any> {
+    return this.appService.uploadImage(file);
+  }
+
 }

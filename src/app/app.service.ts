@@ -104,6 +104,18 @@ export class AppService {
 
 
 
+  // UPLOAD
+
+  public uploadImage = (formData): Observable<any> => {
+    return this.httpClient.post<any>(`${this.API_URL}/uploader`,
+      { formData })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+
+
 
 // PRODUCTS
 
