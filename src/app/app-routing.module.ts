@@ -17,6 +17,7 @@ import {LoginComponent} from './components/login/login.component';
 import {SignUpComponent} from './components/sign-up/sign-up.component';
 import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component';
 import {ProductUploadComponent} from './components/product-upload/product-upload.component';
+import {NotFoundComponent} from './components/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -56,7 +57,7 @@ const routes: Routes = [
     component: EditorComponent
   },
   {
-    path: 'category/:id',
+    path: 'category/:categoryId',
     component: LandingPageComponent
   },
   {
@@ -80,6 +81,10 @@ const routes: Routes = [
   {
     path: 'product-creation',
     component: ProductUploadComponent
+  },
+  {
+    path: 'not-found',
+    component: NotFoundComponent
   }
 ];
 

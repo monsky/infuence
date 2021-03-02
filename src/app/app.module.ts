@@ -33,6 +33,7 @@ import {SignUpComponent} from './components/sign-up/sign-up.component';
 import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component';
 import {ProductUploadComponent} from './components/product-upload/product-upload.component';
 import {NgxSpinnerModule} from 'ngx-spinner';
+import {NotFoundComponent} from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import {NgxSpinnerModule} from 'ngx-spinner';
     ShoppingBagItemComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    ProductUploadComponent
+    ProductUploadComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

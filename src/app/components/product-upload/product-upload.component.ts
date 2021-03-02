@@ -30,8 +30,8 @@ export class ProductUploadComponent implements OnInit, OnDestroy {
 
   constructor(public appModel: AppModel,
               private spinnerService: NgxSpinnerService,
-              private router: Router,
-              private localStorage: LocalStorageService) {
+              private localStorage: LocalStorageService,
+              private router: Router) {
   }
 
   public ngOnInit(): void {
@@ -49,11 +49,9 @@ export class ProductUploadComponent implements OnInit, OnDestroy {
   public createProduct() {
     const product: Product = {
       name: this.name,
-      // id_seller: this.localStorage.getUser().id,
-      id_seller: 1, // remove this line and uncomment line above
+      id_seller: this.localStorage.getUser().id,
       prize: this.prize,
       color: this.selectedColor.name,
-      // 'sizes': self.sizes,
       img_url: this.imgUrl,
       category_id: this.selectedCategory.id,
       category_name: this.selectedCategory.name,

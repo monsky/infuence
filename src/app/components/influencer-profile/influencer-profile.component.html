@@ -39,6 +39,16 @@
       </div>
     </div>
   </div>
+  <div class="flex-column flex-1 align-items-end">
+    <div class="universal-button"
+        [routerLink]="'/editor'">
+      Dodaj proizvod
+    </div>
+    <div class="universal-button"
+         [routerLink]="'/influencers/' + appModel.user.id">
+      Moji proizvodi
+    </div>
+  </div>
 </div>
 <div class="flex-row table-header">
   <div *ngFor="let tableDataItem of tableDataHeader;let i = index"

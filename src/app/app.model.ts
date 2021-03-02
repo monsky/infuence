@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {SignalOne} from '../libs/signal/SignalOne';
 import {AppService} from './app.service';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Category, Color, Product, Size} from './interfaces';
 import {ProductApi, User} from './classes';
@@ -12,65 +12,17 @@ import {LocalStorageService} from './local-storage-service';
 })
 export class AppModel {
   public categories: Array<Category>;
+  public categoriesSubject: BehaviorSubject<Array<Category>>;
+
   public sizes: Array<Size>;
   public colors: Array<Color>;
   public readonly categoryChanged: SignalOne<string> = new SignalOne<string>();
-  public bagItems: Array<any> = [
-    // {
-    //   id: 4,
-    //   name: 'Majica 4',
-    //   category: 2,
-    //   price: 1000.00,
-    //   size: 'XL',
-    //   color: 'red',
-    //   owner: 1,
-    //   imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
-    //   quantity: 3
-    // },
-    // {
-    //   id: 5,
-    //   name: 'Majica 3',
-    //   category: 2,
-    //   price: 1300,
-    //   size: 'L',
-    //   color: 'blue',
-    //   owner: 1,
-    //   imgUrl: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg',
-    //   quantity: 2
-    // }
-  ];
-  public influencers: Array<any> = [
-    {
-      id: 0,
-      email: 'irmasumska@yahoo.com',
-      firstName: 'Iki',
-      lastName: 'Siki',
-      imgUrl: 'https://images.unsplash.com/photo-1563992891888-3a441b92e7c7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
-    },
-    {
-      id: 1,
-      email: 'dunja@yahoo.com',
-      firstName: 'Dunja',
-      lastName: 'Jovanic',
-      imgUrl: 'https://images.unsplash.com/photo-1598137203988-80de6392fc1a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
-    },
-    {
-      id: 2,
-      email: 'zoranah@yahoo.com',
-      firstName: 'Zoranah',
-      lastName: 'zo',
-      imgUrl: 'https://images.unsplash.com/photo-1602751184834-947bd06e8710?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
-    },
-    {
-      id: 3,
-      email: 'sarajo@yahoo.com',
-      firstName: 'Sara',
-      lastName: 'Jo',
-      imgUrl: 'https://images.unsplash.com/photo-1603771628324-c90909126ccd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
-    }
-  ];
+  public bagItems: Array<any> = [];
+
+  public influencers: Array<any> = [];
+  public influencersSubject: BehaviorSubject<Array<any>>;
+
   public user: any = {};
-  public productRequests: any = {};
 
   public influencerContractColNames: Array<string> = [
     'ID',
@@ -99,167 +51,6 @@ export class AppModel {
     'Placeno',
     'Status',
     'Odobreno'
-  ];
-  public influencerContractData: Array<any> = [
-    {
-      id: 0,
-      email: 'irmasumska@yahoo.com',
-      firstName: 'Iki',
-      lastName: 'Siki',
-      address: 'V 157',
-      city: 'Belgrade',
-      postCode: 11000,
-      country: 'Serbia',
-      ordersNumber: 20,
-      role: 'influencer',
-      terms: 50,
-      influencerEarned: 3000,
-      last_paid: '30/10/2020',
-      totalEarned: 2000,
-      earnedThisMonth: 100,
-      paidThisMonth: true,
-      orders: [
-        {
-          id: 0,
-          name: 'Majica 10',
-          amount: 2,
-          prize: 1256,
-          size: 'L',
-          date: '20/10/2020',
-          delivered: false,
-          paid: false,
-          approved: 'notApproved'
-        },
-        {
-          id: 1,
-          name: 'Majica 10',
-          amount: 2,
-          prize: 1256,
-          size: 'S',
-          date: '20/10/2020',
-          delivered: false,
-          paid: false,
-          approved: 'waiting'
-        },
-        {
-          id: 2,
-          name: 'Majica 10',
-          amount: 2,
-          prize: 1256,
-          size: 'XL',
-          date: '20/10/2020',
-          delivered: false,
-          paid: false,
-          approved: 'waiting'
-        }
-      ],
-      articles: [],
-      favourites: []
-    },
-    {
-      id: 1,
-      email: 'irmasumska@yahoo.com',
-      firstName: 'Iki',
-      lastName: 'Siki',
-      address: 'V 157',
-      city: 'Belgrade',
-      postCode: 11000,
-      country: 'Serbia',
-      ordersNumber: 20,
-      role: 'influencer',
-      terms: 50,
-      influencerEarned: 3000,
-      last_paid: '30/10/2020',
-      totalEarned: 2000,
-      earnedThisMonth: 100,
-      paidThisMonth: true,
-      orders: [
-        {
-          id: 0,
-          name: 'Majica 10',
-          amount: 2,
-          prize: 1256,
-          date: '20/10/2020',
-          delivered: false,
-          paid: false,
-          approved: 'notApproved'
-        },
-        {
-          id: 1,
-          name: 'Majica 10',
-          amount: 2,
-          prize: 1256,
-          date: '20/10/2020',
-          delivered: false,
-          paid: false,
-          approved: 'approved'
-        },
-        {
-          id: 2,
-          name: 'Majica 10',
-          amount: 2,
-          prize: 1256,
-          date: '20/10/2020',
-          delivered: false,
-          paid: false,
-          approved: 'approved'
-        }
-      ],
-      articles: [],
-      favourites: []
-    },
-    {
-      id: 2,
-      email: 'irmasumska@yahoo.com',
-      firstName: 'Iki',
-      lastName: 'Siki',
-      address: 'V 157',
-      city: 'Belgrade',
-      postCode: 11000,
-      country: 'Serbia',
-      ordersNumber: 20,
-      role: 'influencer',
-      terms: 50,
-      influencerEarned: 3000,
-      last_paid: '30/10/2020',
-      totalEarned: 2000,
-      earnedThisMonth: 100,
-      paidThisMonth: true,
-      orders: [
-        {
-          id: 0,
-          name: 'Majica 10',
-          amount: 2,
-          prize: 1256,
-          date: '20/10/2020',
-          delivered: false,
-          paid: false,
-          approved: 'approved'
-        },
-        {
-          id: 1,
-          name: 'Majica 10',
-          amount: 2,
-          prize: 1256,
-          date: '20/10/2020',
-          delivered: false,
-          paid: false,
-          approved: 'approved'
-        },
-        {
-          id: 2,
-          name: 'Majica 10',
-          amount: 2,
-          prize: 1256,
-          date: '20/10/2020',
-          delivered: false,
-          paid: false,
-          approved: 'approved'
-        }
-      ],
-      articles: [],
-      favourites: []
-    }
   ];
 
   public printShopContractColNames: Array<string> = [
@@ -357,6 +148,7 @@ export class AppModel {
   public isModalConfirmDeleteOpened: boolean = false;
 
   public products: Array<ProductApi>;
+  public productsSubject: BehaviorSubject<Array<any>>;
 
   public influencersAdmin: Array<any> = [
     {
@@ -792,13 +584,19 @@ export class AppModel {
   ]
 
   public productsLoaded: boolean;
-  public influensersLoaded: boolean = true;
+  public influensersLoaded: boolean;
   public categoriesLoaded: boolean;
   public sizesLoaded: boolean;
   public colorsLoaded: boolean;
 
+  public allLoaded: boolean;
+
   constructor(private appService: AppService,
               private localStorage: LocalStorageService) {
+    this.categoriesSubject = new BehaviorSubject<Array<Category>>([]);
+    this.influencersSubject = new BehaviorSubject<Array<any>>([]);
+    this.productsSubject = new BehaviorSubject<Array<any>>([]);
+
   }
 
   public getAllProducts(): Observable<any> {
@@ -825,20 +623,8 @@ export class AppModel {
     return this.appService.getAllInfluencersAdmin();
   }
 
-  public getProductById(productId: number): Observable<any> {
-    return this.appService.getProductById(productId);
-  }
-
-  public getAllUsers(): Observable<any> {
-    return this.appService.getAllUsers();
-  }
-
   public getUserById = (userId: number): Observable<any> => {
     return this.appService.getUserById(userId);
-  }
-
-  public getOrdersByUserId = (userId: number): Observable<any> => {
-    return this.appService.getOrdersByUserId(userId);
   }
 
   public getAllOrders = (): Observable<any> => {
@@ -869,6 +655,28 @@ export class AppModel {
     this.localStorage.saveUser(user);
   }
 
+  public getCategoriesSubject(): Observable<Array<Category>> {
+    return this.categoriesSubject.asObservable();
+  }
+  public setCategoriesSubject(value): void {
+    this.categoriesSubject.next(this.categories);
+  }
 
+  public getInfluensersSubject(): Observable<Array<any>> {
+    return this.influencersSubject.asObservable();
+  }
+  public setInfluensersSubject(value): void {
+    this.influencersSubject.next(this.influencers);
+  }
 
+  public getProductsSubject(): Observable<Array<any>> {
+    return this.productsSubject.asObservable();
+  }
+  public setProductsSubject(value): void {
+    this.productsSubject.next(this.products);
+  }
+
+  public uploadFile(file): Observable<any> {
+    return this.appService.uploadImage(file);
+  }
 }

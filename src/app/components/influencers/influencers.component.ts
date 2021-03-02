@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Router} from '@angular/router';
 import {AppService} from '../../app.service';
 import {AppModel} from '../../app.model';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-influencers',
@@ -12,10 +13,17 @@ export class InfluencersComponent implements OnInit, OnDestroy {
 
   constructor(public appService: AppService,
               public appModel: AppModel,
-              private router: Router) {
+              private router: Router,
+              private spinnerService: NgxSpinnerService) {
   }
 
   public ngOnInit(): void {
+    this.spinnerService.show();
+    this.appModel.getInfluensersSubject().subscribe((value) => {
+      if (value.length !== 0) {
+        this.spinnerService.hide();
+      }
+    });
   }
 
   public ngOnDestroy(): void {

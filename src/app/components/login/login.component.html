@@ -27,19 +27,19 @@
       class="forgot-password">
       Zaboravili ste lozinku?
     </div>
-    <div class="login-button"
+    <div class="universal-button"
     (click)="login()">
       Uloguj se
     </div>
   </div>
-  <div class="flex-column flex-1">
+  <div class="flex-column flex-1 justify-content-between">
     <div class="sign-up-text">
-      Ako jošuvek nemate nalog, možete ga napraviti ovde. <br> <br>
+      Ako još uvek nemate nalog, možete ga napraviti ovde. <br> <br>
       Ostavljanjem informacija prilikom registracije ćete doprineti tome da Vam korišćenje ove stranice bude lakše i
       lepše iskustvo.
     </div>
     <div [routerLink]="'/sign-up'"
-         class="sign-up-button">
+         class="universal-button">
       Registruj se
     </div>
   </div>

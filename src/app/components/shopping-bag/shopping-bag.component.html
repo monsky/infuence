@@ -17,11 +17,12 @@
 <div class="shopping-chart-button-wrapper flex-row">
   <div (click)="order()"
        [routerLink]="items.length===0 ? '' : '/profile'"
-       class="shopping-chart-button zoom">
+       style="margin-right: 1em"
+       class="universal-button">
     KUPI
   </div>
   <div *ngIf="items.length!=0"
-       class="shopping-chart-button zoom"
+       class="universal-button"
        (click)="openModalConfirmDelete()">
     ISPRAZNI KORPU
   </div>

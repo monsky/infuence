@@ -1,10 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AppModel} from '../../app.model';
-import {User} from '../../classes';
+import {ProductApi, User} from '../../classes';
 import {Country, Term} from '../../interfaces';
 import {Router} from '@angular/router';
 import {LocalStorageService} from '../../local-storage-service';
 import * as moment from 'moment';
+import {templateJitUrl} from '@angular/compiler';
 
 @Component({
   selector: 'app-sign-up',
@@ -21,7 +22,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
   public address = '';
   public city = '';
   public postCode: number;
-  public phone = '';
+  public phone: number;
+  public imgUrl = '';
 
   public showPass = false;
   public showRepeatedPass = false;
@@ -33,6 +35,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
   public dropDownFocused = false;
   public dropDownFocusedTerms = false;
   public isOrderingOn: boolean;
+  public fileToUpload: File = null;
+  public formData: FormData = null;
 
   constructor(public appModel: AppModel,
               public router: Router,
@@ -52,19 +56,21 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
   public signUp(): void {
     if (this.isOrderingOn === false) {
-      const user: User = new User(this.email, this.pass, this.firstName, this.lastName, this.address, this.city, this.postCode, this.selectedCountry.serbianName, this.selectedTerm.percent, '');
+      const user: User = new User(this.email, this.pass, this.firstName, this.lastName, this.address, this.city, this.postCode, this.phone, this.selectedCountry.serbianName, this.selectedTerm.percent, this.imgUrl);
       this.appModel.createUser(user).subscribe((response) => {
-        this.appModel.saveUser(user);
+        this.appModel.saveUser(response);
         this.router.navigateByUrl('/product-creation');
       });
     } else {
       const orderObject = {
+        email: this.email,
         name: this.firstName,
         last_name: this.lastName,
         address: this.address,
         city: this.city,
         zip_code: this.postCode,
         mobile: this.phone,
+        img_url: this.imgUrl,
         country: this.selectedCountry.serbianName,
         date: moment().toDate().toDateString(),
         order_products: this.appModel.bagItems
@@ -105,6 +111,19 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
   public selectTerm(term): void {
     this.selectedTerm = term;
+  }
+
+  public handleFileInput(files: FileList) {
+    this.fileToUpload = files.item(0);
+  }
+
+  public uploadFile() {
+    console.log(this.fileToUpload)
+    this.formData = new FormData();
+    this.formData.append('fileKey', this.fileToUpload, this.fileToUpload.name);
+    this.appModel.uploadFile(this.formData).subscribe((res) => {
+      console.log(this.fileToUpload);
+    });
   }
 
 }

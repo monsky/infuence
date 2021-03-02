@@ -2,33 +2,34 @@
   <img src={{itemData.img_url}}
        class="img-fluid zoom zoom-bag"
        alt="smaple image">
-
-  <div class="d-flex flex-column">
-    <div class="shopping-bag-item-name">
-      {{itemData['name']}}
-    </div>
-<!--    <div class="shopping-bag-item-color">-->
-<!--      {{itemData['color']}}-->
-<!--    </div>-->
-    <div class="shopping-bag-item-price">
-      {{itemData['prize']}} RSD
-    </div>
-    <div class="shopping-bag-item-size">
-      {{itemData['size']}}
-    </div>
-    <div class="d-flex flex-row shopping-bag-item-quantity">
-      <i class="fa fa-minus zoom shopping-bag-item-quantity-button"
-         (click)="minusOnClick()"
-      ></i>
-      <div class="shopping-bag-item-quantity-label">
-        {{itemData['amount']}}
+  <div class="flex-column justify-content-between">
+    <div class="d-flex flex-column">
+      <div class="shopping-bag-item-name">
+        {{itemData['name']}}
       </div>
-      <i class="fa fa-plus zoom shopping-bag-item-quantity-button"
-         (click)="plusOnClick()"
-      ></i>
+      <div class="influenser">
+        by Ena Luna
+      </div>
+      <div class="shopping-bag-item-price">
+        {{itemData['prize']}} RSD
+      </div>
+      <div class="shopping-bag-item-size">
+        {{itemData['size']}}
+      </div>
+      <div class="d-flex flex-row shopping-bag-item-quantity">
+        <i class="fa fa-minus shopping-bag-item-quantity-button"
+           (click)="minusOnClick()"
+        ></i>
+        <div class="shopping-bag-item-quantity-label">
+          {{itemData['amount']}}
+        </div>
+        <i class="fa fa-plus shopping-bag-item-quantity-button"
+           (click)="plusOnClick()"
+        ></i>
+      </div>
     </div>
+    <i class="fa fa-trash shopping-chart-delete-button"
+       (click)="deleteOnClick()">
+    </i>
   </div>
-  <i class="fa fa-trash zoom shopping-chart-delete-button"
-     (click)="deleteOnClick()">
-  </i>
 </div>

@@ -1,5 +1,3 @@
-import * as moment from './components/sign-up/sign-up.component';
-
 export class ProductApi {
   public id: number;
   public name: string;
@@ -36,12 +34,13 @@ export class User {
   // tslint:disable-next-line:variable-name
   public post_code: number;
   public country: string;
-  public terms: number;
+  public terms: number;;
+  public mobile: number;
   // tslint:disable-next-line:variable-name
   public img_url: string;
 
   // tslint:disable-next-line:variable-name
-  constructor(email: string, password: string, first_name: string, last_name: string, address: string, city: string, post_code: number, country: string, terms: number, img_url: string) {
+  constructor(email: string, password: string, first_name: string, last_name: string, address: string, city: string, post_code: number, mobile: number, country: string, terms: number, img_url: string) {
     this.email = email;
     this.password = password;
     this.first_name = first_name;
@@ -51,6 +50,7 @@ export class User {
     this.post_code = post_code;
     this.country = country;
     this.terms = terms;
+    this.mobile = mobile;
     this.img_url = img_url;
   }
 }
@@ -67,7 +67,7 @@ export class OrderItem {
   // tslint:disable-next-line:variable-name
   public name_influenser: string;
   public prize: number;
-  public size: string;
+  public size: string = 'S';
 
   // tslint:disable-next-line:variable-name
   constructor(img_url: string, name: string, amount: number, id_article: number, id_influenser: number, name_influenser: string, prize: number, size: string) {
