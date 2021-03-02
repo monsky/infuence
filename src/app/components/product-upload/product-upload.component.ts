@@ -4,6 +4,7 @@ import {Category, Color, Product, Size} from '../../interfaces';
 import {ProductApi} from '../../classes';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {Router} from '@angular/router';
+import {LocalStorageService} from '../../local-storage-service';
 
 @Component({
   selector: 'app-product-upload',
@@ -29,7 +30,8 @@ export class ProductUploadComponent implements OnInit, OnDestroy {
 
   constructor(public appModel: AppModel,
               private spinnerService: NgxSpinnerService,
-              private router: Router) {
+              private router: Router,
+              private localStorage: LocalStorageService) {
   }
 
   public ngOnInit(): void {
@@ -47,20 +49,23 @@ export class ProductUploadComponent implements OnInit, OnDestroy {
   public createProduct() {
     const product: Product = {
       name: this.name,
-      id_seller: this.appModel.user.id,
+      // id_seller: this.localStorage.getUser().id,
+      id_seller: 1, // remove this line and uncomment line above
       prize: this.prize,
       color: this.selectedColor.name,
       // 'sizes': self.sizes,
       img_url: this.imgUrl,
       category_id: this.selectedCategory.id,
       category_name: this.selectedCategory.name,
-      items_sold: 0
-    }
+      items_sold: 0,
+      approved: false,
+      name_seller: this.localStorage.getUser().first_name + ' ' + this.localStorage.getUser().last_name,
+    };
     this.appModel.createProduct(product).subscribe(() => {
       this.spinnerService.show();
       this.appModel.getAllProducts().subscribe((products: Array<any>) => {
         this.appModel.products = products.map(productRes => new ProductApi(productRes));
-        this.appModel.productsLoaded  = true;
+        this.appModel.productsLoaded = true;
         this.spinnerService.hide();
         this.router.navigateByUrl('/category/' + product.category_id);
       });

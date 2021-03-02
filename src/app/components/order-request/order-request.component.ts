@@ -19,7 +19,7 @@ export class OrderRequestComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.columnNames = this.appModel.orderRequestColNames;
-    this.columnData = this.appModel.orders.filter(order => order.approved === 'waiting');
+    this.columnData = this.appModel.productRequests;
   }
 
   public ngOnDestroy(): void {

@@ -70,6 +70,7 @@ export class AppModel {
     }
   ];
   public user: any = {};
+  public productRequests: any = {};
 
   public influencerContractColNames: Array<string> = [
     'ID',
@@ -844,8 +845,8 @@ export class AppModel {
     return this.appService.getAllOrders();
   }
 
-  public getAllOrderRequests = (): Observable<any> => {
-    return this.appService.getAllOrderRequests();
+  public getProductRequests = (): Observable<any> => {
+    return this.appService.getProductRequests();
   }
 
   public getContracts = (): Observable<any> => {
@@ -867,5 +868,7 @@ export class AppModel {
   public saveUser = (user: User): void => {
     this.localStorage.saveUser(user);
   }
+
+
 
 }

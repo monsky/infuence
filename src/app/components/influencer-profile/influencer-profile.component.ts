@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AppModel} from '../../app.model';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
+import {LocalStorageService} from '../../local-storage-service';
 
 @Component({
   selector: 'app-influencer-profile',
@@ -17,7 +18,8 @@ export class InfluencerProfileComponent implements OnInit, OnDestroy {
 
   constructor(public activatedRoute: ActivatedRoute,
               public appModel: AppModel,
-              private router: Router) {
+              private router: Router,
+              private localStorage: LocalStorageService) {
   }
 
   public ngOnInit(): void {
@@ -26,6 +28,7 @@ export class InfluencerProfileComponent implements OnInit, OnDestroy {
         const id = Number(params.id);
         this.appModel.getUserById(id).subscribe((userData) => {
           this.appModel.user = userData;
+          this.localStorage.saveUser(userData);
         });
       });
   }

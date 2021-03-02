@@ -68,7 +68,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
         country: this.selectedCountry.serbianName,
         date: moment().toDate().toDateString(),
         order_products: this.appModel.bagItems
-      }
+      };
       this.appModel.createOrder(orderObject).subscribe((response) => {
         this.router.navigateByUrl('');
       });

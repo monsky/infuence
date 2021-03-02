@@ -181,8 +181,8 @@ export class AppService {
       );
   }
 
-  public getAllOrderRequests = (): Observable<any> => {
-    return this.httpClient.get(`${this.API_URL}/orders/requests`)
+  public getProductRequests = (): Observable<any> => {
+    return this.httpClient.get(`${this.API_URL}/product/requests`)
       .pipe(
         catchError(this.handleError)
       );

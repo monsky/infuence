@@ -28,6 +28,8 @@ export interface Product {
   category_id: number;
   category_name: string;
   items_sold: number;
+  approved: boolean;
+  name_seller: string;
 }
 
 export interface Term {

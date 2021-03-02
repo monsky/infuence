@@ -27,6 +27,9 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.appModel.getContracts().subscribe((contracts) => {
       this.appModel.contracts = contracts;
     });
+    this.appModel.getProductRequests().subscribe((products) => {
+      this.appModel.productRequests = products;
+    });
   }
 
   public ngOnDestroy(): void {
