@@ -31,7 +31,7 @@
     margin: unset;
   }
 
-  @mixin order-request-button( $approve: false) {
+  order-request-button{
     display: flex;
     padding: 0 1em;
     justify-content: center;
@@ -40,13 +40,6 @@
     cursor: pointer;
   }
 
-  .order-request-button-approved {
-    @include order-request-button($approve: true);
-  }
-
-  .order-request-button-rejected {
-    @include order-request-button($approve: false)
-  }
 
 }
 

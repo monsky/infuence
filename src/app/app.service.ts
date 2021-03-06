@@ -142,6 +142,15 @@ export class AppService {
       );
   }
 
+  public approveDissapproveProduct = (requestData: any): Observable<any> => {
+    return  this.httpClient.post<any>(`${this.API_URL}/products/approval`,
+      requestData,
+      {headers: this.headers})
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
 
 // USERS
 

@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
   private subscription: Subscription;
   private catergoryId: number;
 
+
   constructor(public localStorageService: LocalStorageService,
               public router: Router,
               public appModel: AppModel,
@@ -48,7 +49,6 @@ export class HeaderComponent implements OnInit {
         this.selectedCategory = this.appModel.categories.filter(item => item.id == this.catergoryId)[0]
       }
     });
-
   }
 
 

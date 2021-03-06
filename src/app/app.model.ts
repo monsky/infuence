@@ -24,6 +24,8 @@ export class AppModel {
 
   public user: any = {};
 
+  public productRequests: any = {};
+
   public influencerContractColNames: Array<string> = [
     'ID',
     'Ime',
@@ -641,6 +643,10 @@ export class AppModel {
 
   public createProduct = (product: Product): Observable<any> => {
     return this.appService.createProduct(product);
+  }
+
+  public approveDissapproveProduct = (requestData: any): Observable<any> => {
+    return this.appService.approveDissapproveProduct(requestData);
   }
 
   public createUser = (user: User): Observable<any> => {

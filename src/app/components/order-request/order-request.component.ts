@@ -1,6 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {AppModel} from '../../app.model';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ProductApi} from '../../classes';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-order-request',
@@ -13,7 +15,9 @@ export class OrderRequestComponent implements OnInit, OnDestroy {
   public columnData: any = {};
 
   constructor(public activatedRoute: ActivatedRoute,
+              private spinnerService: NgxSpinnerService,
               public appModel: AppModel,
+              public cdr: ChangeDetectorRef,
               private router: Router) {
   }
 
@@ -25,12 +29,31 @@ export class OrderRequestComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
   }
 
-  public approveRequest(request): void {
-    request.orderStatus = 1;
+  private approveDissaproveProduct(requestData): void {
+    this.appModel.approveDissapproveProduct(requestData).subscribe(() => {
+      this.spinnerService.show();
+      this.appModel.getProductRequests().subscribe((products) => {
+        this.appModel.productRequests = products;
+        this.spinnerService.hide();
+        this.columnData = this.appModel.productRequests;
+      });
+    });
   }
 
-  public rejectRequest(request): void {
-    request.orderStatus = 0;
+  public approveRequest(data): void {
+    const requestData: any = {
+      id: data.id,
+      flag: true
+    };
+    this.approveDissaproveProduct(requestData);
+  }
+
+  public rejectRequest(data): void {
+    const requestData: any = {
+      id: data.id,
+      flag: false
+    };
+    this.approveDissaproveProduct(requestData);
   }
 
 }

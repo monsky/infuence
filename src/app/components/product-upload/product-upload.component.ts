@@ -55,9 +55,10 @@ export class ProductUploadComponent implements OnInit, OnDestroy {
       img_url: this.imgUrl,
       category_id: this.selectedCategory.id,
       category_name: this.selectedCategory.name,
+      name_seller: this.localStorage.getUser().first_name + ' ' + this.localStorage.getUser().last_name,
       items_sold: 0,
       approved: false,
-      name_seller: this.localStorage.getUser().first_name + ' ' + this.localStorage.getUser().last_name,
+      processed: false
     };
     this.appModel.createProduct(product).subscribe(() => {
       this.spinnerService.show();

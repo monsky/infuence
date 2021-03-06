@@ -24,17 +24,17 @@
       treba dodati na back
     </div>
     <div class="flex-1">
-      treba dodati na back
+      {{ data.name_seller }}
     </div>
     <div class="flex-column flex-1">
-      <div class="order-request-button-approved"
+      <div class="order-request-button"
            style="color: green"
-           (click)="!data.orderStatus && approveRequest(data)">
+           (click)="approveRequest(data)">
         Odobri
       </div>
-      <div class="order-request-button-rejected"
+      <div class="order-request-button"
            style="color: red;"
-           (click)="data.orderStatus && rejectRequest(data)">
+           (click)="rejectRequest(data)">
         Odbij
       </div>
 

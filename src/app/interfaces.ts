@@ -30,6 +30,7 @@ export interface Product {
   items_sold: number;
   approved: boolean;
   name_seller: string;
+  processed: boolean;
 }
 
 export interface Term {

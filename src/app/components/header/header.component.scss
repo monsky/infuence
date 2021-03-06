@@ -23,6 +23,21 @@
     cursor: pointer;
   }
 
+  .shopping-bag-count {
+    background-color: red;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    line-height: 1em;
+    position: relative;
+    top: -0.7em;
+    left: 1em;
+  }
+
   .search-input {
     right: 9em;
     position: absolute;
